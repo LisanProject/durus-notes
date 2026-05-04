@@ -278,6 +278,132 @@
       padding-top: 1rem;
     }
 
+    /* ── KHUTBAH A WEEK ── */
+    .khutbah-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .khutbah-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.1rem;
+      background: var(--cream-2);
+      transition: border-color 0.15s;
+    }
+    .khutbah-card:hover { border-color: var(--teal); }
+    .khutbah-meta {
+      font-size: 11px;
+      font-family: var(--serif);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 4px;
+    }
+    .khutbah-title {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .khutbah-arabic {
+      font-family: var(--arabic);
+      font-size: 15px;
+      direction: rtl;
+      text-align: right;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .khutbah-links a {
+      display: inline-block;
+      font-size: 11.5px;
+      font-family: var(--serif);
+      color: var(--teal);
+      border: 1px solid var(--teal);
+      border-radius: 2px;
+      padding: 2px 8px;
+      text-decoration: none;
+      margin-right: 5px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .khutbah-links a:hover { background: var(--teal); color: #fff; }
+    .khutbah-coming {
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-style: italic;
+      padding: 1rem 0 0.5rem;
+    }
+
+    /* ── READING RECOMMENDATIONS ── */
+    .reading-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.2rem;
+    }
+    @media (max-width: 620px) { .reading-grid { grid-template-columns: 1fr; } }
+
+    .reading-category {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: var(--serif);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .reading-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .reading-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .reading-book {
+      font-family: var(--serif);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .reading-book-ar {
+      font-family: var(--arabic);
+      font-size: 14px;
+      color: var(--ink-muted);
+      direction: rtl;
+    }
+    .reading-author {
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin-top: 1px;
+    }
+    .reading-note {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .badge-level {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--serif);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+    .level-intro  { color: var(--teal);   border: 1px solid var(--teal); }
+    .level-mid    { color: var(--gold);   border: 1px solid var(--gold); }
+    .level-adv    { color: #7a3f3f;       border: 1px solid #7a3f3f; }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -313,6 +439,9 @@
       <a href="#">Qawā'id al-I'rāb</a>
       <a href="#">Alfiyyat Ibn Mālik</a>
       <a href="#">Mughnī al-Labīb — Ibn Hishām</a>
+      <hr/>
+      <div class="dropdown-section">Writing Practice</div>
+      <a href="#khutbah">Khutbah a Week</a>
     </div>
   </div>
 
@@ -361,6 +490,17 @@
       <a href="#">Nukhbat al-Fikar — Ibn Hajar</a>
       <a href="#">Ikhtisār 'Ulūm al-Hadīth</a>
       <a href="#">Al-Taqrīb wal-Taysīr</a>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="#reading">Reading <span class="caret">▾</span></a>
+    <div class="dropdown">
+      <div class="dropdown-section">Recommendations</div>
+      <a href="#reading-arabic">Arabic Language</a>
+      <a href="#reading-aqeedah">Theology &amp; Spirituality</a>
+      <a href="#reading-fiqh">Fiqh &amp; Usūl</a>
+      <a href="#reading-biography">Sīrah &amp; Biography</a>
     </div>
   </div>
 </nav>
@@ -441,6 +581,55 @@
       <td class="course-links"><a href="#">Notes</a></td>
     </tr>
   </table>
+
+  <hr class="section-rule" />
+
+  <!-- ── KHUTBAH A WEEK ── -->
+  <div id="khutbah" class="subject-header">
+    <h2>Khutbah a Week</h2>
+    <span class="arabic-title">خطبة الأسبوع</span>
+  </div>
+  <p class="subject-note">Writing is how grammar becomes instinct. Each week I write a complete khutbah in Fuṣḥā (classical Arabic) on a topic drawn from the sciences or from events worth reflecting on. The goal is not perfection but consistency: to develop an ear for Arabic prose through production, not only consumption. Each entry includes the full Arabic text, a brief note on the topic, and where relevant, a self-correction log noting grammatical errors caught after the fact.</p>
+
+  <div class="khutbah-grid">
+
+    <div class="khutbah-card">
+      <div class="khutbah-meta">Week 1 · Dhul-Hijjah 1447</div>
+      <div class="khutbah-title">On the Obligation of Seeking Knowledge</div>
+      <span class="khutbah-arabic">في فريضة طلب العلم</span>
+      <div class="khutbah-links">
+        <a href="#">Read</a>
+        <a href="#">PDF</a>
+      </div>
+    </div>
+
+    <div class="khutbah-card">
+      <div class="khutbah-meta">Week 2 · Dhul-Hijjah 1447</div>
+      <div class="khutbah-title">On Gratitude and Its Conditions</div>
+      <span class="khutbah-arabic">في الشكر وشروطه</span>
+      <div class="khutbah-links">
+        <a href="#">Read</a>
+        <a href="#">PDF</a>
+      </div>
+    </div>
+
+    <div class="khutbah-card">
+      <div class="khutbah-meta">Week 3 · Dhul-Hijjah 1447</div>
+      <div class="khutbah-title">On the Virtues of Sha'bān</div>
+      <span class="khutbah-arabic">في فضائل شعبان</span>
+      <div class="khutbah-links">
+        <a href="#">Read</a>
+        <a href="#">PDF</a>
+      </div>
+    </div>
+
+    <div class="khutbah-card" style="border-style: dashed; background: var(--cream);">
+      <div class="khutbah-meta">Week 4 · Coming</div>
+      <div class="khutbah-title" style="color: var(--ink-faint);">Next entry in progress…</div>
+      <p class="khutbah-coming">Updated weekly, bi-idhnillāh.</p>
+    </div>
+
+  </div>
 
   <hr class="section-rule" />
 
@@ -527,7 +716,7 @@
   <table class="course-list">
     <tr>
       <td>
-        <span class="course-title">Sharh al-'Aqbāwī </span>
+        <span class="course-title">Sharh al-'Aqbāwī</span>
         <span class="course-author">Al-'Aqbāwī on Aqīdah Tawhidiyyah</span>
       </td>
       <td class="course-desc"><span class="coming">Coming soon</span></td>
@@ -634,6 +823,173 @@
       <td class="course-links"><span class="coming">Coming soon</span></td>
     </tr>
   </table>
+
+  <hr class="section-rule" />
+
+ <!-- ── READING RECOMMENDATIONS ── -->
+  <div id="reading" class="subject-header">
+    <h2>Reading Recommendations</h2>
+    <span class="arabic-title">قائمة المطالعة</span>
+  </div>
+  <p class="subject-note">Books I have read and found genuinely worth recommending — not exhaustive lists, but books that actually changed how I think or gave me something I could not find elsewhere. Organized loosely by subject. Level indicators are rough guides only; what matters most is having a teacher.</p>
+
+  <div class="reading-grid">
+
+    <!-- Arabic Language -->
+    <div id="reading-arabic">
+      <div class="reading-category">Arabic Language</div>
+
+      <div class="reading-item">
+        <span class="reading-book">Sharh Ibn 'Aqīl 'alā Alfiyyat Ibn Mālik</span>
+        <span class="reading-book-ar">شرح ابن عقيل على ألفية ابن مالك</span>
+        <span class="reading-author">Ibn 'Aqīl</span>
+        <p class="reading-note">The standard commentary used alongside the Alfiyyah in traditional study. Dense but indispensable.</p>
+        <span class="badge-level level-adv">Advanced</span>
+      </div>
+    </div>
+
+    <!-- Theology & Spirituality -->
+    <div id="reading-aqeedah">
+      <div class="reading-category">Theology &amp; Spirituality</div>
+
+      <div class="reading-item">
+        <span class="reading-book">Ihyā' 'Ulūm al-Dīn</span>
+        <span class="reading-book-ar">إحياء علوم الدين</span>
+        <span class="reading-author">Imām al-Ghazālī</span>
+        <p class="reading-note">There is no book in Islam after the Qur'an and Sunnah that combines legal, theological, and spiritual knowledge at this level. Read it slowly, over years, not months.</p>
+        <span class="badge-level level-adv">Advanced</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Ayyuhā al-Walad</span>
+        <span class="reading-book-ar">أيها الولد</span>
+        <span class="reading-author">Imām al-Ghazālī</span>
+        <p class="reading-note">A short letter from al-Ghazālī to a student asking what knowledge is truly for. One of the most important things a student of the sciences can read before going any further.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">The Book of Assistance</span>
+        <span class="reading-author">Imām al-Haddād</span>
+        <p class="reading-note">A practical guide to the spiritual life from one of the great scholars of the Bā 'Alawī tradition. Deceptively simple; the kind of book that reads differently depending on where you are in your journey.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Islam and the Destiny of Man</span>
+        <span class="reading-author">Gai Eaton</span>
+        <p class="reading-note">The most honest and intellectually serious introduction to Islam written in English. Not a primer for converts — a meditation on what Islam actually demands of the mind and will.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Traveling Home</span>
+        <span class="reading-author">Abdal Hakim Murad</span>
+        <p class="reading-note">Essays on Islam, modernity, and the interior life. Murad at his most personal. The title essay alone is worth the book.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+    </div>
+
+    <!-- Sirah & Biography -->
+    <div id="reading-biography">
+      <div class="reading-category">Sīrah &amp; Biography</div>
+
+      <div class="reading-item">
+        <span class="reading-book">Muhammad: His Life Based on the Earliest Sources</span>
+        <span class="reading-author">Martin Lings (Abū Bakr Sirāj al-Dīn)</span>
+        <p class="reading-note">The finest sīrah available in English. Written with the literary precision of someone who understood both the Arabic sources and the English language deeply. Read this before any other sīrah book.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Al-Shifā' bi-Ta'rīf Huqūq al-Mustafā</span>
+        <span class="reading-book-ar">الشفاء بتعريف حقوق المصطفى</span>
+        <span class="reading-author">Qādī 'Iyād</span>
+        <p class="reading-note">The definitive classical work on the rights and description of the Prophet ﷺ. Every Muslim should read this at least once. There are good English translations available.</p>
+        <span class="badge-level level-mid">Intermediate</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Tabaqāt al-Shāfi'iyyah al-Kubrā</span>
+        <span class="reading-book-ar">طبقات الشافعية الكبرى</span>
+        <span class="reading-author">Tāj al-Dīn al-Subkī</span>
+        <p class="reading-note">Biographies of the major scholars of the Shāfi'ī school. Reading about the scholars who carried this knowledge is itself a form of study.</p>
+        <span class="badge-level level-adv">Advanced</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">The 11th Hour</span>
+        <span class="reading-author">Martin Lings</span>
+        <p class="reading-note">Lings on the spiritual crisis of the modern world, written in the final years of his life. Short, lucid, and sobering. Pairs naturally with Guénon and Eaton.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+    </div>
+
+    <!-- Modernity & Civilizational Critique -->
+    <div id="reading-modernity">
+      <div class="reading-category">Modernity &amp; Civilizational Critique</div>
+
+      <div class="reading-item">
+        <span class="reading-book">The Crisis of the Modern World</span>
+        <span class="reading-author">René Guénon</span>
+        <p class="reading-note">Guénon's diagnosis of Western modernity as a metaphysical disorder, not merely a political or social one. Unsettling and rigorous. Essential background for understanding why traditional knowledge matters at all.</p>
+        <span class="badge-level level-mid">Intermediate</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Four Arguments for the Elimination of Television</span>
+        <span class="reading-author">Jerry Mander</span>
+        <p class="reading-note">Written in 1978, more relevant now than ever. A thorough argument that the medium itself — not just its content — restructures consciousness. Read alongside Postman.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Amusing Ourselves to Death</span>
+        <span class="reading-author">Neil Postman</span>
+        <p class="reading-note">On how the dominance of television reshaped public discourse and attention. Postman's argument is that Huxley was right and Orwell was wrong. Concise, readable, devastating.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Islam and Secularism</span>
+        <span class="reading-author">Sayyid Naquib al-Attas</span>
+        <p class="reading-note">Al-Attas's central argument: that secularization is not neutral but represents a specific metaphysical worldview imposed on Islamic thought. Demanding but foundational for anyone thinking seriously about the relationship between Islam and modernity.</p>
+        <span class="badge-level level-adv">Advanced</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">Strange New World</span>
+        <span class="reading-author">Carl Trueman</span>
+        <p class="reading-note">A historian traces how the modern self — expressive, autonomous, defined by inner feeling — came to be taken for granted. Written from a Christian perspective but the analysis is sharp and broadly applicable.</p>
+        <span class="badge-level level-intro">Introductory</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">The System of Antichrist</span>
+        <span class="reading-author">Charles Upton</span>
+        <p class="reading-note">A dense, unconventional examination of postmodern culture through a traditional metaphysical lens. Not easy reading, but rewards patience for those interested in the intersection of tradition and contemporary thought.</p>
+        <span class="badge-level level-adv">Advanced</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">A Study of History (abridged)</span>
+        <span class="reading-author">Arnold Toynbee</span>
+        <p class="reading-note">Toynbee's grand theory of civilizational rise and fall. The one-volume abridgement by Somervell is the place to start. Invaluable for situating Islamic civilization within a broader historical framework.</p>
+        <span class="badge-level level-mid">Intermediate</span>
+      </div>
+
+      <div class="reading-item">
+        <span class="reading-book">The Islamic Secular</span>
+        <span class="reading-author">Sherman Jackson</span>
+        <p class="reading-note">Jackson's argument that Islamic tradition has its own internal resources for navigating the secular, and that Western secular frameworks are not the only option. Important for thinking about fiqh and public life in the contemporary context.</p>
+        <span class="badge-level level-mid">Intermediate</span>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
 
 </div><!-- /page-wrap -->
 
