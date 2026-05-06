@@ -7,105 +7,231 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --burgundy: #7b1c1c;
+    --burgundy-dark: #5a1010;
+    --burgundy-light: #a32020;
+    --link-blue: #1a56c4;
+    --link-hover: #c00;
+    --sidebar-bg: #f8f8f8;
+    --sidebar-border: #ddd;
+    --cat-bg: #7b1c1c;
+    --cat-color: #fff;
+    --content-max: 860px;
+  }
+
   body {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', serif;
     font-size: 14px;
-    color: #000;
+    color: #111;
     background: #fff;
   }
 
-  a { color: #00f; text-decoration: none; }
-  a:hover { text-decoration: underline; color: #c00; }
+  a { color: var(--link-blue); text-decoration: none; }
+  a:hover { text-decoration: underline; color: var(--link-hover); }
 
-  /* ══ TOP BAR — matches Paul's: gray bg, title left, Home right ══ */
+  /* ══ TOP BAR ══ */
   #topbar {
-    background: #d0d0d0;
-    border-bottom: 1px solid #999;
-    padding: 5px 10px;
+    background: var(--burgundy);
+    border-bottom: 2px solid var(--burgundy-dark);
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+
+  #hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  #hamburger span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  #hamburger:hover span { background: #ffd0d0; }
+
+  #topbar-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.08rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    flex: 1;
+    letter-spacing: 0.01em;
+  }
+  #topbar-title:hover { color: #ffd0d0; text-decoration: none; }
+
+  .topbar-icon-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 8px;
+    font-size: 0.78rem;
+    transition: background 0.15s;
+  }
+  .topbar-icon-btn:hover { background: rgba(255,255,255,0.18); }
+
+  /* ══ OVERLAY ══ */
+  #overlay {
+    display: none;
+    position: fixed;
+    inset: 44px 0 0 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 149;
+  }
+  #overlay.open { display: block; }
+
+  /* ══ SIDEBAR / DRAWER ══ */
+  #sidebar {
+    position: fixed;
+    top: 44px;
+    left: -290px;
+    width: 280px;
+    height: calc(100vh - 44px);
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto;
+    z-index: 150;
+    transition: left 0.22s ease;
+  }
+  #sidebar.open { left: 0; }
+
+  .sb-search {
+    padding: 10px 10px 6px;
+    border-bottom: 1px solid #ddd;
+  }
+  .sb-search input {
+    width: 100%;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    font-size: 0.82rem;
+    border-radius: 3px;
+  }
+
+  .sb-header-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 8px 10px 4px;
+    border-bottom: 1px solid #ddd;
   }
-  #topbar-title {
-    font-size: 1rem;
+  .sb-site-title {
     font-weight: bold;
-    color: #000;
-    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--burgundy);
   }
-  #topbar-title:hover { color: #c00; text-decoration: underline; }
-  #topbar-home { font-size: 0.88rem; }
-
-  /* ══ PAGE: sidebar + content ══ */
-  #page {
-    display: flex;
-    align-items: flex-start;
+  .sb-close {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #888;
+    padding: 2px 6px;
   }
+  .sb-close:hover { color: #333; }
 
-  /* ══ LEFT SIDEBAR — white bg, thin right border, plain tree ══ */
-  #sidebar {
-    width: 175px;
-    min-width: 175px;
-    flex-shrink: 0;
-    border-right: 1px solid #999;
-    background: #fff;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Category header rows (Classes / Extras / Misc Links) */
+  /* Category header */
   .sb-cat {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: bold;
-    color: #000;
-    background: #ddd;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-    padding: 3px 7px;
-    margin-top: 5px;
+    color: var(--cat-color);
+    background: var(--burgundy);
+    padding: 6px 10px;
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
-  .sb-cat:first-child { margin-top: 0; }
 
-  /* Top-level subject link */
-  .sb-top {
+  /* Top-level nav item with toggle */
+  .sb-group { }
+  .sb-top-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .sb-top-link {
+    flex: 1;
     display: block;
-    padding: 3px 7px 3px 9px;
-    font-size: 0.84rem;
+    padding: 6px 8px 6px 10px;
+    font-size: 0.86rem;
     font-weight: bold;
-    color: #00f;
-    border-bottom: 1px dotted #ccc;
+    color: var(--link-blue);
   }
-  .sb-top:hover { color: #c00; text-decoration: underline; background: #f0f0f0; }
+  .sb-top-link:hover { color: var(--link-hover); background: #f0eded; text-decoration: none; }
+  .sb-toggle {
+    background: none;
+    border: none;
+    border-left: 1px solid #e0e0e0;
+    cursor: pointer;
+    padding: 6px 10px;
+    color: #666;
+    font-size: 0.82rem;
+    transition: transform 0.15s;
+  }
+  .sb-toggle:hover { background: #ece8e8; color: var(--burgundy); }
+  .sb-toggle.open { transform: rotate(90deg); }
 
-  /* Indented child link */
+  .sb-children {
+    display: none;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .sb-children.open { display: block; }
   .sb-child {
     display: block;
-    padding: 2px 7px 2px 18px;
-    font-size: 0.8rem;
-    color: #00f;
+    padding: 4px 10px 4px 22px;
+    font-size: 0.81rem;
+    color: var(--link-blue);
     border-bottom: 1px dotted #e8e8e8;
   }
-  .sb-child:hover { color: #c00; text-decoration: underline; background: #f0f0f0; }
+  .sb-child:hover { color: var(--link-hover); background: #f5f0f0; text-decoration: none; }
 
-  /* ══ MAIN CONTENT ══ */
-  #content {
-    flex: 1;
-    padding: 10px 18px 60px 14px;
-    max-width: 840px;
-  }
-
-  /* Content-area header bar (site name left, Home right) */
-  #content-hdr {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 2px solid #000;
-    padding-bottom: 3px;
-    margin-bottom: 8px;
-    font-size: 1rem;
+  /* Home link at top of sidebar */
+  .sb-home {
+    display: block;
+    padding: 7px 10px;
+    font-size: 0.86rem;
     font-weight: bold;
+    color: var(--link-blue);
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .sb-home:hover { color: var(--link-hover); background: #f0eded; text-decoration: none; }
+
+  /* ══ MAIN LAYOUT ══ */
+  #page { }
+
+  /* ══ BREADCRUMB BAR ══ */
+  #breadcrumb-bar {
+    background: #f2eded;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 16px;
+    font-size: 0.82rem;
+    color: #555;
+  }
+  #breadcrumb-bar a { color: var(--link-blue); }
+
+  /* ══ CONTENT ══ */
+  #content {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 14px 20px 60px 18px;
   }
 
   /* Show All / Hide All row */
@@ -113,26 +239,37 @@
     font-size: 0.82rem;
     color: #555;
     border-bottom: 1px solid #bbb;
-    padding-bottom: 5px;
-    margin-bottom: 12px;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
   }
   #showhide a { margin-right: 14px; }
 
   p.intro {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    margin-bottom: 16px;
+    font-size: 0.91rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
   }
 
-  hr.div { border: none; border-top: 1px solid #aaa; margin: 16px 0; }
+  hr.div { border: none; border-top: 1px solid #c44; margin: 16px 0; opacity: 0.5; }
 
-  /* ── Section heading ── */
-  h2.sh {
+  /* Section heading */
+  .content-subheader {
     font-size: 1rem;
     font-weight: bold;
-    border-bottom: 1px solid #000;
-    padding-bottom: 2px;
-    margin: 16px 0 3px 0;
+    color: #000;
+    text-decoration: underline;
+    margin: 20px 0 8px;
+  }
+  .content-separator { border-top: 1px solid #bbb; margin: 18px 0; }
+  .content-sub-separator { border-top: 1px dotted #ccc; margin: 12px 0; }
+
+  h2.sh {
+    font-size: 1.05rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--burgundy);
+    padding-bottom: 3px;
+    margin: 20px 0 4px 0;
+    color: #111;
   }
 
   .ar {
@@ -140,48 +277,53 @@
     color: #555;
     direction: rtl;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 
-  /* [[Notes]] [[Practice Problems]] row */
   .sl {
     font-size: 0.88rem;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
   }
+  .sl a {
+    border: 1px solid #99b;
+    background: #f0f0ff;
+    padding: 0 5px;
+    margin-left: 2px;
+    font-size: 0.8rem;
+  }
+  .sl a:hover { background: #ddf; }
 
   p.sd {
     font-size: 0.88rem;
-    line-height: 1.6;
-    margin-bottom: 7px;
+    line-height: 1.65;
+    margin-bottom: 8px;
   }
 
-  /* Subsection italic label */
   .sublabel {
     display: block;
     font-size: 0.82rem;
     font-weight: bold;
     font-style: italic;
-    color: #333;
-    margin: 9px 0 4px 0;
+    color: #444;
+    margin: 10px 0 4px 0;
   }
 
-  /* ── Book bullet list ── */
   ul.bl {
     list-style: disc;
-    margin: 0 0 4px 20px;
+    margin: 0 0 4px 22px;
     padding: 0;
   }
   ul.bl > li {
     font-size: 0.88rem;
     line-height: 1.55;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
     border-bottom: 1px dotted #ccc;
   }
   ul.bl > li:last-child { border-bottom: none; }
 
   .bt { font-weight: bold; }
-  .ba { font-style: italic; color: #333; }
+  .ba { font-style: italic; color: #444; }
 
   .tag {
     font-size: 0.72rem;
@@ -195,22 +337,21 @@
   }
   .tag.mem { background: #fffbe5; border-color: #c9a000; color: #6b5000; }
 
-  .bd { color: #222; display: block; margin-top: 1px; }
+  .bd { color: #222; display: block; margin-top: 2px; }
 
   .lnks { display: inline; }
   .lnks a {
     font-size: 0.78rem;
-    margin-left: 5px;
+    margin-left: 4px;
     border: 1px solid #99b;
     background: #f5f5ff;
     padding: 0 4px;
-    color: #00f;
+    color: var(--link-blue);
   }
   .lnks a:hover { background: #ccf; text-decoration: none; }
 
   .cs { color: #888; font-style: italic; font-size: 0.8rem; }
 
-  /* Level badge */
   .lv {
     font-size: 0.7rem;
     font-weight: bold;
@@ -223,473 +364,586 @@
   .lv-m { background: #fffbd0; border-color: #990; color: #550; }
   .lv-a { background: #fde0e0; border-color: #900; color: #500; }
 
-  /* Footer */
+  .indexpagelink {
+    border: 1px solid #99b;
+    background: #f0f0ff;
+    padding: 0 5px;
+    font-size: 0.86rem;
+    margin-left: 2px;
+  }
+  .indexpagelink:hover { background: #ddf; }
+
+  /* ══ FOOTER ══ */
   #footer {
-    border-top: 1px solid #999;
-    background: #f0f0f0;
-    padding: 7px 14px;
+    border-top: 1px solid #bbb;
+    background: #f5f0f0;
+    padding: 8px 16px;
     font-size: 0.82rem;
-    color: #444;
+    color: #555;
     text-align: center;
   }
-  #footer a { margin: 0 5px; }
+  #footer a { margin: 0 5px; color: var(--link-blue); }
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div id="topbar">
+  <button id="hamburger" onclick="toggleSidebar()" title="Main Menu" aria-label="Open Menu">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#" id="topbar-title">Liban's Online Notes</a>
-  <a href="#" id="topbar-home">Home</a>
+  <button class="topbar-icon-btn" title="Show/Hide Notes" onclick="alert('Show/Hide toggle coming soon')">&#128065;</button>
+  <button class="topbar-icon-btn" title="Download PDF" onclick="alert('PDF downloads coming soon')">&#8595; PDF</button>
+  <button class="topbar-icon-btn" title="Print" onclick="window.print()">&#128424;</button>
 </div>
 
-<div id="page">
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeSidebar()"></div>
 
-  <!-- ═══════════ LEFT SIDEBAR ═══════════ -->
-  <nav id="sidebar">
+<!-- SIDEBAR DRAWER -->
+<nav id="sidebar">
+  <div class="sb-header-row">
+    <span class="sb-site-title">Liban's Notes</span>
+    <button class="sb-close" onclick="closeSidebar()" title="Close">&times;</button>
+  </div>
+  <div class="sb-search">
+    <input type="text" placeholder="Menu Search" />
+  </div>
 
-    <span class="sb-cat">Sciences</span>
+  <a class="sb-home" href="#">Home</a>
 
-    <a class="sb-top" href="#arabic">Arabic Grammar</a>
-    <a class="sb-child" href="#arabic">Ājurrūmiyyah</a>
-    <a class="sb-child" href="#arabic">Qatr al-Nadā</a>
-    <a class="sb-child" href="#arabic">Qawāʿid al-Iʿrāb</a>
-    <a class="sb-child" href="#arabic">Alfiyyat Ibn Mālik</a>
-    <a class="sb-child" href="#arabic">Mughnī al-Labīb</a>
+  <span class="sb-cat">Sciences</span>
 
-    <a class="sb-top" href="#fiqh">Fiqh</a>
-    <a class="sb-child" href="#fiqh">Mukhtasar al-Laṭīf</a>
-    <a class="sb-child" href="#fiqh">Matn Abī Shujāʿ</a>
-    <a class="sb-child" href="#fiqh">Fiqh al-Manhajī</a>
-
-    <a class="sb-top" href="#usul">Usūl al-Fiqh</a>
-    <a class="sb-child" href="#usul">Al-Waraqāt</a>
-    <a class="sb-child" href="#usul">Qurrat al-ʿAyn</a>
-    <a class="sb-child" href="#usul">Al-Lumaʿ</a>
-    <a class="sb-child" href="#usul">Jamʿ al-Jawāmiʿ</a>
-
-    <a class="sb-top" href="#aqidah">ʿAqīdah</a>
-    <a class="sb-child" href="#aqidah">Sharḥ al-ʿAqbāwī</a>
-    <a class="sb-child" href="#aqidah">Al-Kharīdah</a>
-    <a class="sb-child" href="#aqidah">Umm al-Barāhīn</a>
-    <a class="sb-child" href="#aqidah">Al-Jawharat</a>
-
-    <a class="sb-top" href="#hadith">Hadīth</a>
-    <a class="sb-child" href="#hadith">Al-Arbaʿīn</a>
-    <a class="sb-child" href="#hadith">Al-Shamāʾil</a>
-    <a class="sb-child" href="#hadith">Al-Muwaṭṭaʾ</a>
-    <a class="sb-child" href="#hadith">Al-Bayqūniyyah</a>
-    <a class="sb-child" href="#hadith">Nukhbat al-Fikar</a>
-
-    <a class="sb-top" href="#quran">ʿUlūm al-Qurʾān</a>
-    <a class="sb-child" href="#quran">Tuḥfat al-Aṭfāl</a>
-    <a class="sb-child" href="#quran">Al-Jazariyyah</a>
-    <a class="sb-child" href="#quran">Al-Shāṭibiyyah</a>
-
-    <span class="sb-cat">Extras</span>
-
-    <a class="sb-top" href="#khutbah">Khutbah a Week</a>
-    <a class="sb-child" href="#khutbah">Week 1</a>
-    <a class="sb-child" href="#khutbah">Week 2</a>
-    <a class="sb-child" href="#khutbah">Week 3</a>
-
-    <a class="sb-top" href="#reading">Reading Recs</a>
-    <a class="sb-child" href="#reading">Arabic Language</a>
-    <a class="sb-child" href="#reading">Theology &amp; Spirituality</a>
-    <a class="sb-child" href="#reading">Sīrah &amp; Biography</a>
-    <a class="sb-child" href="#reading">Fiqh &amp; Usūl</a>
-
-    <a class="sb-top" href="#ijazat">Ijāzāt</a>
-
-    <span class="sb-cat">Misc Links</span>
-    <a class="sb-top" href="#">Contact</a>
-    <a class="sb-top" href="#">About</a>
-    <a class="sb-top" href="#">Site Help &amp; FAQ</a>
-
-  </nav>
-
-  <!-- ═══════════ MAIN CONTENT ═══════════ -->
-  <div id="content">
-
-    <div id="content-hdr">
-      <span>Liban's Online Notes</span>
-      <a href="#">Home</a>
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#arabic">Arabic Grammar</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
     </div>
-
-    <div id="showhide">
-      <a href="#">Show All Notes</a>
-      <a href="#">Hide All Notes</a>
+    <div class="sb-children">
+      <a class="sb-child" href="#arabic">Ājurrūmiyyah</a>
+      <a class="sb-child" href="#arabic">Qatr al-Nadā</a>
+      <a class="sb-child" href="#arabic">Qawāʿid al-Iʿrāb</a>
+      <a class="sb-child" href="#arabic">Alfiyyat Ibn Mālik</a>
+      <a class="sb-child" href="#arabic">Mughnī al-Labīb</a>
     </div>
-<p class="intro">Welcome to my free online notes documenting my journey through the traditional Islamic sciences. The intent of this site is to provide structured, accessible notes and eventually downloadable references for anyone walking a similar path, whether you are studying formally under a teacher, attending circles at your local mosque, or learning independently. These notes do not assume you are in any particular program — they are meant to be useful to anyone who wants to engage with these sciences seriously.</p>
+  </div>
 
-<p class="intro">The idea for this site came from an unlikely place. As a college student working through Calculus and Differential Equations, I stumbled across <a href="https://tutorial.math.lamar.edu/" target="_blank">Paul's Online Notes</a> and kept returning to it. This wasn't just to get through an exam, but years later, when I needed to revisit something. What made it useful was not just the content but the approach: clear explanations, well organized topics, and a site that felt like it was written by someone who actually wanted you to understand. I have always hoped something like that existed for the Islamic sciences, a place you could return to, build from, and navigate without getting lost. This is my attempt at that.</p>
-
-<p class="intro">The teachers who shaped me, in particular Sidi Shaykh Abdullahi Ahmed, Sidi Shaykh Muhammad al-Maliki, Sidi Shaykh Rabie Rashwan, Sidi Shaykh Hussein al-Masri and Sidi Shaykh Ibrahim Niyass Shuru were not simply knowledgeable. They embodied the Sunnah in the way they walked into a room, in the way they treated people beneath them in station, in the calm with which they disagreed, and in the light with which they spoke about the Prophet ﷺ. There was a quality to their intelligence that I have not found in books alone. There was a breadth, a balance, and above all a love for the Sunnah that made their knowledge feel lived rather than merely memorized. This site is, in one sense, my attempt to stay connected to what they passed on.</p>
-
-<p class="intro">Most of the loudest voices speaking against traditional Sunni Islam today, and in particular against the Ash'arī and Māturīdī schools of theology have never seriously engaged with the actual texts of those traditions. They often times will teach from the books whose authors they openly call out. They are critiquing a tradition they know largely through refutation literature written by its opponents. This is not scholarship. It is a series of inherited assumptions dressed in confident language. The Ash'arī and Māturīdī schools together represent the carefully reasoned theological consensus of the vast majority of this ummah across eleven centuries. Dismissing them without study is not independent thinking. It is simply a different kind of taqlīd. I hope this site plays some small role in changing that, by making these texts and their contents more accessible, and by documenting what it actually looks like to engage with them seriously.</p>
-
-<p class="intro">At present the notes will cover Arabic Syntax and Morphology, Fiqh, Usūl al-Fiqh, Ash'arī 'Aqīdah, and Hadīth. I will also include practice problems and I'rāb exercises throughout the Arabic sections, and plan to add downloadable PDFs for each subject as the notes reach a sufficient level of completeness. A complete listing of all subjects currently available on this site, along with brief descriptions of each, is given below.</p>
-
-<p class="intro">I would like to thank in advance anyone who writes in with corrections. These pages will inevitably contain errors, and I am not in a position to catch all of them myself. If you find a mistake, please do reach out. Corrections are a form of charity, and I am genuinely grateful for them.</p>
-
-<hr class="div" />
-
-<p class="intro"><i>All courses will include notes and downloadable PDFs once a section is sufficiently complete. The Arabic sections additionally include I'rāb practice sets. The Fiqh and Usūl sections will include worked examples and application problems where relevant.</i></p>
-
-<hr class="div" />
-   
-    <!-- ══ ARABIC GRAMMAR ══ -->
-    <h2 class="sh" id="arabic">Arabic Grammar</h2>
-    <span class="ar">النحو والصرف</span>
-    <div class="sl">
-      <strong>Arabic Grammar</strong>
-      [<a href="#">Notes</a>]
-      [<a href="#">Practice Problems</a>]
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#fiqh">Fiqh</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
     </div>
-    <p class="sd">
-      These texts are arranged in the classical progression from foundational to advanced. The first texts build the student's ability to read and parse Arabic at a basic level. The later texts — particularly the Alfiyyah and the Mughnī — represent a longer-term project.
-    </p>
-
-    <span class="sublabel">Nahw &amp; Sarf</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Al-Ājurrūmiyyah</span> — <span class="ba">Ibn Ājurrūm al-Sanhājī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">The entry point of the classical Nahw curriculum. Notes include heavy Iʿrāb practice on short sentences, building the habit of grammatical analysis from the very beginning.</span>
-      </li>
-      <li>
-        <span class="bt">Qatr al-Nadā wa Ball al-Sadā</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">A significant step up from the Ājurrūmiyyah. Practice problems draw directly from Qurʾānic sentences to reinforce that grammar is a tool for engaging with the Book of Allah.</span>
-      </li>
-      <li>
-        <span class="bt">Qawāʿid al-Iʿrāb</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">A focused text on the rules governing grammatical parsing. Iʿrāb practice drawn entirely from the Qurʾān.</span>
-      </li>
-      <li>
-        <span class="bt">Alfiyyat Ibn Mālik</span> — <span class="ba">Ibn Mālik al-Andalusī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">The central text of the Arabic grammar tradition. One thousand lines of rajaz verse encoding the rules of Nahw and Sarf. Practice works through the poem itself — parsing its verses so memorization and grammatical understanding reinforce each other.</span>
-      </li>
-      <li>
-        <span class="bt">Mughnī al-Labīb ʿan Kutub al-Aʿārīb</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
-        <span class="lnks"><a href="#">Notes</a></span>
-        <span class="bd">The summit of classical Nahw study covered here. An encyclopedic treatment of the particles and grammatical structures of Arabic. Notes at this level assume completion of the Alfiyyah.</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ KHUTBAH A WEEK ══ -->
-    <h2 class="sh" id="khutbah">Khutbah a Week</h2>
-    <span class="ar">خطبة الأسبوع</span>
-    <p class="sd">
-      Writing is how grammar becomes instinct. Each week I write a complete khutbah in Fuṣḥā on a topic drawn from the sciences or from events worth reflecting on. Each entry includes the full Arabic text, a brief note on the topic, and where relevant a self-correction log of grammatical errors caught after the fact. Updated weekly, bi-idhnillāh.
-    </p>
-    <ul class="bl">
-      <li>
-        <span class="bt">Week 1</span> · Dhul-Ḥijjah 1447 — On the Obligation of Seeking Knowledge
-        <em style="color:#555;font-size:0.82rem;"> في فريضة طلب العلم</em>
-        <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
-      </li>
-      <li>
-        <span class="bt">Week 2</span> · Dhul-Ḥijjah 1447 — On Gratitude and Its Conditions
-        <em style="color:#555;font-size:0.82rem;"> في الشكر وشروطه</em>
-        <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
-      </li>
-      <li>
-        <span class="bt">Week 3</span> · Dhul-Ḥijjah 1447 — On the Virtues of Shaʿbān
-        <em style="color:#555;font-size:0.82rem;"> في فضائل شعبان</em>
-        <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
-      </li>
-      <li>
-        <span class="bt">Week 4</span> — Next entry in progress… <span class="cs">Coming soon</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ FIQH ══ -->
-    <h2 class="sh" id="fiqh">Fiqh</h2>
-    <span class="ar">الفقه الشافعي</span>
-    <div class="sl">
-      <strong>Fiqh</strong>
-      [<a href="#">Notes</a>]
-      [<a href="#">Practice Problems</a>]
+    <div class="sb-children">
+      <a class="sb-child" href="#fiqh">Mukhtasar al-Laṭīf</a>
+      <a class="sb-child" href="#fiqh">Matn Abī Shujāʿ</a>
+      <a class="sb-child" href="#fiqh">Fiqh al-Manhajī</a>
     </div>
-    <p class="sd">
-      Shāfiʿī Madhhab. These texts follow the classical pedagogical ladder of the school, from introductory matn to the substantive legal manuals used in advanced study.
-    </p>
+  </div>
 
-    <span class="sublabel">Shāfiʿī Madhhab</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Mukhtasar al-Laṭīf</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Matn Abī Shujāʿ (Al-Ghāyah wal-Taqrīb)</span> — <span class="ba">Abū Shujāʿ al-Iṣfahānī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Fiqh al-Manhajī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ USUL AL-FIQH ══ -->
-    <h2 class="sh" id="usul">Usūl al-Fiqh</h2>
-    <span class="ar">أصول الفقه</span>
-    <div class="sl">
-      <strong>Usūl al-Fiqh</strong>
-      [<a href="#">Notes</a>]
-      [<a href="#">Practice Problems</a>]
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#usul">Usūl al-Fiqh</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
     </div>
-    <p class="sd">
-      The science of legal theory — the sources of Islamic law and the principles by which rulings are derived from them. These texts progress from the foundational primer of Imām al-Juwaynī to the encyclopedic Jamʿ al-Jawāmiʿ.
-    </p>
-    <ul class="bl">
-      <li>
-        <span class="bt">Al-Waraqāt</span> — <span class="ba">Imām al-Juwaynī (Imām al-Ḥaramayn)</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Qurrat al-ʿAyn bi-Sharḥ Waraqāt Imām al-Ḥaramayn</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Lumaʿ</span> — <span class="ba">Al-Shīrāzī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Jamʿ al-Jawāmiʿ</span> — <span class="ba">Ibn al-Subkī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ AQIDAH ══ -->
-    <h2 class="sh" id="aqidah">Ashʿarī ʿAqīdah</h2>
-    <span class="ar">العقيدة الأشعرية</span>
-    <div class="sl">
-      <strong>ʿAqīdah</strong>
-      [<a href="#">Notes</a>]
+    <div class="sb-children">
+      <a class="sb-child" href="#usul">Al-Waraqāt</a>
+      <a class="sb-child" href="#usul">Qurrat al-ʿAyn</a>
+      <a class="sb-child" href="#usul">Al-Lumaʿ</a>
+      <a class="sb-child" href="#usul">Jamʿ al-Jawāmiʿ</a>
     </div>
-    <p class="sd">
-      The texts listed here represent the mainstream theological tradition of Sunni Islam as it was taught in the great institutions of learning including al-Azhar and the schools of the Levant and North Africa. Working through them seriously, under qualified teachers, is the only honest basis for any opinion about them.
-    </p>
+  </div>
 
-    <span class="sublabel">Ashʿarī Theology</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Sharḥ al-ʿAqbāwī (ʿAqīdah Tawḥīdiyyah)</span> — <span class="ba">Al-ʿAqbāwī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Kharīdah al-Bahiyyah</span> — <span class="ba">Al-Dardīr</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Umm al-Barāhīn (Al-ʿAqīdah al-Sanūsiyyah)</span> — <span class="ba">Al-Sanūsī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Jawharat al-Tawḥīd</span> — <span class="ba">Al-Laqānī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ HADITH ══ -->
-    <h2 class="sh" id="hadith">Hadīth</h2>
-    <span class="ar">الحديث الشريف</span>
-    <div class="sl">
-      <strong>Hadīth</strong>
-      [<a href="#">Notes</a>]
-      [<a href="#">Practice Problems</a>]
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#aqidah">ʿAqīdah</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
     </div>
-    <p class="sd">
-      This section covers both hadith texts for memorization and the science of hadith criticism (muṣṭalaḥ al-ḥadīth). Memorization targets are noted where applicable.
-    </p>
-
-    <span class="sublabel">Texts &amp; Memorization</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Al-Arbaʿīn al-Nawawiyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Imām al-Nawawī</span>
-        <span class="lnks"><a href="#">Notes</a></span>
-        <span class="bd">Target: Full memorization. Notes include commentary, chain information, and related rulings.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Shamāʾil al-Muḥammadiyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Tirmidhī</span>
-        <span class="lnks"><a href="#">Notes</a></span>
-        <span class="bd">Target: Full memorization. The most important book ever written about the person of the Prophet ﷺ — his appearance, his habits, his character. There is no substitute for having this in your chest.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Muwaṭṭaʾ</span> <span class="tag mem">Memorize</span> — <span class="ba">Imām Mālik ibn Anas</span>
-        <span class="lnks"><a href="#">Notes</a></span>
-        <span class="bd">Target: Full memorization. The oldest organized collection of hadith and fiqh, described by Imām al-Shāfiʿī as the most authentic book on earth after the Qurʾān.</span>
-      </li>
-      <li>
-        <span class="bt">Musnad Abī Dāwūd al-Ṭayālisī</span> — <span class="ba">Abū Dāwūd al-Ṭayālisī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
-
-    <span class="sublabel">Muṣṭalaḥ al-Ḥadīth</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Al-Bayqūniyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Bayqūnī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">The foundational poem on the sciences of hadith classification. Target: Memorization and mastery of the terminology.</span>
-      </li>
-      <li>
-        <span class="bt">Nukhbat al-Fikar</span> — <span class="ba">Ibn Ḥajar al-ʿAsqalānī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Iktiṣār ʿUlūm al-Ḥadīth</span> — <span class="ba">Ibn Kathīr</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Taqrīb wal-Taysīr</span> — <span class="ba">Imām al-Nawawī</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
-
-    <hr class="div">
-
-    <!-- ══ ULUM AL-QURAN ══ -->
-    <h2 class="sh" id="quran">ʿUlūm al-Qurʾān</h2>
-    <span class="ar">علوم القرآن</span>
-    <div class="sl">
-      <strong>ʿUlūm al-Qurʾān</strong>
-      [<a href="#">Notes</a>]
-      [<a href="#">Practice Problems</a>]
+    <div class="sb-children">
+      <a class="sb-child" href="#aqidah">Sharḥ al-ʿAqbāwī</a>
+      <a class="sb-child" href="#aqidah">Al-Kharīdah</a>
+      <a class="sb-child" href="#aqidah">Umm al-Barāhīn</a>
+      <a class="sb-child" href="#aqidah">Al-Jawharat</a>
     </div>
-    <p class="sd">
-      The sciences of Tajwīd and Qirāʾāt are foundational to everything else. Without correct recitation, the Qurʾān itself is not being read properly. These texts move from the rules of Tajwīd for the beginner up to the canonical poem encoding the seven recitations. <strong>These sciences cannot be learned from notes alone.</strong> A licensed teacher with an unbroken chain is a condition, not a recommendation.
-    </p>
+  </div>
 
-    <span class="sublabel">Tajwīd &amp; Qirāʾāt</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Tuḥfat al-Aṭfāl</span> <span class="tag mem">Memorize</span> — <span class="ba">Sulaymān al-Jamzūrī</span>
-        <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
-        <span class="bd">A 61-line poem covering the foundational rules of Tajwīd — the characteristics of the letters, the rules of noon sākinah and tanwīn, mīm sākinah, and madd. The standard entry point into formal Tajwīd study worldwide. Target: full memorization before moving to the Jazariyyah.</span>
-      </li>
-      <li>
-        <span class="bt">Matn al-Jazariyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Ibn al-Jazarī (d. 833 AH)</span>
-        <span class="lnks"><a href="#">Notes</a></span>
-        <span class="bd">The authoritative poem on Tajwīd comprising 107 lines. Covers the articulation points (makhārij), characteristics of the letters (ṣifāt), and the rules of recitation in detail. Memorization is a prerequisite for serious study of the Qirāʾāt.</span>
-      </li>
-      <li>
-        <span class="bt">Ḥirz al-Amānī wa Wajh al-Tahānī (Al-Shāṭibiyyah)</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Imām al-Shāṭibī (d. 590 AH)</span>
-        <span class="bd">The great poem of the seven canonical recitations (al-Qirāʾāt al-Sabʿ), comprising 1173 lines. One of the most celebrated poems in the Islamic intellectual tradition. Memorizing and studying this text is the classical route to obtaining an ijāzah in the seven recitations. Notes assume completion of the Jazariyyah and active study under a qualified muqriʾ.</span>
-        <span class="bd cs">Notes in preparation.</span>
-      </li>
-    </ul>
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#hadith">Hadīth</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
+    </div>
+    <div class="sb-children">
+      <a class="sb-child" href="#hadith">Al-Arbaʿīn</a>
+      <a class="sb-child" href="#hadith">Al-Shamāʾil</a>
+      <a class="sb-child" href="#hadith">Al-Muwaṭṭaʾ</a>
+      <a class="sb-child" href="#hadith">Al-Bayqūniyyah</a>
+      <a class="sb-child" href="#hadith">Nukhbat al-Fikar</a>
+    </div>
+  </div>
 
-    <hr class="div">
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#quran">ʿUlūm al-Qurʾān</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
+    </div>
+    <div class="sb-children">
+      <a class="sb-child" href="#quran">Tuḥfat al-Aṭfāl</a>
+      <a class="sb-child" href="#quran">Al-Jazariyyah</a>
+      <a class="sb-child" href="#quran">Al-Shāṭibiyyah</a>
+    </div>
+  </div>
 
-    <!-- ══ READING RECOMMENDATIONS ══ -->
-    <h2 class="sh" id="reading">Reading Recommendations</h2>
-    <span class="ar">قائمة المطالعة</span>
-    <p class="sd">
-      Books I have read and found genuinely worth recommending — not exhaustive lists, but books that actually changed how I think or gave me something I could not find elsewhere. Organized loosely by subject. Level indicators are rough guides only; what matters most is having a teacher.
-    </p>
+  <span class="sb-cat">Extras</span>
 
-    <span class="sublabel">Arabic Language</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Sharḥ Ibn ʿAqīl ʿalā Alfiyyat Ibn Mālik</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Ibn ʿAqīl</span>
-        <span class="bd">The standard commentary used alongside the Alfiyyah in traditional study. Dense but indispensable.</span>
-      </li>
-    </ul>
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#khutbah">Khutbah a Week</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
+    </div>
+    <div class="sb-children">
+      <a class="sb-child" href="#khutbah">Week 1</a>
+      <a class="sb-child" href="#khutbah">Week 2</a>
+      <a class="sb-child" href="#khutbah">Week 3</a>
+    </div>
+  </div>
 
-    <span class="sublabel">Theology &amp; Spirituality</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Iḥyāʾ ʿUlūm al-Dīn</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Imām al-Ghazālī</span>
-        <span class="bd">There is no book in Islam after the Qurʾān and Sunnah that combines legal, theological, and spiritual knowledge at this level. Read it slowly, over years, not months.</span>
-      </li>
-      <li>
-        <span class="bt">Ayyuhā al-Walad</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Imām al-Ghazālī</span>
-        <span class="bd">A short letter from al-Ghazālī to a student asking what knowledge is truly for. One of the most important things a student of the sciences can read before going any further.</span>
-      </li>
-      <li>
-        <span class="bt">The Book of Assistance</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Imām al-Ḥaddād</span>
-        <span class="bd">A practical guide to the spiritual life from one of the great scholars of the Bāʿ Alawī tradition. Deceptively simple; the kind of book that reads differently depending on where you are in your journey.</span>
-      </li>
-      <li>
-        <span class="bt">Islam and the Destiny of Man</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Gai Eaton</span>
-        <span class="bd">The most honest and intellectually serious introduction to Islam written in English. Not a primer for converts — a meditation on what Islam actually demands of the mind and will.</span>
-      </li>
-      <li>
-        <span class="bt">Traveling Home</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Abdal Hakim Murad</span>
-        <span class="bd">Essays on Islam, modernity, and the interior life. Murad at his most personal. The title essay alone is worth the book.</span>
-      </li>
-    </ul>
+  <div class="sb-group">
+    <div class="sb-top-row">
+      <a class="sb-top-link" href="#reading">Reading Recs</a>
+      <button class="sb-toggle" onclick="toggleGroup(this)" title="Expand">&#8250;</button>
+    </div>
+    <div class="sb-children">
+      <a class="sb-child" href="#reading">Arabic Language</a>
+      <a class="sb-child" href="#reading">Theology &amp; Spirituality</a>
+      <a class="sb-child" href="#reading">Sīrah &amp; Biography</a>
+      <a class="sb-child" href="#reading">Fiqh &amp; Usūl</a>
+    </div>
+  </div>
 
-    <span class="sublabel">Sīrah &amp; Biography</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Muhammad: His Life Based on the Earliest Sources</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Martin Lings (Abū Bakr Sirāj al-Dīn)</span>
-        <span class="bd">The finest sīrah available in English. Written with the literary precision of someone who understood both the Arabic sources and the English language deeply. Read this before any other sīrah book.</span>
-      </li>
-      <li>
-        <span class="bt">Al-Shifāʾ bi-Taʿrīf Ḥuqūq al-Muṣṭafā</span> <span class="lv lv-m">Intermediate</span> — <span class="ba">Qāḍī ʿIyāḍ</span>
-        <span class="bd">The definitive classical work on the rights and description of the Prophet ﷺ. Every Muslim should read this at least once. There are good English translations available.</span>
-      </li>
-      <li>
-        <span class="bt">Ṭabaqāt al-Shāfiʿiyyah al-Kubrā</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Tāj al-Dīn al-Subkī</span>
-        <span class="bd">Biographies of the major scholars of the Shāfiʿī school. Reading about the scholars who carried this knowledge is itself a form of study.</span>
-      </li>
-      <li>
-        <span class="bt">The 11th Hour</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Martin Lings</span>
-        <span class="bd">Lings on the spiritual crisis of the modern world, written in the final years of his life. Short, lucid, and sobering.</span>
-      </li>
-    </ul>
+  <div class="sb-top-row">
+    <a class="sb-top-link" href="#ijazat">Ijāzāt</a>
+  </div>
 
-    <span class="sublabel">Fiqh &amp; Usūl</span>
-    <ul class="bl">
-      <li>
-        <span class="bt">Islam and Secularism</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Sayyid Naquib al-Attas</span>
-        <span class="bd">Al-Attas's central argument: that secularization is not neutral but represents a specific metaphysical worldview imposed on Islamic thought. Demanding but foundational for anyone thinking seriously about the relationship between Islam and modernity.</span>
-      </li>
-      <li>
-        <span class="bt">The Islamic Secular</span> <span class="lv lv-m">Intermediate</span> — <span class="ba">Sherman Jackson</span>
-        <span class="bd">Jackson's argument that Islamic tradition has its own internal resources for navigating the secular, and that Western secular frameworks are not the only option. Important for thinking about fiqh and public life in the contemporary context.</span>
-      </li>
-    </ul>
+  <span class="sb-cat">Misc Links</span>
+  <div class="sb-top-row"><a class="sb-top-link" href="#">Contact</a></div>
+  <div class="sb-top-row"><a class="sb-top-link" href="#">About</a></div>
+  <div class="sb-top-row"><a class="sb-top-link" href="#">Site Help &amp; FAQ</a></div>
+  <div class="sb-top-row"><a class="sb-top-link" href="#">Privacy Statement</a></div>
+</nav>
 
-    <hr class="div">
+<!-- BREADCRUMB -->
+<div id="breadcrumb-bar">
+  <a href="#">Home</a>
+</div>
 
-    <!-- ══ IJAZAT ══ -->
-    <h2 class="sh" id="ijazat">Ijāzāt</h2>
-    <span class="ar">الإجازات</span>
-    <p class="sd">
-      An ijāzah is a written authorization from a qualified scholar certifying that a student has studied a text or transmitted narrations to a sufficient standard, and granting permission to teach or transmit it in turn. The chain of ijāzāt connects every student, through their teachers, back to the Prophet ﷺ. This is one of the most distinctive features of the Islamic intellectual tradition — knowledge is not just information, it is a living transmission between persons.
-    </p>
-    <p class="sd">
-      Ijāzāt will be listed here as they are received, bi-idhnillāh. Each entry will include the name of the authorizing scholar, the text or chain covered, the date, and where possible a scan of the written ijāzah itself.
-    </p>
+<!-- MAIN CONTENT -->
+<div id="content">
 
-    <br>
-    [<a href="#">Contact</a>]
-    [<a href="#">About</a>]
-    [<a href="#">Site Help &amp; FAQ</a>]
+  <div id="showhide">
+    <a href="#" onclick="showAllNotes(); return false;">Show All Notes</a>
+    <a href="#" onclick="hideAllNotes(); return false;">Hide All Notes</a>
+  </div>
 
-  </div><!-- /content -->
-</div><!-- /page -->
+  <p class="intro">Welcome to my free online notes documenting my journey through the traditional Islamic sciences. The intent of this site is to provide structured, accessible notes and eventually downloadable references for anyone walking a similar path, whether you are studying formally under a teacher, attending circles at your local mosque, or learning independently. These notes do not assume you are in any particular program — they are meant to be useful to anyone who wants to engage with these sciences seriously.</p>
+
+  <p class="intro">The idea for this site came from an unlikely place. As a college student working through Calculus and Differential Equations, I stumbled across <a href="https://tutorial.math.lamar.edu/" target="_blank">Paul's Online Notes</a> and kept returning to it. This wasn't just to get through an exam, but years later, when I needed to revisit something. What made it useful was not just the content but the approach: clear explanations, well organized topics, and a site that felt like it was written by someone who actually wanted you to understand. I have always hoped something like that existed for the Islamic sciences, a place you could return to, build from, and navigate without getting lost. This is my attempt at that.</p>
+
+  <p class="intro">The teachers who shaped me, in particular Sidi Shaykh Abdullahi Ahmed, Sidi Shaykh Muhammad al-Maliki, Sidi Shaykh Rabie Rashwan, Sidi Shaykh Hussein al-Masri and Sidi Shaykh Ibrahim Niyass Shuru were not simply knowledgeable. They embodied the Sunnah in the way they walked into a room, in the way they treated people beneath them in station, in the calm with which they disagreed, and in the light with which they spoke about the Prophet ﷺ. There was a quality to their intelligence that I have not found in books alone. This site is, in one sense, my attempt to stay connected to what they passed on.</p>
+
+  <p class="intro">Most of the loudest voices speaking against traditional Sunni Islam today, and in particular against the Ash'arī and Māturīdī schools of theology have never seriously engaged with the actual texts of those traditions. The Ash'arī and Māturīdī schools together represent the carefully reasoned theological consensus of the vast majority of this ummah across eleven centuries. I hope this site plays some small role in changing that, by making these texts and their contents more accessible, and by documenting what it actually looks like to engage with them seriously.</p>
+
+  <p class="intro">At present the notes will cover Arabic Syntax and Morphology, Fiqh, Usūl al-Fiqh, Ash'arī 'Aqīdah, and Hadīth. I will also include practice problems and I'rāb exercises throughout the Arabic sections, and plan to add downloadable PDFs for each subject as the notes reach a sufficient level of completeness. A complete listing of all subjects currently available on this site, along with brief descriptions of each, is given below.</p>
+
+  <p class="intro">I would like to thank in advance anyone who writes in with corrections. These pages will inevitably contain errors, and I am not in a position to catch all of them myself. If you find a mistake, please do reach out. Corrections are a form of charity, and I am genuinely grateful for them.</p>
+
+  <hr class="div" />
+
+  <p class="intro"><i>All courses will include notes and downloadable PDFs once a section is sufficiently complete. The Arabic sections additionally include I'rāb practice sets. The Fiqh and Usūl sections will include worked examples and application problems where relevant.</i></p>
+
+  <hr class="div" />
+
+  <!-- ══ ARABIC GRAMMAR ══ -->
+  <h2 class="sh" id="arabic">Arabic Grammar</h2>
+  <span class="ar">النحو والصرف</span>
+  <div class="sl">
+    <strong>Arabic Grammar</strong>
+    <a href="#">Notes</a>
+    <a href="#">Practice Problems</a>
+  </div>
+  <p class="sd">
+    These texts are arranged in the classical progression from foundational to advanced. The first texts build the student's ability to read and parse Arabic at a basic level. The later texts — particularly the Alfiyyah and the Mughnī — represent a longer-term project.
+  </p>
+
+  <span class="sublabel">Nahw &amp; Sarf</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Al-Ājurrūmiyyah</span> — <span class="ba">Ibn Ājurrūm al-Sanhājī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">The entry point of the classical Nahw curriculum. Notes include heavy Iʿrāb practice on short sentences, building the habit of grammatical analysis from the very beginning.</span>
+    </li>
+    <li>
+      <span class="bt">Qatr al-Nadā wa Ball al-Sadā</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">A significant step up from the Ājurrūmiyyah. Practice problems draw directly from Qurʾānic sentences to reinforce that grammar is a tool for engaging with the Book of Allah.</span>
+    </li>
+    <li>
+      <span class="bt">Qawāʿid al-Iʿrāb</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">A focused text on the rules governing grammatical parsing. Iʿrāb practice drawn entirely from the Qurʾān.</span>
+    </li>
+    <li>
+      <span class="bt">Alfiyyat Ibn Mālik</span> — <span class="ba">Ibn Mālik al-Andalusī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">The central text of the Arabic grammar tradition. One thousand lines of rajaz verse encoding the rules of Nahw and Sarf. Practice works through the poem itself — parsing its verses so memorization and grammatical understanding reinforce each other.</span>
+    </li>
+    <li>
+      <span class="bt">Mughnī al-Labīb ʿan Kutub al-Aʿārīb</span> — <span class="ba">Ibn Hishām al-Ansārī</span>
+      <span class="lnks"><a href="#">Notes</a></span>
+      <span class="bd">The summit of classical Nahw study covered here. An encyclopedic treatment of the particles and grammatical structures of Arabic. Notes at this level assume completion of the Alfiyyah.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ KHUTBAH A WEEK ══ -->
+  <h2 class="sh" id="khutbah">Khutbah a Week</h2>
+  <span class="ar">خطبة الأسبوع</span>
+  <p class="sd">
+    Writing is how grammar becomes instinct. Each week I write a complete khutbah in Fuṣḥā on a topic drawn from the sciences or from events worth reflecting on. Each entry includes the full Arabic text, a brief note on the topic, and where relevant a self-correction log of grammatical errors caught after the fact. Updated weekly, bi-idhnillāh.
+  </p>
+  <ul class="bl">
+    <li>
+      <span class="bt">Week 1</span> · Dhul-Ḥijjah 1447 — On the Obligation of Seeking Knowledge
+      <em style="color:#555;font-size:0.82rem;"> في فريضة طلب العلم</em>
+      <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
+    </li>
+    <li>
+      <span class="bt">Week 2</span> · Dhul-Ḥijjah 1447 — On Gratitude and Its Conditions
+      <em style="color:#555;font-size:0.82rem;"> في الشكر وشروطه</em>
+      <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
+    </li>
+    <li>
+      <span class="bt">Week 3</span> · Dhul-Ḥijjah 1447 — On the Virtues of Shaʿbān
+      <em style="color:#555;font-size:0.82rem;"> في فضائل شعبان</em>
+      <span class="lnks"><a href="#">Read</a><a href="#">PDF</a></span>
+    </li>
+    <li>
+      <span class="bt">Week 4</span> — Next entry in progress… <span class="cs">Coming soon</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ FIQH ══ -->
+  <h2 class="sh" id="fiqh">Fiqh</h2>
+  <span class="ar">الفقه الشافعي</span>
+  <div class="sl">
+    <strong>Fiqh</strong>
+    <a href="#">Notes</a>
+    <a href="#">Practice Problems</a>
+  </div>
+  <p class="sd">
+    Shāfiʿī Madhhab. These texts follow the classical pedagogical ladder of the school, from introductory matn to the substantive legal manuals used in advanced study.
+  </p>
+
+  <span class="sublabel">Shāfiʿī Madhhab</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Mukhtasar al-Laṭīf</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Matn Abī Shujāʿ (Al-Ghāyah wal-Taqrīb)</span> — <span class="ba">Abū Shujāʿ al-Iṣfahānī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Fiqh al-Manhajī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ USUL AL-FIQH ══ -->
+  <h2 class="sh" id="usul">Usūl al-Fiqh</h2>
+  <span class="ar">أصول الفقه</span>
+  <div class="sl">
+    <strong>Usūl al-Fiqh</strong>
+    <a href="#">Notes</a>
+    <a href="#">Practice Problems</a>
+  </div>
+  <p class="sd">
+    The science of legal theory — the sources of Islamic law and the principles by which rulings are derived from them. These texts progress from the foundational primer of Imām al-Juwaynī to the encyclopedic Jamʿ al-Jawāmiʿ.
+  </p>
+  <ul class="bl">
+    <li>
+      <span class="bt">Al-Waraqāt</span> — <span class="ba">Imām al-Juwaynī (Imām al-Ḥaramayn)</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Qurrat al-ʿAyn bi-Sharḥ Waraqāt Imām al-Ḥaramayn</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Lumaʿ</span> — <span class="ba">Al-Shīrāzī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Jamʿ al-Jawāmiʿ</span> — <span class="ba">Ibn al-Subkī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ AQIDAH ══ -->
+  <h2 class="sh" id="aqidah">Ashʿarī ʿAqīdah</h2>
+  <span class="ar">العقيدة الأشعرية</span>
+  <div class="sl">
+    <strong>ʿAqīdah</strong>
+    <a href="#">Notes</a>
+  </div>
+  <p class="sd">
+    The texts listed here represent the mainstream theological tradition of Sunni Islam as it was taught in the great institutions of learning including al-Azhar and the schools of the Levant and North Africa.
+  </p>
+
+  <span class="sublabel">Ashʿarī Theology</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Sharḥ al-ʿAqbāwī (ʿAqīdah Tawḥīdiyyah)</span> — <span class="ba">Al-ʿAqbāwī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Kharīdah al-Bahiyyah</span> — <span class="ba">Al-Dardīr</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Umm al-Barāhīn (Al-ʿAqīdah al-Sanūsiyyah)</span> — <span class="ba">Al-Sanūsī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Jawharat al-Tawḥīd</span> — <span class="ba">Al-Laqānī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ HADITH ══ -->
+  <h2 class="sh" id="hadith">Hadīth</h2>
+  <span class="ar">الحديث الشريف</span>
+  <div class="sl">
+    <strong>Hadīth</strong>
+    <a href="#">Notes</a>
+    <a href="#">Practice Problems</a>
+  </div>
+  <p class="sd">
+    This section covers both hadith texts for memorization and the science of hadith criticism (muṣṭalaḥ al-ḥadīth). Memorization targets are noted where applicable.
+  </p>
+
+  <span class="sublabel">Texts &amp; Memorization</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Al-Arbaʿīn al-Nawawiyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Imām al-Nawawī</span>
+      <span class="lnks"><a href="#">Notes</a></span>
+      <span class="bd">Target: Full memorization. Notes include commentary, chain information, and related rulings.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Shamāʾil al-Muḥammadiyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Tirmidhī</span>
+      <span class="lnks"><a href="#">Notes</a></span>
+      <span class="bd">Target: Full memorization. The most important book ever written about the person of the Prophet ﷺ — his appearance, his habits, his character.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Muwaṭṭaʾ</span> <span class="tag mem">Memorize</span> — <span class="ba">Imām Mālik ibn Anas</span>
+      <span class="lnks"><a href="#">Notes</a></span>
+      <span class="bd">Target: Full memorization. The oldest organized collection of hadith and fiqh.</span>
+    </li>
+    <li>
+      <span class="bt">Musnad Abī Dāwūd al-Ṭayālisī</span> — <span class="ba">Abū Dāwūd al-Ṭayālisī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <span class="sublabel">Muṣṭalaḥ al-Ḥadīth</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Al-Bayqūniyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Bayqūnī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">The foundational poem on the sciences of hadith classification. Target: Memorization and mastery of the terminology.</span>
+    </li>
+    <li>
+      <span class="bt">Nukhbat al-Fikar</span> — <span class="ba">Ibn Ḥajar al-ʿAsqalānī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Iktiṣār ʿUlūm al-Ḥadīth</span> — <span class="ba">Ibn Kathīr</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Taqrīb wal-Taysīr</span> — <span class="ba">Imām al-Nawawī</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ ULUM AL-QURAN ══ -->
+  <h2 class="sh" id="quran">ʿUlūm al-Qurʾān</h2>
+  <span class="ar">علوم القرآن</span>
+  <div class="sl">
+    <strong>ʿUlūm al-Qurʾān</strong>
+    <a href="#">Notes</a>
+    <a href="#">Practice Problems</a>
+  </div>
+  <p class="sd">
+    The sciences of Tajwīd and Qirāʾāt are foundational to everything else. <strong>These sciences cannot be learned from notes alone.</strong> A licensed teacher with an unbroken chain is a condition, not a recommendation.
+  </p>
+
+  <span class="sublabel">Tajwīd &amp; Qirāʾāt</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Tuḥfat al-Aṭfāl</span> <span class="tag mem">Memorize</span> — <span class="ba">Sulaymān al-Jamzūrī</span>
+      <span class="lnks"><a href="#">Notes</a><a href="#">Practice</a></span>
+      <span class="bd">A 61-line poem covering the foundational rules of Tajwīd. The standard entry point into formal Tajwīd study worldwide. Target: full memorization before moving to the Jazariyyah.</span>
+    </li>
+    <li>
+      <span class="bt">Matn al-Jazariyyah</span> <span class="tag mem">Memorize</span> — <span class="ba">Ibn al-Jazarī (d. 833 AH)</span>
+      <span class="lnks"><a href="#">Notes</a></span>
+      <span class="bd">The authoritative poem on Tajwīd comprising 107 lines. Memorization is a prerequisite for serious study of the Qirāʾāt.</span>
+    </li>
+    <li>
+      <span class="bt">Ḥirz al-Amānī wa Wajh al-Tahānī (Al-Shāṭibiyyah)</span> <span class="tag mem">Memorize</span> — <span class="ba">Al-Imām al-Shāṭibī (d. 590 AH)</span>
+      <span class="bd">The great poem of the seven canonical recitations, comprising 1173 lines. Memorizing and studying this text is the classical route to obtaining an ijāzah in the seven recitations.</span>
+      <span class="bd cs">Notes in preparation.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ READING RECOMMENDATIONS ══ -->
+  <h2 class="sh" id="reading">Reading Recommendations</h2>
+  <span class="ar">قائمة المطالعة</span>
+  <p class="sd">
+    Books I have read and found genuinely worth recommending — not exhaustive lists, but books that actually changed how I think or gave me something I could not find elsewhere. Level indicators are rough guides only.
+  </p>
+
+  <span class="sublabel">Arabic Language</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Sharḥ Ibn ʿAqīl ʿalā Alfiyyat Ibn Mālik</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Ibn ʿAqīl</span>
+      <span class="bd">The standard commentary used alongside the Alfiyyah in traditional study. Dense but indispensable.</span>
+    </li>
+  </ul>
+
+  <span class="sublabel">Theology &amp; Spirituality</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Iḥyāʾ ʿUlūm al-Dīn</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Imām al-Ghazālī</span>
+      <span class="bd">There is no book in Islam after the Qurʾān and Sunnah that combines legal, theological, and spiritual knowledge at this level. Read it slowly, over years, not months.</span>
+    </li>
+    <li>
+      <span class="bt">Ayyuhā al-Walad</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Imām al-Ghazālī</span>
+      <span class="bd">A short letter from al-Ghazālī to a student asking what knowledge is truly for. One of the most important things a student of the sciences can read before going any further.</span>
+    </li>
+    <li>
+      <span class="bt">The Book of Assistance</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Imām al-Ḥaddād</span>
+      <span class="bd">A practical guide to the spiritual life from one of the great scholars of the Bāʿ Alawī tradition.</span>
+    </li>
+    <li>
+      <span class="bt">Islam and the Destiny of Man</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Gai Eaton</span>
+      <span class="bd">The most honest and intellectually serious introduction to Islam written in English.</span>
+    </li>
+    <li>
+      <span class="bt">Traveling Home</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Abdal Hakim Murad</span>
+      <span class="bd">Essays on Islam, modernity, and the interior life. Murad at his most personal.</span>
+    </li>
+  </ul>
+
+  <span class="sublabel">Sīrah &amp; Biography</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Muhammad: His Life Based on the Earliest Sources</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Martin Lings (Abū Bakr Sirāj al-Dīn)</span>
+      <span class="bd">The finest sīrah available in English. Read this before any other sīrah book.</span>
+    </li>
+    <li>
+      <span class="bt">Al-Shifāʾ bi-Taʿrīf Ḥuqūq al-Muṣṭafā</span> <span class="lv lv-m">Intermediate</span> — <span class="ba">Qāḍī ʿIyāḍ</span>
+      <span class="bd">The definitive classical work on the rights and description of the Prophet ﷺ. Every Muslim should read this at least once.</span>
+    </li>
+    <li>
+      <span class="bt">Ṭabaqāt al-Shāfiʿiyyah al-Kubrā</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Tāj al-Dīn al-Subkī</span>
+      <span class="bd">Biographies of the major scholars of the Shāfiʿī school.</span>
+    </li>
+    <li>
+      <span class="bt">The 11th Hour</span> <span class="lv lv-i">Introductory</span> — <span class="ba">Martin Lings</span>
+      <span class="bd">Lings on the spiritual crisis of the modern world. Short, lucid, and sobering.</span>
+    </li>
+  </ul>
+
+  <span class="sublabel">Fiqh &amp; Usūl</span>
+  <ul class="bl">
+    <li>
+      <span class="bt">Islam and Secularism</span> <span class="lv lv-a">Advanced</span> — <span class="ba">Sayyid Naquib al-Attas</span>
+      <span class="bd">Al-Attas's central argument: that secularization represents a specific metaphysical worldview imposed on Islamic thought. Demanding but foundational.</span>
+    </li>
+    <li>
+      <span class="bt">The Islamic Secular</span> <span class="lv lv-m">Intermediate</span> — <span class="ba">Sherman Jackson</span>
+      <span class="bd">Jackson's argument that Islamic tradition has its own internal resources for navigating the secular.</span>
+    </li>
+  </ul>
+
+  <div class="content-separator"></div>
+
+  <!-- ══ IJAZAT ══ -->
+  <h2 class="sh" id="ijazat">Ijāzāt</h2>
+  <span class="ar">الإجازات</span>
+  <p class="sd">
+    An ijāzah is a written authorization from a qualified scholar certifying that a student has studied a text or transmitted narrations to a sufficient standard, and granting permission to teach or transmit it in turn. The chain of ijāzāt connects every student, through their teachers, back to the Prophet ﷺ.
+  </p>
+  <p class="sd">
+    Ijāzāt will be listed here as they are received, bi-idhnillāh. Each entry will include the name of the authorizing scholar, the text or chain covered, the date, and where possible a scan of the written ijāzah itself.
+  </p>
+
+  <br>
+  [<a href="#">Contact</a>]
+  [<a href="#">About</a>]
+  [<a href="#">Site Help &amp; FAQ</a>]
+
+</div><!-- /content -->
 
 <div id="footer">
+  [<a href="#">Contact Me</a>]&nbsp;[<a href="#">About</a>]&nbsp;[<a href="#">Site Help &amp; FAQ</a>]&nbsp;[<a href="#">Privacy Statement</a>]
+  <br><br>
   &copy; 2026 — May Allah make this beneficial and forgive its shortcomings.
 </div>
 
+<script>
+  function toggleSidebar() {
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    sb.classList.toggle('open');
+    ov.classList.toggle('open');
+  }
+
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+
+  function toggleGroup(btn) {
+    const children = btn.closest('.sb-top-row').nextElementSibling;
+    if (children && children.classList.contains('sb-children')) {
+      children.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+  }
+
+  function showAllNotes() {
+    document.querySelectorAll('.sb-children').forEach(c => c.classList.add('open'));
+  }
+  function hideAllNotes() {
+    document.querySelectorAll('.sb-children').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.sb-toggle').forEach(b => b.classList.remove('open'));
+  }
+</script>
 </body>
 </html>
