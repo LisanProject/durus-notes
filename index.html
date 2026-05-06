@@ -10,469 +10,184 @@
   :root {
     --burgundy: #7b1c1c;
     --burgundy-dark: #5a1010;
-    --burgundy-light: #a32020;
     --link-blue: #1a56c4;
     --link-hover: #c00;
     --sidebar-bg: #f8f8f8;
     --sidebar-border: #ddd;
-    --cat-bg: #7b1c1c;
-    --cat-color: #fff;
     --content-max: 860px;
   }
 
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 16px;
-    color: #111;
-    background: #fff;
-  }
-
+  body { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; color: #111; background: #fff; }
   a { color: var(--link-blue); text-decoration: none; }
   a:hover { text-decoration: underline; color: var(--link-hover); }
 
-  /* ══ TOP BAR ══ */
+  /* TOP BAR */
   #topbar {
     background: var(--burgundy);
     border-bottom: 2px solid var(--burgundy-dark);
     padding: 0 12px;
-    display: flex;
-    align-items: center;
-    height: 44px;
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    z-index: 200;
+    display: flex; align-items: center; height: 44px; gap: 10px;
+    position: sticky; top: 0; z-index: 200;
   }
-
   #hamburger {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex-shrink: 0;
+    background: none; border: none; cursor: pointer; padding: 6px; color: #fff;
+    display: flex; flex-direction: column; gap: 4px; flex-shrink: 0;
   }
-  #hamburger span {
-    display: block;
-    width: 22px;
-    height: 2.5px;
-    background: #fff;
-    border-radius: 2px;
-  }
+  #hamburger span { display: block; width: 22px; height: 2.5px; background: #fff; border-radius: 2px; }
   #hamburger:hover span { background: #ffd0d0; }
-
   #topbar-title {
-    font-family: 'Georgia', serif;
-    font-size: 1.08rem;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    flex: 1;
-    letter-spacing: 0.01em;
+    font-family: Georgia, serif; font-size: 1.08rem; font-weight: bold;
+    color: #fff; text-decoration: none; flex: 1;
   }
   #topbar-title:hover { color: #ffd0d0; text-decoration: none; }
-
-  .topbar-icon-btn {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    padding: 5px 8px;
-    font-size: 0.78rem;
-    transition: background 0.15s;
+  .topbar-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.35); border-radius: 4px;
+    color: #fff; cursor: pointer; padding: 5px 8px; font-size: 0.78rem;
   }
-  .topbar-icon-btn:hover { background: rgba(255,255,255,0.18); }
+  .topbar-btn:hover { background: rgba(255,255,255,0.18); }
 
-  /* ══ OVERLAY ══ */
-  #overlay {
-    display: none;
-    position: fixed;
-    inset: 44px 0 0 0;
-    background: rgba(0,0,0,0.35);
-    z-index: 149;
-  }
+  /* OVERLAY */
+  #overlay { display: none; position: fixed; inset: 44px 0 0 0; background: rgba(0,0,0,0.35); z-index: 149; }
   #overlay.open { display: block; }
 
-  /* ══ SIDEBAR / DRAWER ══ */
+  /* SIDEBAR */
   #sidebar {
-    position: fixed;
-    top: 44px;
-    left: -290px;
-    width: 280px;
-    height: calc(100vh - 44px);
-    background: var(--sidebar-bg);
+    position: fixed; top: 44px; left: -290px; width: 280px;
+    height: calc(100vh - 44px); background: var(--sidebar-bg);
     border-right: 1px solid var(--sidebar-border);
-    overflow-y: auto;
-    z-index: 150;
-    transition: left 0.22s ease;
+    overflow-y: auto; z-index: 150; transition: left 0.22s ease;
   }
   #sidebar.open { left: 0; }
-
-  .sb-search {
-    padding: 10px 10px 6px;
-    border-bottom: 1px solid #ddd;
-  }
-  .sb-search input {
-    width: 100%;
-    padding: 5px 8px;
-    border: 1px solid #ccc;
-    font-size: 0.82rem;
-    border-radius: 3px;
-  }
-
-  .sb-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 10px 4px;
-    border-bottom: 1px solid #ddd;
-  }
-  .sb-site-title {
-    font-weight: bold;
-    font-size: 0.92rem;
-    color: var(--burgundy);
-  }
-  .sb-close {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    color: #888;
-    padding: 2px 6px;
-  }
+  .sb-search { padding: 10px 10px 6px; border-bottom: 1px solid #ddd; }
+  .sb-search input { width: 100%; padding: 5px 8px; border: 1px solid #ccc; font-size: 0.82rem; border-radius: 3px; }
+  .sb-header-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px 4px; border-bottom: 1px solid #ddd; }
+  .sb-site-title { font-weight: bold; font-size: 0.92rem; color: var(--burgundy); }
+  .sb-close { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: #888; padding: 2px 6px; }
   .sb-close:hover { color: #333; }
-
   .sb-cat {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--cat-color);
-    background: var(--burgundy);
-    padding: 8px 10px;
-    margin: 6px 8px;
-    margin-top: 2px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border-radius: 20px;
+    display: block; font-size: 0.9rem; font-weight: bold; color: #fff;
+    background: var(--burgundy); padding: 8px 10px; margin: 6px 8px 2px;
+    letter-spacing: 0.04em; text-transform: uppercase; border-radius: 20px;
   }
-
-  .sb-group { }
-  .sb-top-row {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  .sb-top-link {
-    flex: 1;
-    display: block;
-    padding: 10px 8px 10px 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--link-blue);
-  }
+  .sb-top-row { display: flex; align-items: center; border-bottom: 1px solid #e0e0e0; }
+  .sb-top-link { flex: 1; display: block; padding: 10px 8px 10px 10px; font-size: 1rem; font-weight: bold; color: var(--link-blue); }
   .sb-top-link:hover { color: var(--link-hover); background: #f0eded; text-decoration: none; }
-  .sb-toggle {
-    background: none;
-    border: none;
-    border-left: 1px solid #e0e0e0;
-    cursor: pointer;
-    padding: 6px 10px;
-    color: #666;
-    font-size: 0.82rem;
-    transition: transform 0.15s;
-  }
+  .sb-toggle { background: none; border: none; border-left: 1px solid #e0e0e0; cursor: pointer; padding: 6px 10px; color: #666; font-size: 0.82rem; transition: transform 0.15s; }
   .sb-toggle:hover { background: #ece8e8; color: var(--burgundy); }
   .sb-toggle.open { transform: rotate(90deg); }
-
-  .sb-children {
-    display: none;
-    background: #fff;
-    border-bottom: 1px solid #e8e8e8;
-  }
+  .sb-children { display: none; background: #fff; border-bottom: 1px solid #e8e8e8; }
   .sb-children.open { display: block; }
-  .sb-child {
-    display: block;
-    padding: 6px 10px 6px 22px;
-    font-size: 0.88rem;
-    color: var(--link-blue);
-    border-bottom: 1px dotted #e8e8e8;
-  }
+  .sb-child { display: block; padding: 6px 10px 6px 22px; font-size: 0.88rem; color: var(--link-blue); border-bottom: 1px dotted #e8e8e8; }
   .sb-child:hover { color: var(--link-hover); background: #f5f0f0; text-decoration: none; }
 
-  .sb-home {
-    display: block;
-    padding: 7px 10px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--link-blue);
-    border-bottom: 1px solid #e0e0e0;
-  }
-  .sb-home:hover { color: var(--link-hover); background: #f0eded; text-decoration: none; }
-
-  /* ══ BREADCRUMB ══ */
-  #breadcrumb-bar {
-    background: #f2eded;
-    border-bottom: 1px solid #ddd;
-    padding: 5px 16px;
-    font-size: 0.82rem;
-    color: #555;
-  }
+  /* BREADCRUMB */
+  #breadcrumb-bar { background: #f2eded; border-bottom: 1px solid #ddd; padding: 5px 16px; font-size: 0.82rem; color: #555; }
   #breadcrumb-bar a { color: var(--link-blue); }
 
-  /* ══ CONTENT ══ */
-  #content {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: 14px 20px 60px 18px;
-  }
+  /* CONTENT */
+  #content { max-width: var(--content-max); margin: 0 auto; padding: 14px 20px 60px 18px; }
 
-  #showhide {
-    font-size: 0.9rem;
-    color: #555;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 6px;
-    margin-bottom: 14px;
-  }
+  #showhide { font-size: 0.88rem; color: #555; border-bottom: 1px solid #bbb; padding-bottom: 6px; margin-bottom: 16px; }
   #showhide a { margin-right: 14px; }
 
-  p.intro {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
+  p.intro { font-size: 0.95rem; line-height: 1.7; margin-bottom: 12px; }
   hr.div { border: none; border-top: 1px solid #c44; margin: 16px 0; opacity: 0.5; }
 
+  /* Section heading (Arabic Grammar, Fiqh, etc.) */
   h2.sh {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.2rem; font-weight: bold;
     border-bottom: 2px solid var(--burgundy);
-    padding-bottom: 3px;
-    margin: 24px 0 6px 0;
-    color: #111;
+    padding-bottom: 3px; margin: 28px 0 4px; color: #111;
   }
+  .ar { font-size: 0.95rem; color: #555; direction: rtl; display: block; margin-bottom: 8px; }
 
-  .ar {
-    font-size: 1rem;
-    color: #555;
-    direction: rtl;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  /* ── Subject header row (like Paul's "Algebra (Math 1314) [Notes] [Practice]") ── */
-  .subject-header {
-    font-size: 1rem;
+  /* ── Paul's style book row ── */
+  /* "Al-Ājurrūmiyyah [Notes] [Practice] - Topics included are:" */
+  .book-row {
+    font-size: 0.95rem;
     font-weight: bold;
-    margin: 6px 0 4px 0;
+    margin: 18px 0 4px 0;
   }
-  .subject-header .subject-links a {
+  .book-row .author {
+    font-weight: normal;
+    font-style: italic;
+    color: #444;
+    margin-left: 4px;
+  }
+  .book-row .blink {
+    font-weight: normal;
     border: 1px solid #99b;
     background: #f0f0ff;
     padding: 1px 6px;
     margin-left: 4px;
     font-size: 0.85rem;
-    font-weight: normal;
     color: var(--link-blue);
   }
-  .subject-header .subject-links a:hover { background: #ddf; text-decoration: none; }
-
-  /* ── Book / topic accordion ── */
-  .book-block {
-    border: 1px solid #ddd;
-    margin: 6px 0;
-    border-radius: 2px;
-  }
-
-  .book-header {
-    display: flex;
-    align-items: center;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-    padding: 0;
-    user-select: none;
-  }
-  .book-header:hover { background: #ece8e8; }
-
-  .book-toggle {
-    background: none;
-    border: none;
-    border-right: 1px solid #ddd;
-    cursor: pointer;
-    padding: 8px 10px;
-    color: #666;
-    font-size: 0.78rem;
-    font-family: monospace;
-    flex-shrink: 0;
-    transition: transform 0.15s;
-    line-height: 1;
-  }
-  .book-toggle.open { transform: rotate(90deg); }
-
-  .book-title-area {
-    flex: 1;
-    padding: 7px 10px;
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .book-name {
-    font-weight: bold;
-    font-size: 0.95rem;
-    color: #111;
-  }
-
-  .book-author {
-    font-style: italic;
-    color: #555;
-    font-size: 0.85rem;
-  }
-
-  .book-tag {
-    font-size: 0.75rem;
-    font-weight: bold;
-    border: 1px solid #c9a000;
-    background: #fffbe5;
-    color: #6b5000;
-    padding: 0 4px;
-    border-radius: 2px;
+  .book-row .blink:hover { background: #ddf; text-decoration: none; }
+  .book-row .mem-tag {
+    font-size: 0.73rem; font-weight: bold;
+    border: 1px solid #c9a000; background: #fffbe5; color: #6b5000;
+    padding: 1px 4px; border-radius: 2px; margin-left: 4px;
     vertical-align: middle;
   }
-
-  .book-links {
-    padding: 0 10px;
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
+  .book-row .topics-label {
+    font-weight: normal; color: #333; margin-left: 4px;
   }
-  .book-links a {
-    border: 1px solid #99b;
-    background: #f0f0ff;
-    padding: 2px 7px;
-    font-size: 0.8rem;
-    color: var(--link-blue);
-  }
-  .book-links a:hover { background: #ddf; text-decoration: none; }
 
-  /* ── Expanded body ── */
-  .book-body {
-    display: none;
-    padding: 10px 14px 12px 14px;
-    background: #fff;
-  }
-  .book-body.open { display: block; }
-
-  .book-desc {
-    font-size: 0.9rem;
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-  .book-desc.coming-soon { color: #888; font-style: italic; }
-
-  /* Topic list inside book */
-  .topic-list {
-    list-style: none;
-    margin: 0;
+  /* Topic bullets — always visible, Paul's style */
+  ul.topics {
+    list-style: disc;
+    margin: 4px 0 6px 28px;
     padding: 0;
-    border-top: 1px solid #eee;
   }
-  .topic-list li {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 5px 0;
-    border-bottom: 1px dotted #ddd;
-    font-size: 0.88rem;
-    line-height: 1.5;
+  ul.topics li {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 3px;
+    color: #111;
   }
-  .topic-list li:last-child { border-bottom: none; }
+  ul.topics li .tname { font-weight: bold; }
+  ul.topics li .tsub { color: #333; }
 
-  .topic-name { font-weight: bold; color: #111; }
-  .topic-desc { color: #444; flex: 1; min-width: 180px; }
-  .topic-links a {
-    border: 1px solid #99b;
-    background: #f5f5ff;
-    padding: 0 5px;
-    font-size: 0.8rem;
-    color: var(--link-blue);
-    white-space: nowrap;
+  /* Paragraph after bullet list */
+  p.book-desc {
+    font-size: 0.9rem; line-height: 1.65; color: #333;
+    margin: 6px 0 4px 0;
   }
-  .topic-links a:hover { background: #ccf; text-decoration: none; }
-  .topic-tag {
-    font-size: 0.73rem;
-    font-weight: bold;
-    border: 1px solid #c9a000;
-    background: #fffbe5;
-    color: #6b5000;
-    padding: 0 3px;
-    border-radius: 2px;
-  }
+  p.book-desc.cs { color: #888; font-style: italic; }
 
-  /* Sub-section label inside expanded book body */
+  /* Divider between books */
+  hr.book-sep { border: none; border-top: 1px solid #c44; margin: 18px 0; opacity: 0.4; }
+
+  /* Sub-label (Nahw & Sarf, etc.) */
   .sublabel {
-    display: block;
-    font-size: 0.88rem;
-    font-weight: bold;
-    font-style: italic;
-    color: #444;
-    margin: 10px 0 4px 0;
+    display: block; font-size: 0.9rem; font-weight: bold; font-style: italic;
+    color: #444; margin: 16px 0 6px 0;
   }
 
-  .content-separator { border-top: 1px solid #bbb; margin: 18px 0; }
+  /* Section separator */
+  hr.section-sep { border: none; border-top: 1px solid #999; margin: 28px 0; }
 
-  /* Paul's style: each class block with desc paragraph */
-  .class-desc {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #333;
-    margin: 6px 0 10px 0;
-    padding-left: 0;
-  }
+  /* Footer */
+  #footer { border-top: 1px solid #bbb; background: #f5f0f0; padding: 8px 16px; font-size: 0.85rem; color: #555; text-align: center; }
+  #footer a { margin: 0 5px; color: var(--link-blue); }
 
   /* Level badges */
-  .lv {
-    font-size: 0.75rem;
-    font-weight: bold;
-    border: 1px solid #bbb;
-    padding: 0 4px;
-    border-radius: 2px;
-  }
+  .lv { font-size: 0.75rem; font-weight: bold; border: 1px solid #bbb; padding: 1px 4px; border-radius: 2px; margin-left: 4px; vertical-align: middle; }
   .lv-i { background: #e2f5e2; border-color: #080; color: #040; }
   .lv-m { background: #fffbd0; border-color: #990; color: #550; }
   .lv-a { background: #fde0e0; border-color: #900; color: #500; }
-
-  /* ══ FOOTER ══ */
-  #footer {
-    border-top: 1px solid #bbb;
-    background: #f5f0f0;
-    padding: 8px 16px;
-    font-size: 0.85rem;
-    color: #555;
-    text-align: center;
-  }
-  #footer a { margin: 0 5px; color: var(--link-blue); }
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div id="topbar">
-  <button id="hamburger" onclick="toggleSidebar()" title="Main Menu" aria-label="Open Menu">
+  <button id="hamburger" onclick="toggleSidebar()" aria-label="Open Menu">
     <span></span><span></span><span></span>
   </button>
-  <a href="#" id="topbar-title">Liban's Online Notes</a>
-  <button class="topbar-icon-btn" onclick="showAll()">Show All</button>
-  <button class="topbar-icon-btn" onclick="hideAll()">Hide All</button>
-  <button class="topbar-icon-btn" title="Print" onclick="window.print()">&#128424; Print</button>
+  <a href="index.html" id="topbar-title">Liban's Online Notes</a>
+  <button class="topbar-btn" onclick="window.print()">&#128424; Print</button>
 </div>
 
 <div id="overlay" onclick="closeSidebar()"></div>
@@ -481,13 +196,13 @@
 <nav id="sidebar">
   <div class="sb-header-row">
     <span class="sb-site-title">Liban's Notes</span>
-    <button class="sb-close" onclick="closeSidebar()" title="Close">&times;</button>
+    <button class="sb-close" onclick="closeSidebar()">&times;</button>
   </div>
   <div class="sb-search">
     <input type="text" placeholder="Menu Search" oninput="filterSidebar(this.value)" />
   </div>
 
-  <a class="sb-home" href="#">Home</a>
+  <div class="sb-top-row"><a class="sb-top-link" href="index.html">Home</a></div>
 
   <span class="sb-cat">Sciences</span>
 
@@ -497,11 +212,11 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#ajurrumiyyah">Ājurrūmiyyah</a>
-      <a class="sb-child" href="#qatr">Qatr al-Nadā</a>
-      <a class="sb-child" href="#qawaid">Qawāʿid al-Iʿrāb</a>
-      <a class="sb-child" href="#alfiyyah">Alfiyyat Ibn Mālik</a>
-      <a class="sb-child" href="#mughni">Mughnī al-Labīb</a>
+      <a class="sb-child" href="arabic-ajurrumiyyah.html">Ājurrūmiyyah</a>
+      <a class="sb-child" href="arabic-qatr.html">Qatr al-Nadā</a>
+      <a class="sb-child" href="arabic-qawaid.html">Qawāʿid al-Iʿrāb</a>
+      <a class="sb-child" href="arabic-alfiyyah.html">Alfiyyat Ibn Mālik</a>
+      <a class="sb-child" href="arabic-mughni.html">Mughnī al-Labīb</a>
     </div>
   </div>
 
@@ -511,9 +226,9 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#fiqh">Mukhtasar al-Laṭīf</a>
-      <a class="sb-child" href="#fiqh">Matn Abī Shujāʿ</a>
-      <a class="sb-child" href="#fiqh">Fiqh al-Manhajī</a>
+      <a class="sb-child" href="fiqh-mukhtasar.html">Mukhtasar al-Laṭīf</a>
+      <a class="sb-child" href="fiqh-abi-shujaa.html">Matn Abī Shujāʿ</a>
+      <a class="sb-child" href="fiqh-manhaji.html">Fiqh al-Manhajī</a>
     </div>
   </div>
 
@@ -523,10 +238,10 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#usul">Al-Waraqāt</a>
-      <a class="sb-child" href="#usul">Qurrat al-ʿAyn</a>
-      <a class="sb-child" href="#usul">Al-Lumaʿ</a>
-      <a class="sb-child" href="#usul">Jamʿ al-Jawāmiʿ</a>
+      <a class="sb-child" href="usul-waraqat.html">Al-Waraqāt</a>
+      <a class="sb-child" href="usul-qurrat.html">Qurrat al-ʿAyn</a>
+      <a class="sb-child" href="usul-lumaʿ.html">Al-Lumaʿ</a>
+      <a class="sb-child" href="usul-jamʿ.html">Jamʿ al-Jawāmiʿ</a>
     </div>
   </div>
 
@@ -536,10 +251,10 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#aqidah">Sharḥ al-ʿAqbāwī</a>
-      <a class="sb-child" href="#aqidah">Al-Kharīdah</a>
-      <a class="sb-child" href="#aqidah">Umm al-Barāhīn</a>
-      <a class="sb-child" href="#aqidah">Al-Jawharat</a>
+      <a class="sb-child" href="aqidah-aqbawi.html">Sharḥ al-ʿAqbāwī</a>
+      <a class="sb-child" href="aqidah-kharida.html">Al-Kharīdah</a>
+      <a class="sb-child" href="aqidah-umm.html">Umm al-Barāhīn</a>
+      <a class="sb-child" href="aqidah-jawhara.html">Al-Jawharat</a>
     </div>
   </div>
 
@@ -549,11 +264,11 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#hadith">Al-Arbaʿīn</a>
-      <a class="sb-child" href="#hadith">Al-Shamāʾil</a>
-      <a class="sb-child" href="#hadith">Al-Muwaṭṭaʾ</a>
-      <a class="sb-child" href="#hadith">Al-Bayqūniyyah</a>
-      <a class="sb-child" href="#hadith">Nukhbat al-Fikar</a>
+      <a class="sb-child" href="hadith-arbaeen.html">Al-Arbaʿīn</a>
+      <a class="sb-child" href="hadith-shamail.html">Al-Shamāʾil</a>
+      <a class="sb-child" href="hadith-muwatta.html">Al-Muwaṭṭaʾ</a>
+      <a class="sb-child" href="hadith-bayquniyyah.html">Al-Bayqūniyyah</a>
+      <a class="sb-child" href="hadith-nukhba.html">Nukhbat al-Fikar</a>
     </div>
   </div>
 
@@ -563,26 +278,24 @@
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#quran">Tuḥfat al-Aṭfāl</a>
-      <a class="sb-child" href="#quran">Al-Jazariyyah</a>
-      <a class="sb-child" href="#quran">Al-Shāṭibiyyah</a>
+      <a class="sb-child" href="quran-tuhfa.html">Tuḥfat al-Aṭfāl</a>
+      <a class="sb-child" href="quran-jazariyyah.html">Al-Jazariyyah</a>
+      <a class="sb-child" href="quran-shatibiyyah.html">Al-Shāṭibiyyah</a>
     </div>
   </div>
 
   <span class="sb-cat">Extras</span>
-
   <div class="sb-group">
     <div class="sb-top-row">
       <a class="sb-top-link" href="#khutbah">Khutbah a Week</a>
       <button class="sb-toggle" onclick="toggleGroup(this)">&#8250;</button>
     </div>
     <div class="sb-children">
-      <a class="sb-child" href="#khutbah">Week 1</a>
-      <a class="sb-child" href="#khutbah">Week 2</a>
-      <a class="sb-child" href="#khutbah">Week 3</a>
+      <a class="sb-child" href="khutbah-1.html">Week 1</a>
+      <a class="sb-child" href="khutbah-2.html">Week 2</a>
+      <a class="sb-child" href="khutbah-3.html">Week 3</a>
     </div>
   </div>
-
   <div class="sb-group">
     <div class="sb-top-row">
       <a class="sb-top-link" href="#reading">Reading Recs</a>
@@ -595,7 +308,6 @@
       <a class="sb-child" href="#reading">Fiqh &amp; Usūl</a>
     </div>
   </div>
-
   <div class="sb-top-row"><a class="sb-top-link" href="#ijazat">Ijāzāt</a></div>
 
   <span class="sb-cat">Misc Links</span>
@@ -606,19 +318,12 @@
 </nav>
 
 <!-- BREADCRUMB -->
-<div id="breadcrumb-bar">
-  <a href="#">Home</a>
-</div>
+<div id="breadcrumb-bar"><a href="index.html">Home</a></div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
 
-  <div id="showhide">
-    <a href="#" onclick="showAll(); return false;">Show All Topics</a>
-    <a href="#" onclick="hideAll(); return false;">Hide All Topics</a>
-  </div>
-
-  <p class="intro">Welcome to my free online notes documenting my journey through the traditional Islamic sciences. The intent of this site is to provide structured, accessible notes and eventually downloadable references for anyone walking a similar path, whether you are studying formally under a teacher, attending circles at your local mosque, or learning independently.</p>
+  <p class="intro">Welcome to my free online notes documenting my journey through the traditional Islamic sciences. The intent of this site is to provide structured, accessible notes and eventually downloadable references for anyone walking a similar path, whether studying formally under a teacher, attending circles at your local mosque, or learning independently.</p>
 
   <p class="intro">The model for this site is <a href="https://tutorial.math.lamar.edu/" target="_blank">Paul's Online Notes</a>. I first found it as a college student working through Calculus and kept returning to it for years afterward. What made it useful was not just the content but the approach: clear explanations, well-organized topics, and a site that felt like it was written by someone who actually wanted you to understand. This is my attempt at that for the Islamic sciences.</p>
 
@@ -626,1018 +331,602 @@
 
   <p class="intro">Most of the loudest voices speaking against traditional Sunni Islam today have never seriously engaged with the actual texts of those traditions. The Ashʿarī and Māturīdī schools together represent the carefully reasoned theological consensus of the vast majority of this ummah across eleven centuries. I hope this site plays some small role in changing that.</p>
 
-  <p class="intro">At present the notes cover Arabic Syntax and Morphology, Fiqh, Usūl al-Fiqh, Ashʿarī ʿAqīdah, and Hadīth — with practice problems and Iʿrāb exercises throughout the Arabic sections. I would like to thank in advance anyone who writes in with corrections. Corrections are a form of charity, and I am genuinely grateful for them.</p>
+  <p class="intro">At present the notes cover Arabic Syntax and Morphology, Fiqh, Usūl al-Fiqh, Ashʿarī ʿAqīdah, Hadīth, and ʿUlūm al-Qurʾān. I would like to thank in advance anyone who writes in with corrections — they are a form of charity, and I am genuinely grateful for them.</p>
 
   <hr class="div" />
-  <p class="intro" style="font-style:italic;">All courses include notes and downloadable PDFs once a section is sufficiently complete. Arabic sections include Iʿrāb practice sets. Fiqh and Usūl sections include worked examples where relevant.</p>
+  <p class="intro" style="font-style:italic;">All courses include notes and, once sufficiently complete, downloadable PDFs. Arabic sections include Iʿrāb practice sets. Fiqh and Usūl sections include worked examples where relevant.</p>
   <hr class="div" />
 
-  <!-- ══════════════════════════════
+  <!-- ═══════════════════════════════════════
        ARABIC GRAMMAR
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="arabic">Arabic Grammar</h2>
   <span class="ar">النحو والصرف</span>
-
-  <p class="subject-header">
-    <strong>Arabic Grammar</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-      <a href="#">Practice Problems</a>
-    </span>
-  </p>
-  <p class="class-desc">These texts are arranged in the classical progression from foundational to advanced. The first texts build the student's ability to read and parse Arabic at a basic level. The later texts — particularly the Alfiyyah and the Mughnī — represent a longer-term project requiring sustained commitment.</p>
 
   <span class="sublabel">Nahw &amp; Sarf</span>
 
   <!-- Al-Ājurrūmiyyah -->
-  <div class="book-block" id="ajurrumiyyah">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Ājurrūmiyyah</span>
-        <span class="book-author">— Ibn Ājurrūm al-Sanhājī</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The entry point of the classical Nahw curriculum. Notes include heavy Iʿrāb practice on short sentences, building the habit of grammatical analysis from the very beginning.</p>
-      <ul class="topic-list">
-        <li>
-          <span class="topic-name">Introduction &amp; the Word (الكلمة)</span>
-          <span class="topic-desc">Definition of speech (الكلام), its divisions: noun, verb, particle. Signs of each.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Iʿrāb — Case Endings (الإعراب)</span>
-          <span class="topic-desc">Marfūʿ, manṣūb, majrūr, majzūm. Visible and estimated endings.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">The Mubtadaʾ &amp; Khabar (المبتدأ والخبر)</span>
-          <span class="topic-desc">Nominal sentences. Subject and predicate, their types and rules.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Nawāsikh — inna &amp; kāna (النواسخ)</span>
-          <span class="topic-desc">Verbs and particles that alter the nominal sentence.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">The Fāʿil &amp; Nāʾib al-Fāʿil (الفاعل ونائبه)</span>
-          <span class="topic-desc">The doer of the action; passive voice and its agent.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Manṣūbāt — Accusative Categories</span>
-          <span class="topic-desc">Mafʿūl bihi, mafʿūl muṭlaq, ẓarf, ḥāl, tamyīz, mustaṯnā, and more.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Al-Majrūrāt — Genitive Categories</span>
-          <span class="topic-desc">Prepositions (ḥurūf al-jarr) and iḍāfah (possessive construction).</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Al-Ājurrūmiyyah</strong>
+    <span class="author">— Ibn Ājurrūm al-Sanhājī</span>
+    <a class="blink" href="arabic-ajurrumiyyah.html">[Notes]</a>
+    <a class="blink" href="arabic-ajurrumiyyah-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">The Word &amp; Its Divisions (الكلمة)</span> - Definitions of ism, fiʿl, and ḥarf; signs distinguishing each type.</li>
+    <li><span class="tname">Iʿrāb — Case Endings (الإعراب)</span> - Marfūʿ, manṣūb, majrūr, majzūm; visible vs. estimated endings; signs of each case.</li>
+    <li><span class="tname">The Mubtadaʾ &amp; Khabar</span> - Nominal sentence structure; the subject and predicate; conditions and types.</li>
+    <li><span class="tname">Nawāsikh — inna &amp; kāna and their sisters</span> - Particles and verbs that alter the nominal sentence; their governance.</li>
+    <li><span class="tname">The Fāʿil &amp; Nāʾib al-Fāʿil</span> - The doer of the verbal action; passive voice and its substitute agent.</li>
+    <li><span class="tname">Manṣūbāt — Accusative Positions</span> - Mafʿūl bihi, mafʿūl muṭlaq, ẓarf al-zamān wal-makān, ḥāl, tamyīz, mustaṯnā, and more.</li>
+    <li><span class="tname">Al-Majrūrāt — Genitive Positions</span> - Prepositions (ḥurūf al-jarr) and their letters; iḍāfah (possessive construction).</li>
+  </ul>
+  <p class="book-desc">The entry point of the classical Nahw curriculum. Notes include heavy Iʿrāb practice on short sentences, building the habit of grammatical analysis from the very beginning. The Ājurrūmiyyah is the first text every student of Arabic grammar studies; its brevity is intentional — it establishes the skeleton that everything else builds on.</p>
+
+  <hr class="book-sep" />
 
   <!-- Qatr al-Nada -->
-  <div class="book-block" id="qatr">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Qatr al-Nadā wa Ball al-Sadā</span>
-        <span class="book-author">— Ibn Hishām al-Ansārī</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">A significant step up from the Ājurrūmiyyah. Practice problems draw directly from Qurʾānic sentences to reinforce that grammar is a tool for engaging with the Book of Allah.</p>
-      <ul class="topic-list">
-        <li>
-          <span class="topic-name">Definitions &amp; Divisions of the Word</span>
-          <span class="topic-desc">Expanded treatment of ism, fiʿl, and ḥarf with their sub-types.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Iʿrāb in Detail</span>
-          <span class="topic-desc">Nine cases for strong nouns; irregular declension patterns.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-        <li>
-          <span class="topic-name">The Complete Marfūʿāt</span>
-          <span class="topic-desc">All nominative positions in Arabic syntax, their conditions and exceptions.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">The Complete Manṣūbāt</span>
-          <span class="topic-desc">All accusative positions; extended treatment of the ḥāl, tamyīz, and mustaṯnā.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Particles &amp; Their Grammatical Effects</span>
-          <span class="topic-desc">ḥurūf al-naṣb, ḥurūf al-jazm, ḥurūf al-jarr — their types and governance.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Qatr al-Nadā wa Ball al-Sadā</strong>
+    <span class="author">— Ibn Hishām al-Ansārī</span>
+    <a class="blink" href="arabic-qatr.html">[Notes]</a>
+    <a class="blink" href="arabic-qatr-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Definitions &amp; Expanded Divisions of the Word</span> - A more detailed treatment of ism, fiʿl, and ḥarf with their sub-types and signs.</li>
+    <li><span class="tname">Iʿrāb in Detail</span> - Nine cases for strong nouns; irregular declension patterns; dual and plural iʿrāb.</li>
+    <li><span class="tname">The Complete Marfūʿāt</span> - All nominative positions in Arabic syntax; their conditions and exceptions.</li>
+    <li><span class="tname">The Complete Manṣūbāt</span> - All accusative positions; extended treatment of ḥāl, tamyīz, and mustaṯnā.</li>
+    <li><span class="tname">Particles &amp; Their Grammatical Effects</span> - Ḥurūf al-naṣb, ḥurūf al-jazm, ḥurūf al-jarr — their types and governance rules.</li>
+    <li><span class="tname">Qurʾānic Practice Exercises</span> - Practice drawn directly from Qurʾānic sentences throughout.</li>
+  </ul>
+  <p class="book-desc">A significant step up from the Ājurrūmiyyah. Practice problems draw directly from Qurʾānic sentences to reinforce that grammar is a tool for engaging with the Book of Allah. Ibn Hishām's treatment is fuller and more nuanced than the Ājurrūmiyyah while remaining accessible.</p>
+
+  <hr class="book-sep" />
 
   <!-- Qawaid al-Irab -->
-  <div class="book-block" id="qawaid">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Qawāʿid al-Iʿrāb</span>
-        <span class="book-author">— Ibn Hishām al-Ansārī</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">A focused text on the rules governing grammatical parsing. Iʿrāb practice drawn entirely from the Qurʾān.</p>
-      <ul class="topic-list">
-        <li>
-          <span class="topic-name">Principles of Iʿrāb</span>
-          <span class="topic-desc">The methodology of parsing: identifying the grammatical position and its evidence.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Particles &amp; Their Parsing</span>
-          <span class="topic-desc">How to parse every major particle; maḥall iʿrāb for particle-governed clauses.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Qurʾānic Iʿrāb Exercises</span>
-          <span class="topic-desc">Worked parsing of selected āyāt. Applied exercises for each rule.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Qawāʿid al-Iʿrāb</strong>
+    <span class="author">— Ibn Hishām al-Ansārī</span>
+    <a class="blink" href="arabic-qawaid.html">[Notes]</a>
+    <a class="blink" href="arabic-qawaid-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Principles of Parsing (Iʿrāb)</span> - The methodology of grammatical analysis; how to identify a word's position and state its evidence.</li>
+    <li><span class="tname">Particles &amp; Their Parsing</span> - How to parse every major particle; maḥall iʿrāb for particle-governed clauses.</li>
+    <li><span class="tname">Clauses (Jumal) &amp; Their Grammatical Positions</span> - When clauses have a maḥall iʿrāb and when they do not; the seven positions of the jumlah.</li>
+    <li><span class="tname">Qurʾānic Iʿrāb Exercises</span> - Worked parsing of selected āyāt; applied exercises for each rule.</li>
+  </ul>
+  <p class="book-desc">A focused text on the rules governing grammatical parsing. Iʿrāb practice is drawn entirely from the Qurʾān. This text is often studied alongside the Qatr and is indispensable for developing fluency in parsing.</p>
+
+  <hr class="book-sep" />
 
   <!-- Alfiyyah -->
-  <div class="book-block" id="alfiyyah">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Alfiyyat Ibn Mālik</span>
-        <span class="book-author">— Ibn Mālik al-Andalusī</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The central text of the Arabic grammar tradition. One thousand lines of rajaz verse encoding the rules of Nahw and Sarf. Practice works through the poem itself — parsing its verses so memorization and grammatical understanding reinforce each other.</p>
-      <ul class="topic-list">
-        <li>
-          <span class="topic-name">Lines 1–50 — Kalām &amp; Iʿrāb Foundations</span>
-          <span class="topic-desc">Definitions, the three divisions of the word, the cases of iʿrāb.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 51–150 — Marfūʿāt</span>
-          <span class="topic-desc">Mubtadaʾ, khabar, fāʿil, nāʾib al-fāʿil, and related topics.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 151–300 — Nawāsikh</span>
-          <span class="topic-desc">Kāna and her sisters; inna and her sisters; ẓanna and her sisters.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 301–500 — Manṣūbāt</span>
-          <span class="topic-desc">All accusative categories in full; mafāʿīl, ḥāl, tamyīz, exceptions.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 501–700 — Majrūrāt &amp; Tawābiʿ</span>
-          <span class="topic-desc">Prepositional phrases, iḍāfah, naʿt, ʿaṭf, badal, tawkīd.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 701–900 — Sarf (Morphology)</span>
-          <span class="topic-desc">Verb forms, maṣdar, verbal nouns, patterns, augmented forms.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Lines 901–1000 — Iʿlāl &amp; Abnormal Forms</span>
-          <span class="topic-desc">Weak letters, substitution, elision, and the completion of the poem.</span>
-          <span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Alfiyyat Ibn Mālik</strong>
+    <span class="author">— Ibn Mālik al-Andalusī</span>
+    <a class="blink" href="arabic-alfiyyah.html">[Notes]</a>
+    <a class="blink" href="arabic-alfiyyah-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Lines 1–50 — Kalām &amp; Iʿrāb Foundations</span> - Definitions of speech and the word; the three divisions; the cases of iʿrāb and their signs.</li>
+    <li><span class="tname">Lines 51–150 — Marfūʿāt</span> - Mubtadaʾ, khabar, fāʿil, nāʾib al-fāʿil, and related topics in full detail.</li>
+    <li><span class="tname">Lines 151–300 — Nawāsikh</span> - Kāna and her sisters; inna and her sisters; ẓanna and her sisters; laysa; mā al-Ḥijāziyyah.</li>
+    <li><span class="tname">Lines 301–500 — Manṣūbāt</span> - All accusative categories; mafāʿīl, ḥāl, tamyīz, mustaṯnā, munādā, and exceptions.</li>
+    <li><span class="tname">Lines 501–700 — Majrūrāt &amp; Tawābiʿ</span> - Prepositional phrases, iḍāfah, naʿt, ʿaṭf, badal, tawkīd — the followers.</li>
+    <li><span class="tname">Lines 701–900 — Sarf (Morphology)</span> - Verb patterns, maṣdar forms, verbal nouns, augmented forms, and their rules.</li>
+    <li><span class="tname">Lines 901–1000 — Iʿlāl &amp; Abnormal Forms</span> - Weak letters, substitution, elision, imālah, and the completion of the poem.</li>
+  </ul>
+  <p class="book-desc">The central text of the Arabic grammar tradition. One thousand lines of rajaz verse encoding the complete rules of Nahw and Sarf. Practice works through the poem itself — parsing its verses so that memorization and grammatical understanding reinforce each other. Assumes completion of the Qatr al-Nadā.</p>
+
+  <hr class="book-sep" />
 
   <!-- Mughni -->
-  <div class="book-block" id="mughni">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Mughnī al-Labīb ʿan Kutub al-Aʿārīb</span>
-        <span class="book-author">— Ibn Hishām al-Ansārī</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The summit of classical Nahw study covered here. An encyclopedic treatment of the particles and grammatical structures of Arabic. Notes at this level assume completion of the Alfiyyah.</p>
-      <ul class="topic-list">
-        <li>
-          <span class="topic-name">Part I — The Particles (الباب الأول)</span>
-          <span class="topic-desc">Every Arabic particle, its meanings, and grammatical governance — arranged alphabetically.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Part II — Compound Expressions (الباب الثاني)</span>
-          <span class="topic-desc">Compound conjunctions, conditions, and their grammatical implications.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-        <li>
-          <span class="topic-name">Parts III–VIII — Rules of Syntax</span>
-          <span class="topic-desc">Advanced syntactic rules, disputes among grammarians, and resolution of complex cases.</span>
-          <span class="topic-links"><a href="#">Notes</a></span>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Mughnī al-Labīb ʿan Kutub al-Aʿārīb</strong>
+    <span class="author">— Ibn Hishām al-Ansārī</span>
+    <a class="blink" href="arabic-mughni.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Part I — The Particles (الباب الأول)</span> - Every Arabic particle, its meanings, and grammatical governance — arranged alphabetically with examples.</li>
+    <li><span class="tname">Part II — Compound Expressions (الباب الثاني)</span> - Compound conjunctions, conditional structures, and their grammatical implications.</li>
+    <li><span class="tname">Parts III–VIII — Advanced Rules of Syntax</span> - Eight chapters on higher syntactic rules, disputes among grammarians, and resolution of complex cases.</li>
+  </ul>
+  <p class="book-desc">The summit of classical Nahw study covered on this site. An encyclopedic treatment of the particles and grammatical structures of Arabic. Notes at this level assume full completion of the Alfiyyah. This is a reference text as much as it is a study text.</p>
 
-  <div class="content-separator"></div>
+  <hr class="section-sep" />
 
-  <!-- ══════════════════════════════
+  <!-- ═══════════════════════════════════════
        FIQH
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="fiqh">Fiqh</h2>
   <span class="ar">الفقه الشافعي</span>
 
-  <p class="subject-header">
-    <strong>Fiqh</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-      <a href="#">Practice Problems</a>
-    </span>
-  </p>
-  <p class="class-desc">Shāfiʿī Madhhab. These texts follow the classical pedagogical ladder of the school, from introductory matn to the substantive legal manuals used in advanced study.</p>
-
   <span class="sublabel">Shāfiʿī Madhhab</span>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Mukhtasar al-Laṭīf</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Ṭahārah — Purity</span><span class="topic-desc">Types of water, wuḍūʾ, ghusl, tayammum, and their conditions.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ṣalāh — Prayer</span><span class="topic-desc">Times, conditions, pillars, obligatory acts, sunnahs, and invalidators.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Zakāh</span><span class="topic-desc">Niṣāb thresholds, eligible categories, and conditions for obligation.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ṣawm — Fasting</span><span class="topic-desc">Conditions, invalidators, and the fiqh of Ramaḍān.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ḥajj &amp; ʿUmrah</span><span class="topic-desc">Pillars, obligatory acts, conditions, and common questions.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Mukhtasar -->
+  <p class="book-row">
+    <strong>Mukhtasar al-Laṭīf</strong>
+    <a class="blink" href="fiqh-mukhtasar.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Ṭahārah — Purity</span> - Types of water, wuḍūʾ and its conditions, ghusl, tayammum, and removal of impurity.</li>
+    <li><span class="tname">Ṣalāh — Prayer</span> - Times, conditions, pillars, obligatory acts, sunnahs, and invalidators of prayer.</li>
+    <li><span class="tname">Zakāh</span> - Niṣāb thresholds for different categories of wealth; eligible recipients.</li>
+    <li><span class="tname">Ṣawm — Fasting</span> - Conditions and invalidators of the fast; the fiqh of Ramaḍān.</li>
+    <li><span class="tname">Ḥajj &amp; ʿUmrah</span> - Pillars, obligatory acts, conditions of validity, and common questions.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Matn Abī Shujāʿ (Al-Ghāyah wal-Taqrīb)</span>
-        <span class="book-author">— Abū Shujāʿ al-Iṣfahānī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Ṭahārah</span><span class="topic-desc">The opening chapter. Conditions of water, types of impurity, and purification.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ṣalāh</span><span class="topic-desc">The most developed chapter of the matn — conditions, pillars, and sunnahs.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Zakāh, Fasting, Ḥajj</span><span class="topic-desc">Concise treatment of the remaining pillars.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Transactions (Buyūʿ)</span><span class="topic-desc">Conditions of valid sale, prohibited transactions, and related contracts.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Inheritance (Farāʾiḍ)</span><span class="topic-desc">Introduction to the shares of heirs.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Fiqh al-Manhajī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Ṭahārah</span><span class="topic-desc">Expanded treatment with fatāwā and contemporary questions.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ṣalāh</span><span class="topic-desc">Detailed coverage including congregational prayer, Friday prayer, and prayers of the traveller.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Zakāh</span><span class="topic-desc">Extended treatment of zakāh on trade goods, agricultural produce, and livestock.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ṣawm, Ḥajj, Transactions, Family Law</span><span class="topic-desc">Remaining books in the Manhajī series.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Matn Abi Shujaa -->
+  <p class="book-row">
+    <strong>Matn Abī Shujāʿ (Al-Ghāyah wal-Taqrīb)</strong>
+    <span class="author">— Abū Shujāʿ al-Iṣfahānī</span>
+    <a class="blink" href="fiqh-abi-shujaa.html">[Notes]</a>
+    <a class="blink" href="fiqh-abi-shujaa-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Ṭahārah</span> - The opening chapter; conditions of water, types of impurity, and purification.</li>
+    <li><span class="tname">Ṣalāh</span> - The most developed chapter of the matn — conditions, pillars, sunnahs, and invalidators.</li>
+    <li><span class="tname">Zakāh, Fasting, Ḥajj</span> - Concise but precise treatment of the remaining pillars of Islam.</li>
+    <li><span class="tname">Transactions (Buyūʿ)</span> - Conditions of a valid sale, prohibited transactions, and related contracts.</li>
+    <li><span class="tname">Marriage, Divorce &amp; Related Chapters</span> - The foundational rules of family law in the Shāfiʿī school.</li>
+    <li><span class="tname">Inheritance (Farāʾiḍ)</span> - Introduction to the shares of heirs; the ʿaṣabāt.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="content-separator"></div>
+  <hr class="book-sep" />
 
-  <!-- ══════════════════════════════
+  <!-- Fiqh Manhaji -->
+  <p class="book-row">
+    <strong>Fiqh al-Manhajī</strong>
+    <a class="blink" href="fiqh-manhaji.html">[Notes]</a>
+    <a class="blink" href="fiqh-manhaji-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Ṭahārah</span> - Expanded treatment with fatāwā and contemporary questions.</li>
+    <li><span class="tname">Ṣalāh</span> - Detailed coverage including congregational prayer, Jumu'ah, and prayers of the traveller.</li>
+    <li><span class="tname">Zakāh</span> - Extended treatment of zakāh on trade goods, agricultural produce, and livestock.</li>
+    <li><span class="tname">Ṣawm, Ḥajj, Transactions, Family Law</span> - Remaining books in the Manhajī series.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
+
+  <hr class="section-sep" />
+
+  <!-- ═══════════════════════════════════════
        USUL AL-FIQH
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="usul">Usūl al-Fiqh</h2>
   <span class="ar">أصول الفقه</span>
 
-  <p class="subject-header">
-    <strong>Usūl al-Fiqh</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-      <a href="#">Practice Problems</a>
-    </span>
+  <!-- Al-Waraqat -->
+  <p class="book-row">
+    <strong>Al-Waraqāt</strong>
+    <span class="author">— Imām al-Juwaynī (Imām al-Ḥaramayn)</span>
+    <a class="blink" href="usul-waraqat.html">[Notes]</a>
+    <a class="blink" href="usul-waraqat-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
   </p>
-  <p class="class-desc">The science of legal theory — the sources of Islamic law and the principles by which rulings are derived from them. These texts progress from the foundational primer of Imām al-Juwaynī to the encyclopedic Jamʿ al-Jawāmiʿ.</p>
+  <ul class="topics">
+    <li><span class="tname">Introduction — Divisions of Speech</span> - Khabar vs inshāʾ; categories of address relevant to legal derivation.</li>
+    <li><span class="tname">The Four Sources (Uṣūl al-Arbaʿah)</span> - Qurʾān, Sunnah, Ijmāʿ, Qiyās — their definitions and legal authority.</li>
+    <li><span class="tname">Āmm &amp; Khāṣṣ — General &amp; Specific Texts</span> - How jurists handle the relationship between broad and narrow texts.</li>
+    <li><span class="tname">Mujmal &amp; Mubayyan; Ẓāhir &amp; Muʾawwal</span> - Categories of textual clarity and the rules of interpretation.</li>
+    <li><span class="tname">Naskh — Abrogation</span> - Types, conditions, and famous examples of abrogation in the Sharīʿah.</li>
+    <li><span class="tname">Ijtihād &amp; Taqlīd</span> - Conditions of the mujtahid; the ruling on following a madhhab.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Waraqāt</span>
-        <span class="book-author">— Imām al-Juwaynī (Imām al-Ḥaramayn)</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Introduction — Divisions of Speech</span><span class="topic-desc">Khabar vs inshāʾ; categories of address relevant to fiqh.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">The Four Sources (Uṣūl)</span><span class="topic-desc">Qurʾān, Sunnah, Ijmāʿ, Qiyās — their definitions and authority.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Āmm &amp; Khāṣṣ — General &amp; Specific</span><span class="topic-desc">How jurists handle the relationship between broad and narrow texts.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Mujmal &amp; Mubayyan; Ẓāhir &amp; Muʾawwal</span><span class="topic-desc">Categories of textual clarity and interpretation.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Naskh — Abrogation</span><span class="topic-desc">Types of abrogation, conditions, and famous examples.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ijtihād &amp; Taqlīd</span><span class="topic-desc">Conditions of the mujtahid; the ruling on following a madhhab.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Qurrat al-ʿAyn bi-Sharḥ Waraqāt Imām al-Ḥaramayn</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. Commentary following the structure of the Waraqāt.</p>
-    </div>
-  </div>
+  <!-- Qurrat al-Ayn -->
+  <p class="book-row">
+    <strong>Qurrat al-ʿAyn bi-Sharḥ Waraqāt Imām al-Ḥaramayn</strong>
+    <a class="blink" href="usul-qurrat.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Commentary following the structure of the Waraqāt</span> - Extended explanation of each section of the Waraqāt with additional proofs and examples.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Lumaʿ</span>
-        <span class="book-author">— Al-Shīrāzī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Sources of Law in Detail</span><span class="topic-desc">Extended treatment of the Qurʾān, Sunnah, Ijmāʿ, Qiyās, and contested sources.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Qiyās — Analogical Reasoning</span><span class="topic-desc">Conditions of the ʿillah (ratio legis), its identification, and types of qiyās.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Disagreement (Ikhtilāf) &amp; Its Rules</span><span class="topic-desc">Conditions under which scholarly disagreement is valid and how it is handled.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Jamʿ al-Jawāmiʿ</span>
-        <span class="book-author">— Ibn al-Subkī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. The most comprehensive usūl text covered on this site.</p>
-    </div>
-  </div>
+  <!-- Al-Lumaʿ -->
+  <p class="book-row">
+    <strong>Al-Lumaʿ</strong>
+    <span class="author">— Al-Shīrāzī</span>
+    <a class="blink" href="usul-lumaʿ.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Sources of Law in Detail</span> - Extended treatment of the Qurʾān, Sunnah, Ijmāʿ, Qiyās, and contested secondary sources.</li>
+    <li><span class="tname">Qiyās — Analogical Reasoning</span> - Conditions of the ʿillah (ratio legis); its identification; types of qiyās and their ranks.</li>
+    <li><span class="tname">Disagreement (Ikhtilāf) &amp; Its Rules</span> - Conditions under which scholarly disagreement is valid and how it is adjudicated.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="content-separator"></div>
+  <hr class="book-sep" />
 
-  <!-- ══════════════════════════════
+  <!-- Jamʿ al-Jawāmiʿ -->
+  <p class="book-row">
+    <strong>Jamʿ al-Jawāmiʿ</strong>
+    <span class="author">— Ibn al-Subkī</span>
+    <a class="blink" href="usul-jamʿ.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">The most comprehensive usūl text covered on this site.</span> - Notes in preparation; topics will be listed once note-taking begins.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
+
+  <hr class="section-sep" />
+
+  <!-- ═══════════════════════════════════════
        AQIDAH
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="aqidah">Ashʿarī ʿAqīdah</h2>
   <span class="ar">العقيدة الأشعرية</span>
 
-  <p class="subject-header">
-    <strong>ʿAqīdah</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-    </span>
-  </p>
-  <p class="class-desc">The texts listed here represent the mainstream theological tradition of Sunni Islam as taught in the great institutions of learning including al-Azhar and the schools of the Levant and North Africa.</p>
-
   <span class="sublabel">Ashʿarī Theology</span>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Sharḥ al-ʿAqbāwī (ʿAqīdah Tawḥīdiyyah)</span>
-        <span class="book-author">— Al-ʿAqbāwī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">The Attributes of Allah — Wājib, Mustaḥīl, Jāʾiz</span><span class="topic-desc">The twenty necessary attributes and their opposites; what is merely possible for Allah.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">The Messengers — Their Attributes</span><span class="topic-desc">Ṣidq, amānah, tablīgh, faṭānah, and their opposites.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Sharh al-Aqbawi -->
+  <p class="book-row">
+    <strong>Sharḥ al-ʿAqbāwī (ʿAqīdah Tawḥīdiyyah)</strong>
+    <span class="author">— Al-ʿAqbāwī</span>
+    <a class="blink" href="aqidah-aqbawi.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">The Attributes of Allah — Wājib, Mustaḥīl, Jāʾiz</span> - The twenty necessary attributes and their opposites; what is merely possible for Allah.</li>
+    <li><span class="tname">The Attributes of the Messengers</span> - Ṣidq, amānah, tablīgh, faṭānah and their opposites; what is impossible for a Prophet.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Kharīdah al-Bahiyyah</span>
-        <span class="book-author">— Al-Dardīr</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. A poem of 66 lines covering the Ashʿarī creed — target: full memorization.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Lines 1–20 — Necessary Attributes of Allah</span><span class="topic-desc">Wujūd, qidam, baqāʾ, mukhālafah, qiyām bi-l-nafs, waḥdāniyyah.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Lines 21–45 — Attributes of Meaning &amp; Meaningful States</span><span class="topic-desc">Qudrah, irādah, ʿilm, ḥayāh, samʿ, baṣar, kalām.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Lines 46–66 — The Prophets &amp; Conclusion</span><span class="topic-desc">Attributes of the prophets and obligations upon the believer.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Umm al-Barāhīn (Al-ʿAqīdah al-Sanūsiyyah)</span>
-        <span class="book-author">— Al-Sanūsī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. One of the most widely memorized and taught creedal texts in the Ashʿarī tradition.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Introduction — Obligation of Knowledge</span><span class="topic-desc">The first obligation on the mukallaf; the three categories of rational judgment.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Wājib, Mustaḥīl, Jāʾiz for Allah</span><span class="topic-desc">The twenty necessary, twenty impossible, and one possible attribute.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Wājib, Mustaḥīl, Jāʾiz for the Prophets</span><span class="topic-desc">The four necessary, four impossible, and one possible attribute of messengers.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">The Rational Proofs (Dalāʾil ʿAqliyyah)</span><span class="topic-desc">Proof for each necessary attribute and refutation of its opposite.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Al-Kharida -->
+  <p class="book-row">
+    <strong>Al-Kharīdah al-Bahiyyah</strong>
+    <span class="author">— Al-Dardīr</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="aqidah-kharida.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Lines 1–20 — Necessary Attributes of Allah</span> - Wujūd, qidam, baqāʾ, mukhālafah lil-ḥawādith, qiyām bi-l-nafs, waḥdāniyyah.</li>
+    <li><span class="tname">Lines 21–45 — Attributes of Meaning &amp; Meaningful States</span> - Qudrah, irādah, ʿilm, ḥayāh, samʿ, baṣar, kalām and the maʿānī / maʿnawiyyah distinction.</li>
+    <li><span class="tname">Lines 46–66 — The Prophets &amp; Conclusion</span> - Attributes of the prophets; what is obligatory for every mukallaf to know.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation. Target: full memorization of the 66-line poem.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Jawharat al-Tawḥīd</span>
-        <span class="book-author">— Al-Laqānī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. A poem of approximately 144 lines — the summit of the Ashʿarī poetic theology tradition.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Necessary Attributes — Extended Treatment</span><span class="topic-desc">More detailed argumentation than in the Sanūsiyyah; distinctions between the attributes.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Prophethood (Nubuwwāt)</span><span class="topic-desc">The prophets, their number, the conditions of prophethood, and the question of miracles.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Eschatology (Samʿiyyāt)</span><span class="topic-desc">What is known only through revelation: the Day of Judgment, the scales, the bridge, paradise and hellfire.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="content-separator"></div>
+  <!-- Umm al-Barahin -->
+  <p class="book-row">
+    <strong>Umm al-Barāhīn (Al-ʿAqīdah al-Sanūsiyyah)</strong>
+    <span class="author">— Al-Sanūsī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="aqidah-umm.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Introduction — The Obligation of Knowledge &amp; Rational Categories</span> - The first obligation on the mukallaf; wājib, mustaḥīl, and jāʾiz as rational categories.</li>
+    <li><span class="tname">Wājib, Mustaḥīl, Jāʾiz for Allah</span> - The twenty necessary, twenty impossible, and one possible attribute with their rational proofs.</li>
+    <li><span class="tname">Wājib, Mustaḥīl, Jāʾiz for the Prophets</span> - The four necessary, four impossible, and one possible attribute of every messenger.</li>
+    <li><span class="tname">The Rational Proofs (Dalāʾil ʿAqliyyah)</span> - Proof for each necessary attribute and refutation of its impossible opposite.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation. One of the most widely memorized creedal texts in the Ashʿarī tradition.</p>
 
-  <!-- ══════════════════════════════
+  <hr class="book-sep" />
+
+  <!-- Al-Jawhara -->
+  <p class="book-row">
+    <strong>Al-Jawharat al-Tawḥīd</strong>
+    <span class="author">— Al-Laqānī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="aqidah-jawhara.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Necessary Attributes — Extended Treatment</span> - More detailed argumentation than in the Sanūsiyyah; distinctions between the attributes.</li>
+    <li><span class="tname">Prophethood (Nubuwwāt)</span> - The prophets, their number, conditions of prophethood, and the question of miracles (muʿjizāt).</li>
+    <li><span class="tname">Eschatology (Samʿiyyāt)</span> - What is known only through revelation: the Day of Judgment, the scales, the bridge, paradise, and hellfire.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation. A poem of approximately 144 lines — the summit of the Ashʿarī poetic theology tradition.</p>
+
+  <hr class="section-sep" />
+
+  <!-- ═══════════════════════════════════════
        HADITH
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="hadith">Hadīth</h2>
   <span class="ar">الحديث الشريف</span>
 
-  <p class="subject-header">
-    <strong>Hadīth</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-      <a href="#">Practice Problems</a>
-    </span>
-  </p>
-  <p class="class-desc">This section covers both hadith texts for memorization and the science of hadith criticism (muṣṭalaḥ al-ḥadīth). Memorization targets are noted where applicable.</p>
-
   <span class="sublabel">Texts &amp; Memorization</span>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Arbaʿīn al-Nawawiyyah</span>
-        <span class="book-author">— Imām al-Nawawī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Target: Full memorization. Notes include commentary, chain information, and related rulings derived from each ḥadīth.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Ḥadīth 1–5 — Intentions &amp; Foundations</span><span class="topic-desc">Beginning with "Actions are by intentions." The foundational aḥādīth of the collection.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ḥadīth 6–15 — Ḥalāl, Ḥarām &amp; Doubt</span><span class="topic-desc">The ḥadīth of Nuʿmān ibn Bashīr; legal and ethical principles.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ḥadīth 16–28 — Rights &amp; Conduct</span><span class="topic-desc">Treatment of anger, rights of the Muslim, avoiding harm, and more.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Ḥadīth 29–42 — Faith, Zuhd &amp; Conclusion</span><span class="topic-desc">The final aḥādīth covering tawbah, zuhd, and perfection of character.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Al-Arbaeen -->
+  <p class="book-row">
+    <strong>Al-Arbaʿīn al-Nawawiyyah</strong>
+    <span class="author">— Imām al-Nawawī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="hadith-arbaeen.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Ḥadīth 1–5 — Intentions &amp; Foundations</span> - Beginning with "Actions are by intentions." The foundational aḥādīth of the collection.</li>
+    <li><span class="tname">Ḥadīth 6–15 — Ḥalāl, Ḥarām &amp; Doubt</span> - The ḥadīth of Nuʿmān ibn Bashīr; legal and ethical principles drawn from each narration.</li>
+    <li><span class="tname">Ḥadīth 16–28 — Rights &amp; Conduct</span> - Treatment of anger, rights of the Muslim, avoiding harm, and related principles.</li>
+    <li><span class="tname">Ḥadīth 29–42 — Faith, Zuhd &amp; Conclusion</span> - The final aḥādīth covering tawbah, zuhd, and the perfection of character.</li>
+  </ul>
+  <p class="book-desc">Target: full memorization. Notes include commentary, chain information, and related rulings derived from each ḥadīth.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Shamāʾil al-Muḥammadiyyah</span>
-        <span class="book-author">— Al-Tirmidhī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Target: Full memorization. The most important book ever written about the person of the Prophet ﷺ — his appearance, his habits, his character. Reading this text transforms the relationship of the student with the Prophet ﷺ.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Chapter 1–5 — Physical Description (Khalq)</span><span class="topic-desc">The Prophet's ﷺ seal, hair, complexion, gait, and clothing.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Chapter 6–15 — Food, Drink &amp; Household</span><span class="topic-desc">What the Prophet ﷺ ate, drank, and how he lived at home.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Chapter 16–30 — Worship &amp; Prayer</span><span class="topic-desc">His prayer, his night prayer, his fasting, and his remembrance of Allah.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Chapter 31–56 — Character &amp; Final Illness</span><span class="topic-desc">His laughter, his speech, his humility, and his passing ﷺ.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Muwaṭṭaʾ</span>
-        <span class="book-author">— Imām Mālik ibn Anas</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Target: Full memorization. The oldest organized collection of hadith and fiqh, compiled by the Imām of the People of Madīnah. Al-Shāfiʿī said: "There is no book on the face of the earth after the Book of Allah more correct than the Muwaṭṭaʾ."</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Kitāb al-Ṭahārah</span><span class="topic-desc">Purity; wuḍūʾ; what breaks it. The aḥādīth of Madīnan practice.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Kitāb al-Ṣalāh</span><span class="topic-desc">Times, call to prayer, imāmah, jumu'ah, funeral prayer.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Kitāb al-Zakāh &amp; al-Ṣawm</span><span class="topic-desc">Zakāh thresholds; Ramaḍān; zakāt al-fiṭr.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Kitāb al-Ḥajj</span><span class="topic-desc">Pilgrimage rituals according to the practice of Madīnah.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Kitāb al-Buyūʿ onward</span><span class="topic-desc">Transactions, marriage, divorce, inheritance, and miscellaneous chapters.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Al-Shamail -->
+  <p class="book-row">
+    <strong>Al-Shamāʾil al-Muḥammadiyyah</strong>
+    <span class="author">— Al-Tirmidhī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="hadith-shamail.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Chapters 1–5 — Physical Description (Khalq)</span> - The seal of prophethood, the Prophet's ﷺ hair, complexion, gait, and clothing.</li>
+    <li><span class="tname">Chapters 6–15 — Food, Drink &amp; Household</span> - What the Prophet ﷺ ate, drank, and how he lived at home.</li>
+    <li><span class="tname">Chapters 16–30 — Worship &amp; Prayer</span> - His prayer, his night prayer (tahajjud), his fasting, and his remembrance of Allah.</li>
+    <li><span class="tname">Chapters 31–56 — Character &amp; Final Illness</span> - His laughter, his speech, his humility, and the narrations of his passing ﷺ.</li>
+  </ul>
+  <p class="book-desc">Target: full memorization. The most important book ever written about the person of the Prophet ﷺ — his appearance, his habits, his character. Reading this text transforms the student's relationship with the Prophet ﷺ.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Musnad Abī Dāwūd al-Ṭayālisī</span>
-        <span class="book-author">— Abū Dāwūd al-Ṭayālisī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-    </div>
-  </div>
+  <hr class="book-sep" />
+
+  <!-- Al-Muwatta -->
+  <p class="book-row">
+    <strong>Al-Muwaṭṭaʾ</strong>
+    <span class="author">— Imām Mālik ibn Anas</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="hadith-muwatta.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Kitāb al-Ṭahārah</span> - Purity; wuḍūʾ; what breaks it. The aḥādīth reflecting the practice of Madīnah.</li>
+    <li><span class="tname">Kitāb al-Ṣalāh</span> - Times, call to prayer, imāmah, Jumu'ah, and the funeral prayer.</li>
+    <li><span class="tname">Kitāb al-Zakāh &amp; al-Ṣawm</span> - Zakāh thresholds; Ramaḍān; zakāt al-fiṭr.</li>
+    <li><span class="tname">Kitāb al-Ḥajj</span> - Pilgrimage rituals according to the practice of the people of Madīnah.</li>
+    <li><span class="tname">Kitāb al-Buyūʿ onward</span> - Transactions, marriage, divorce, inheritance, and the remaining chapters.</li>
+  </ul>
+  <p class="book-desc">Target: full memorization. The oldest organized collection of hadith and fiqh, compiled by the Imām of the People of Madīnah. Al-Shāfiʿī said there is no book on earth after the Book of Allah more correct than the Muwaṭṭaʾ.</p>
+
+  <hr class="book-sep" />
+
+  <!-- Musnad Abi Dawud -->
+  <p class="book-row">
+    <strong>Musnad Abī Dāwūd al-Ṭayālisī</strong>
+    <span class="author">— Abū Dāwūd al-Ṭayālisī</span>
+    <a class="blink" href="hadith-tayalisi.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Notes in preparation</span> - Topics will be listed once note-taking begins.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
+
+  <hr class="book-sep" />
 
   <span class="sublabel">Muṣṭalaḥ al-Ḥadīth</span>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Bayqūniyyah</span>
-        <span class="book-author">— Al-Bayqūnī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The foundational poem on the sciences of hadith classification. 34 lines covering the major categories of ḥadīth. Target: memorization and mastery of the terminology.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Lines 1–10 — Ṣaḥīḥ, Ḥasan, Ḍaʿīf</span><span class="topic-desc">The three primary grades; their conditions and sub-types.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-        <li><span class="topic-name">Lines 11–20 — Mawqūf, Maqṭūʿ, Musnad, Muttaṣil</span><span class="topic-desc">Categories based on the chain's connection or disconnection.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-        <li><span class="topic-name">Lines 21–34 — Shādhdh, Munkar, Mawḍūʿ &amp; More</span><span class="topic-desc">Problematic categories; the fabricated ḥadīth and its signs.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Al-Bayquniyyah -->
+  <p class="book-row">
+    <strong>Al-Bayqūniyyah</strong>
+    <span class="author">— Al-Bayqūnī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="hadith-bayquniyyah.html">[Notes]</a>
+    <a class="blink" href="hadith-bayquniyyah-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Lines 1–10 — Ṣaḥīḥ, Ḥasan, Ḍaʿīf</span> - The three primary grades and their conditions; sub-types of each.</li>
+    <li><span class="tname">Lines 11–20 — Mawqūf, Maqṭūʿ, Musnad, Muttaṣil</span> - Categories based on whether the chain reaches the Prophet ﷺ or stops short.</li>
+    <li><span class="tname">Lines 21–34 — Shādhdh, Munkar, Mawḍūʿ &amp; More</span> - Problematic categories; the fabricated ḥadīth and its signs.</li>
+  </ul>
+  <p class="book-desc">The foundational poem on the sciences of hadith classification. 34 lines covering the major categories of ḥadīth. Target: memorization and mastery of the terminology before moving to the Nukhbah.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Nukhbat al-Fikar</span>
-        <span class="book-author">— Ibn Ḥajar al-ʿAsqalānī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. The most systematic and precise of the muṣṭalaḥ primers.</p>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Iktiṣār ʿUlūm al-Ḥadīth</span>
-        <span class="book-author">— Ibn Kathīr</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-    </div>
-  </div>
+  <!-- Nukhba -->
+  <p class="book-row">
+    <strong>Nukhbat al-Fikar</strong>
+    <span class="author">— Ibn Ḥajar al-ʿAsqalānī</span>
+    <a class="blink" href="hadith-nukhba.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Notes in preparation</span> - The most systematic and precise of the muṣṭalaḥ primers. Topics will be listed once note-taking begins.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Taqrīb wal-Taysīr</span>
-        <span class="book-author">— Imām al-Nawawī</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation.</p>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="content-separator"></div>
+  <!-- Iktisaar -->
+  <p class="book-row">
+    <strong>Iktiṣār ʿUlūm al-Ḥadīth</strong>
+    <span class="author">— Ibn Kathīr</span>
+    <a class="blink" href="hadith-iktisaar.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Notes in preparation</span> - Topics will be listed once note-taking begins.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
 
-  <!-- ══════════════════════════════
+  <hr class="book-sep" />
+
+  <!-- Al-Taqrib -->
+  <p class="book-row">
+    <strong>Al-Taqrīb wal-Taysīr</strong>
+    <span class="author">— Imām al-Nawawī</span>
+    <a class="blink" href="hadith-taqrib.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Notes in preparation</span> - Topics will be listed once note-taking begins.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation.</p>
+
+  <hr class="section-sep" />
+
+  <!-- ═══════════════════════════════════════
        ULUM AL-QURAN
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="quran">ʿUlūm al-Qurʾān</h2>
   <span class="ar">علوم القرآن</span>
 
-  <p class="subject-header">
-    <strong>ʿUlūm al-Qurʾān</strong>
-    <span class="subject-links">
-      <a href="#">Notes</a>
-      <a href="#">Practice Problems</a>
-    </span>
-  </p>
-  <p class="class-desc">The sciences of Tajwīd and Qirāʾāt are foundational to everything else. <strong>These sciences cannot be learned from notes alone.</strong> A licensed teacher with an unbroken chain is a condition, not a recommendation. Notes here serve as a reference alongside instruction, not a replacement for it.</p>
-
   <span class="sublabel">Tajwīd &amp; Qirāʾāt</span>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Tuḥfat al-Aṭfāl</span>
-        <span class="book-author">— Sulaymān al-Jamzūrī</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-        <a href="#" onclick="event.stopPropagation()">Practice</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">A 61-line poem covering the foundational rules of Tajwīd. The standard entry point into formal Tajwīd study worldwide. Target: full memorization before moving to the Jazariyyah.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Lines 1–10 — Introduction &amp; Nūn Sākinah</span><span class="topic-desc">The four rules for the nūn sākinah and tanwīn: iẓhār, idghām, iqlab, ikhfāʾ.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-        <li><span class="topic-name">Lines 11–20 — Mīm Sākinah &amp; Shaddah</span><span class="topic-desc">Ikhfāʾ shafawī, idghām shafawī, iẓhār shafawī.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-        <li><span class="topic-name">Lines 21–40 — Madd (Prolongation)</span><span class="topic-desc">Types of madd: ṭabīʿī, muttaṣil, munfaṣil, ʿāriḍ, and their lengths.</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-        <li><span class="topic-name">Lines 41–61 — Lām, Rāʾ &amp; Conclusion</span><span class="topic-desc">Rules of the lām and rāʾ; tafkhīm and tarqīq (heaviness and lightness).</span><span class="topic-links"><a href="#">Notes</a><a href="#">Practice</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Tuhfa -->
+  <p class="book-row">
+    <strong>Tuḥfat al-Aṭfāl</strong>
+    <span class="author">— Sulaymān al-Jamzūrī</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="quran-tuhfa.html">[Notes]</a>
+    <a class="blink" href="quran-tuhfa-practice.html">[Practice Problems]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Lines 1–10 — Introduction &amp; Nūn Sākinah / Tanwīn</span> - The four rules: iẓhār, idghām (with and without ghunnah), iqlab, ikhfāʾ.</li>
+    <li><span class="tname">Lines 11–20 — Mīm Sākinah &amp; Shaddah</span> - Ikhfāʾ shafawī, idghām shafawī, iẓhār shafawī; ghunnah on the shaddah.</li>
+    <li><span class="tname">Lines 21–40 — Madd (Prolongation)</span> - Types of madd: ṭabīʿī, muttaṣil, munfaṣil, ʿāriḍ lil-sukūn, and their lengths.</li>
+    <li><span class="tname">Lines 41–61 — Lām, Rāʾ &amp; Conclusion</span> - Rules of the lām and rāʾ; tafkhīm and tarqīq (heaviness and lightness).</li>
+  </ul>
+  <p class="book-desc">A 61-line poem covering the foundational rules of Tajwīd. The standard entry point into formal Tajwīd study worldwide. Target: full memorization before moving to the Jazariyyah. <strong>These sciences cannot be learned from notes alone</strong> — a licensed teacher with an unbroken chain is a condition, not a recommendation.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Matn al-Jazariyyah</span>
-        <span class="book-author">— Ibn al-Jazarī (d. 833 AH)</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Notes</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The authoritative poem on Tajwīd comprising 107 lines. Memorization is a prerequisite for serious study of the Qirāʾāt. More technically precise than the Tuḥfah.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Lines 1–20 — Makhārij al-Ḥurūf</span><span class="topic-desc">The points of articulation for every letter of the Arabic alphabet.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Lines 21–50 — Ṣifāt al-Ḥurūf</span><span class="topic-desc">The characteristics of each letter: jahr/hams, shiddah/rikhwah, iṭbāq/infitāḥ, and others.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Lines 51–80 — Rules of Nūn, Mīm &amp; Madd</span><span class="topic-desc">A more technical treatment than the Tuḥfah, with additional distinctions.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Lines 81–107 — Waqf, Ibtidāʾ &amp; Conclusion</span><span class="topic-desc">Rules of stopping and starting; the famous closing passage on the obligation of tajwīd.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <hr class="book-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Ḥirz al-Amānī (Al-Shāṭibiyyah)</span>
-        <span class="book-author">— Al-Imām al-Shāṭibī (d. 590 AH)</span>
-        <span class="book-tag">Memorize</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Notes in preparation. The great poem of the seven canonical recitations, comprising 1173 lines. Memorizing and studying this text is the classical route to obtaining an ijāzah in the seven recitations.</p>
-      <ul class="topic-list">
-        <li><span class="topic-name">Faṣl al-Uṣūl — Foundational Principles</span><span class="topic-desc">The opening section establishing rules common to all seven recitations.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">The Seven Imāms &amp; Their Rāwīs</span><span class="topic-desc">Who they are, their transmission lines, and how their differences are encoded in the poem.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-        <li><span class="topic-name">Chapters by Topic (Sūrah-by-Sūrah Variations)</span><span class="topic-desc">The bulk of the poem — variations in specific words across the seven recitations.</span><span class="topic-links"><a href="#">Notes</a></span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- Al-Jazariyyah -->
+  <p class="book-row">
+    <strong>Matn al-Jazariyyah</strong>
+    <span class="author">— Ibn al-Jazarī (d. 833 AH)</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="quran-jazariyyah.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Lines 1–20 — Makhārij al-Ḥurūf</span> - The points of articulation for every letter of the Arabic alphabet.</li>
+    <li><span class="tname">Lines 21–50 — Ṣifāt al-Ḥurūf</span> - The characteristics of letters: jahr/hams, shiddah/rikhwah, iṭbāq/infitāḥ, idhiāq/iṣmāt, and others.</li>
+    <li><span class="tname">Lines 51–80 — Rules of Nūn, Mīm &amp; Madd</span> - A more technically precise treatment than the Tuḥfah, with additional distinctions.</li>
+    <li><span class="tname">Lines 81–107 — Waqf, Ibtidāʾ &amp; Conclusion</span> - Rules of stopping and starting recitation; the famous closing lines on the obligation of tajwīd.</li>
+  </ul>
+  <p class="book-desc">The authoritative poem on Tajwīd comprising 107 lines. Memorization is a prerequisite for serious study of the Qirāʾāt. More technically precise than the Tuḥfah, covering the makhārij and ṣifāt in detail.</p>
 
-  <div class="content-separator"></div>
+  <hr class="book-sep" />
 
-  <!-- ══════════════════════════════
+  <!-- Al-Shatibiyyah -->
+  <p class="book-row">
+    <strong>Ḥirz al-Amānī wa Wajh al-Tahānī (Al-Shāṭibiyyah)</strong>
+    <span class="author">— Al-Imām al-Shāṭibī (d. 590 AH)</span>
+    <span class="mem-tag">Memorize</span>
+    <a class="blink" href="quran-shatibiyyah.html">[Notes]</a>
+    <span class="topics-label"> - Topics included in this set of notes are :</span>
+  </p>
+  <ul class="topics">
+    <li><span class="tname">Faṣl al-Uṣūl — Foundational Principles</span> - The opening section establishing rules common to all seven recitations.</li>
+    <li><span class="tname">The Seven Imāms &amp; Their Rāwīs</span> - Who they are, their transmission lines, and how their differences are encoded in the poem.</li>
+    <li><span class="tname">Topic Chapters &amp; Sūrah-by-Sūrah Variations</span> - The bulk of the poem — variations in specific words across the seven recitations.</li>
+  </ul>
+  <p class="book-desc cs">Notes in preparation. The great poem of the seven canonical recitations, comprising 1173 lines. Memorizing and studying this text is the classical route to obtaining an ijāzah in the seven recitations.</p>
+
+  <hr class="section-sep" />
+
+  <!-- ═══════════════════════════════════════
        KHUTBAH A WEEK
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="khutbah">Khutbah a Week</h2>
   <span class="ar">خطبة الأسبوع</span>
-  <p class="class-desc">Writing is how grammar becomes instinct. Each week I write a complete khutbah in Fuṣḥā on a topic drawn from the sciences or from events worth reflecting on. Each entry includes the full Arabic text, a brief note on the topic, and where relevant a self-correction log of grammatical errors caught after the fact.</p>
+  <p class="intro">Writing is how grammar becomes instinct. Each week I write a complete khutbah in Fuṣḥā on a topic drawn from the sciences or from events worth reflecting on. Each entry includes the full Arabic text, a brief note on the topic, and where relevant a self-correction log of grammatical errors caught after the fact. Updated weekly, bi-idhnillāh.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Week 1 — On the Obligation of Seeking Knowledge</span>
-        <span class="book-author">في فريضة طلب العلم · Dhul-Ḥijjah 1447</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Read</a>
-        <a href="#" onclick="event.stopPropagation()">PDF</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Full Arabic khutbah text, topic notes, and grammatical self-correction log.</p>
-    </div>
-  </div>
+  <p class="book-row">
+    <strong>Week 1</strong> · Dhul-Ḥijjah 1447 — On the Obligation of Seeking Knowledge
+    <em style="color:#555;font-style:italic;font-size:0.85rem;margin-left:4px;">في فريضة طلب العلم</em>
+    <a class="blink" href="khutbah-1.html">[Read]</a>
+    <a class="blink" href="khutbah-1.pdf">[PDF]</a>
+  </p>
+  <p class="book-row">
+    <strong>Week 2</strong> · Dhul-Ḥijjah 1447 — On Gratitude and Its Conditions
+    <em style="color:#555;font-style:italic;font-size:0.85rem;margin-left:4px;">في الشكر وشروطه</em>
+    <a class="blink" href="khutbah-2.html">[Read]</a>
+    <a class="blink" href="khutbah-2.pdf">[PDF]</a>
+  </p>
+  <p class="book-row">
+    <strong>Week 3</strong> · Dhul-Ḥijjah 1447 — On the Virtues of Shaʿbān
+    <em style="color:#555;font-style:italic;font-size:0.85rem;margin-left:4px;">في فضائل شعبان</em>
+    <a class="blink" href="khutbah-3.html">[Read]</a>
+    <a class="blink" href="khutbah-3.pdf">[PDF]</a>
+  </p>
+  <p class="book-row" style="color:#888;font-style:italic;">
+    Week 4 — Next entry in progress…
+  </p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Week 2 — On Gratitude and Its Conditions</span>
-        <span class="book-author">في الشكر وشروطه · Dhul-Ḥijjah 1447</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Read</a>
-        <a href="#" onclick="event.stopPropagation()">PDF</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Full Arabic khutbah text, topic notes, and grammatical self-correction log.</p>
-    </div>
-  </div>
+  <hr class="section-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Week 3 — On the Virtues of Shaʿbān</span>
-        <span class="book-author">في فضائل شعبان · Dhul-Ḥijjah 1447</span>
-      </div>
-      <div class="book-links">
-        <a href="#" onclick="event.stopPropagation()">Read</a>
-        <a href="#" onclick="event.stopPropagation()">PDF</a>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Full Arabic khutbah text, topic notes, and grammatical self-correction log.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Week 4 — Coming soon</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc coming-soon">Next entry in progress…</p>
-    </div>
-  </div>
-
-  <div class="content-separator"></div>
-
-  <!-- ══════════════════════════════
+  <!-- ═══════════════════════════════════════
        READING RECOMMENDATIONS
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="reading">Reading Recommendations</h2>
   <span class="ar">قائمة المطالعة</span>
-  <p class="class-desc">Books I have read and found genuinely worth recommending — not exhaustive lists, but books that actually changed how I think or gave me something I could not find elsewhere. Level indicators are rough guides only.</p>
+  <p class="intro">Books I have read and found genuinely worth recommending — not exhaustive lists, but books that actually changed how I think or gave me something I could not find elsewhere. Level indicators are rough guides only.</p>
 
   <span class="sublabel">Arabic Language</span>
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Sharḥ Ibn ʿAqīl ʿalā Alfiyyat Ibn Mālik</span>
-        <span class="book-author">— Ibn ʿAqīl</span>
-        <span class="lv lv-a" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Advanced</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The standard commentary used alongside the Alfiyyah in traditional study. Dense but indispensable.</p>
-    </div>
-  </div>
+  <p class="book-row"><strong>Sharḥ Ibn ʿAqīl ʿalā Alfiyyat Ibn Mālik</strong> <span class="lv lv-a">Advanced</span> <span class="author">— Ibn ʿAqīl</span></p>
+  <p class="book-desc">The standard commentary used alongside the Alfiyyah in traditional study. Dense but indispensable.</p>
 
   <span class="sublabel">Theology &amp; Spirituality</span>
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Iḥyāʾ ʿUlūm al-Dīn</span>
-        <span class="book-author">— Imām al-Ghazālī</span>
-        <span class="lv lv-a" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Advanced</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">There is no book in Islam after the Qurʾān and Sunnah that combines legal, theological, and spiritual knowledge at this level. Read it slowly, over years, not months.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Ayyuhā al-Walad</span>
-        <span class="book-author">— Imām al-Ghazālī</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">A short letter from al-Ghazālī to a student asking what knowledge is truly for. One of the most important things a student of the sciences can read before going any further.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">The Book of Assistance</span>
-        <span class="book-author">— Imām al-Ḥaddād</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">A practical guide to the spiritual life from one of the great scholars of the Bāʿ Alawī tradition.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Islam and the Destiny of Man</span>
-        <span class="book-author">— Gai Eaton</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The most intellectually serious introduction to Islam written in English.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Traveling Home</span>
-        <span class="book-author">— Abdal Hakim Murad</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Essays on Islam, modernity, and the interior life. Murad at his most personal.</p>
-    </div>
-  </div>
+  <p class="book-row"><strong>Iḥyāʾ ʿUlūm al-Dīn</strong> <span class="lv lv-a">Advanced</span> <span class="author">— Imām al-Ghazālī</span></p>
+  <p class="book-desc">There is no book in Islam after the Qurʾān and Sunnah that combines legal, theological, and spiritual knowledge at this level. Read it slowly, over years, not months.</p>
+  <p class="book-row"><strong>Ayyuhā al-Walad</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Imām al-Ghazālī</span></p>
+  <p class="book-desc">A short letter from al-Ghazālī to a student asking what knowledge is truly for. One of the most important things a student of the sciences can read before going any further.</p>
+  <p class="book-row"><strong>The Book of Assistance</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Imām al-Ḥaddād</span></p>
+  <p class="book-desc">A practical guide to the spiritual life from one of the great scholars of the Bāʿ Alawī tradition.</p>
+  <p class="book-row"><strong>Islam and the Destiny of Man</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Gai Eaton</span></p>
+  <p class="book-desc">The most intellectually serious introduction to Islam written in English.</p>
+  <p class="book-row"><strong>Traveling Home</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Abdal Hakim Murad</span></p>
+  <p class="book-desc">Essays on Islam, modernity, and the interior life. Murad at his most personal.</p>
 
   <span class="sublabel">Sīrah &amp; Biography</span>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Muhammad: His Life Based on the Earliest Sources</span>
-        <span class="book-author">— Martin Lings (Abū Bakr Sirāj al-Dīn)</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The finest sīrah available in English. Read this before any other sīrah book.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Al-Shifāʾ bi-Taʿrīf Ḥuqūq al-Muṣṭafā</span>
-        <span class="book-author">— Qāḍī ʿIyāḍ</span>
-        <span class="lv lv-m" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Intermediate</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">The definitive classical work on the rights and description of the Prophet ﷺ. Every Muslim should read this at least once.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Ṭabaqāt al-Shāfiʿiyyah al-Kubrā</span>
-        <span class="book-author">— Tāj al-Dīn al-Subkī</span>
-        <span class="lv lv-a" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Advanced</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Biographies of the major scholars of the Shāfiʿī school.</p>
-    </div>
-  </div>
-
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">The 11th Hour</span>
-        <span class="book-author">— Martin Lings</span>
-        <span class="lv lv-i" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Introductory</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Lings on the spiritual crisis of the modern world. Short, lucid, and sobering.</p>
-    </div>
-  </div>
+  <p class="book-row"><strong>Muhammad: His Life Based on the Earliest Sources</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Martin Lings</span></p>
+  <p class="book-desc">The finest sīrah available in English. Read this before any other sīrah book.</p>
+  <p class="book-row"><strong>Al-Shifāʾ bi-Taʿrīf Ḥuqūq al-Muṣṭafā</strong> <span class="lv lv-m">Intermediate</span> <span class="author">— Qāḍī ʿIyāḍ</span></p>
+  <p class="book-desc">The definitive classical work on the rights and description of the Prophet ﷺ. Every Muslim should read this at least once.</p>
+  <p class="book-row"><strong>Ṭabaqāt al-Shāfiʿiyyah al-Kubrā</strong> <span class="lv lv-a">Advanced</span> <span class="author">— Tāj al-Dīn al-Subkī</span></p>
+  <p class="book-desc">Biographies of the major scholars of the Shāfiʿī school.</p>
+  <p class="book-row"><strong>The 11th Hour</strong> <span class="lv lv-i">Introductory</span> <span class="author">— Martin Lings</span></p>
+  <p class="book-desc">Lings on the spiritual crisis of the modern world. Short, lucid, and sobering.</p>
 
   <span class="sublabel">Fiqh &amp; Usūl</span>
+  <p class="book-row"><strong>Islam and Secularism</strong> <span class="lv lv-a">Advanced</span> <span class="author">— Sayyid Naquib al-Attas</span></p>
+  <p class="book-desc">Al-Attas's central argument: that secularization represents a specific metaphysical worldview imposed on Islamic thought. Demanding but foundational.</p>
+  <p class="book-row"><strong>The Islamic Secular</strong> <span class="lv lv-m">Intermediate</span> <span class="author">— Sherman Jackson</span></p>
+  <p class="book-desc">Jackson's argument that the Islamic tradition has its own internal resources for navigating the secular.</p>
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">Islam and Secularism</span>
-        <span class="book-author">— Sayyid Naquib al-Attas</span>
-        <span class="lv lv-a" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Advanced</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Al-Attas's central argument: that secularization represents a specific metaphysical worldview imposed on Islamic thought. Demanding but foundational.</p>
-    </div>
-  </div>
+  <hr class="section-sep" />
 
-  <div class="book-block">
-    <div class="book-header" onclick="toggleBook(this)">
-      <button class="book-toggle" tabindex="-1">&#8250;</button>
-      <div class="book-title-area">
-        <span class="book-name">The Islamic Secular</span>
-        <span class="book-author">— Sherman Jackson</span>
-        <span class="lv lv-m" style="font-size:0.75rem;padding:1px 4px;border-radius:2px;margin-left:4px;">Intermediate</span>
-      </div>
-    </div>
-    <div class="book-body">
-      <p class="book-desc">Jackson's argument that the Islamic tradition has its own internal resources for navigating the secular.</p>
-    </div>
-  </div>
-
-  <div class="content-separator"></div>
-
-  <!-- ══════════════════════════════
+  <!-- ═══════════════════════════════════════
        IJAZAT
-  ══════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <h2 class="sh" id="ijazat">Ijāzāt</h2>
   <span class="ar">الإجازات</span>
-  <p class="class-desc">An ijāzah is a written authorization from a qualified scholar certifying that a student has studied a text or transmitted narrations to a sufficient standard, and granting permission to teach or transmit it in turn. The chain of ijāzāt connects every student, through their teachers, back to the Prophet ﷺ.</p>
-  <p class="class-desc" style="margin-top:6px;">Ijāzāt will be listed here as they are received, bi-idhnillāh. Each entry will include the name of the authorizing scholar, the text or chain covered, the date, and where possible a scan of the written ijāzah itself.</p>
+  <p class="intro">An ijāzah is a written authorization from a qualified scholar certifying that a student has studied a text or transmitted narrations to a sufficient standard, and granting permission to teach or transmit it in turn. The chain of ijāzāt connects every student, through their teachers, back to the Prophet ﷺ.</p>
+  <p class="intro">Ijāzāt will be listed here as they are received, bi-idhnillāh. Each entry will include the name of the authorizing scholar, the text or chain covered, the date, and where possible a scan of the written ijāzah itself.</p>
 
   <br>
   [<a href="#">Contact</a>]
@@ -1653,7 +942,6 @@
 </div>
 
 <script>
-  /* ── Sidebar ── */
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
     document.getElementById('overlay').classList.toggle('open');
@@ -1669,39 +957,18 @@
       btn.classList.toggle('open');
     }
   }
-
-  /* ── Book accordion ── */
-  function toggleBook(header) {
-    const body = header.nextElementSibling;
-    const btn  = header.querySelector('.book-toggle');
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open');
-    btn.classList.toggle('open', !isOpen);
-  }
-
-  /* ── Show / Hide All ── */
-  function showAll() {
-    document.querySelectorAll('.book-body').forEach(b => b.classList.add('open'));
-    document.querySelectorAll('.book-toggle').forEach(b => b.classList.add('open'));
-  }
-  function hideAll() {
-    document.querySelectorAll('.book-body').forEach(b => b.classList.remove('open'));
-    document.querySelectorAll('.book-toggle').forEach(b => b.classList.remove('open'));
-  }
-
-  /* ── Sidebar search filter ── */
-  function filterSidebar(query) {
-    const q = query.toLowerCase();
-    document.querySelectorAll('.sb-group').forEach(group => {
-      const topLink = group.querySelector('.sb-top-link');
-      const children = group.querySelectorAll('.sb-child');
-      let groupVisible = topLink && topLink.textContent.toLowerCase().includes(q);
-      children.forEach(child => {
-        const match = child.textContent.toLowerCase().includes(q);
-        child.style.display = (!q || match) ? '' : 'none';
-        if (match) groupVisible = true;
+  function filterSidebar(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.sb-group').forEach(g => {
+      const top = g.querySelector('.sb-top-link');
+      const kids = g.querySelectorAll('.sb-child');
+      let vis = top && top.textContent.toLowerCase().includes(q);
+      kids.forEach(k => {
+        const m = k.textContent.toLowerCase().includes(q);
+        k.style.display = (!q || m) ? '' : 'none';
+        if (m) vis = true;
       });
-      group.style.display = (!q || groupVisible) ? '' : 'none';
+      g.style.display = (!q || vis) ? '' : 'none';
     });
   }
 </script>
