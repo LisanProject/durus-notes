@@ -43,11 +43,7 @@
     top: 0;
     z-index: 200;
   }
-@media (max-width: 600px) {
-  #topbar-title {
-    font-size: 0.9rem;
-  }
-}
+
   #hamburger {
     background: none;
     border: none;
@@ -68,7 +64,7 @@
   }
   #hamburger:hover span { background: #ffd0d0; }
 
-  #topbar-title {
+ #topbar-title {
     font-family: 'Georgia', serif;
     font-size: 1.08rem;
     font-weight: bold;
@@ -76,6 +72,12 @@
     text-decoration: none;
     flex: 1;
     letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 600px) {
+    #topbar-title {
+      font-size: 0.9rem;
+    }
   }
   #topbar-title:hover { color: #ffd0d0; text-decoration: none; }
 
