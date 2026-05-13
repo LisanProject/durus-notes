@@ -1,1 +1,71 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Ijāzāt — Liban's Online Notes</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<div id="topbar">
+  <button id="hamburger" onclick="toggleSidebar()" title="Main Menu" aria-label="Open Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="../../index.html" id="topbar-title">Liban's Online Notes</a>
+  <button class="topbar-icon-btn" title="Print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<div id="breadcrumb-bar">
+  <a href="../../index.html">Home</a> &rsaquo; Ijāzāt
+</div>
+
+<div id="content">
+
+  <h2 class="sh">Ijāzāt</h2>
+  <span class="ar">الإجازات</span>
+
+  <p class="class-desc">An ijāzah is a written authorization from a qualified scholar certifying that a student has studied a text or transmitted narrations to a sufficient standard, and granting permission to teach or transmit it in turn. The chain of ijāzāt connects every student, through their teachers, back to the Prophet ﷺ.</p>
+
+  <div class="book-block">
+    <div class="book-header" onclick="toggleBook(this)">
+      <button class="book-toggle" tabindex="-1">&#8250;</button>
+      <div class="book-title-area">
+        <span class="book-name">Ijāzah in Al-Arbaʿīn al-Nawawiyyah</span>
+        <span class="book-author">— Sidi Shaykh Ibrahim Niyass Shuru</span>
+      </div>
+      <div class="book-links">
+        <a href="Ijaza_Arbain.pdf" target="_blank" onclick="event.stopPropagation()">View PDF</a>
+      </div>
+    </div>
+    <div class="book-body">
+      <p class="book-desc">
+        Authorized by Sidi Shaykh Ibrahim Niyass Shuru, Al-Azhar University (Dar al-Futuhat) 
+        24th Dhul Qaʿdah 1447 / May 11th, 2026
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<div id="footer">
+  [<a href="../../index.html">Home</a>]&nbsp;[<a href="#">Contact</a>]&nbsp;[<a href="#">About</a>]
+  <br><br>
+  &copy; 2026 — May Allah make this beneficial and forgive its shortcomings.
+</div>
+
+<script src="../../nav.js"></script>
+<script>
+  function toggleBook(header) {
+    const body = header.nextElementSibling;
+    const btn  = header.querySelector('.book-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open');
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
