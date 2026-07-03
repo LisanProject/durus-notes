@@ -119,13 +119,19 @@ var NAV = {
       path: "/Classes/Aqidah/Aqidah.html",
       practiceProblems: "/Extras/PracticeProblems.html#aqeedah",
       assignmentProblems: "/Extras/AssignmentProblems.html#aqeedah",
-      intro: "The texts listed here represent the mainstream theological tradition of Sunni Islam as taught in the great institutions of learning including al-Azhar, Dar al-Hadith al-Ashrafiyyah, and the University of al-Qarawiyyin.",
+      intro: "The texts listed here follow the Ash'ari school, the position held historically by the overwhelming majority of Sunni scholars, including most of the major hadith scholars, jurists, and theologians cited across all four madhahib. In recent years some have dismissed Ash'arism, or other sound schools of aqeedah, as innovation or worse, generally without engaging seriously with the actual arguments those schools make or the weight of scholarship behind them. I hope these notes show something of the depth and internal coherence of the Ash'ari school on its own terms, rather than the caricature it is sometimes reduced to.",
       books: [
         {
           id: "sharhalaqbawi",
           title: "Sharh al-Aqbawi (Aqidah Tawhidiyyah)",
           path: "/Classes/Aqidah/SharhAlaqbawi/SharhAlaqbawi.html",
           topics: [{ title: "The Attributes of Allah - Wajib, Mustahil, Ja'iz" }, { title: "The Messengers - Their Attributes" }]
+        },
+        {
+          id: "aqidaalsharnubiyyah",
+          title: "Aqida al-Sharnubiyyah",
+          path: "/Classes/Aqidah/AqidaAlsharnubiyyah/AqidaAlsharnubiyyah.html",
+          topics: []
         },
         {
           id: "alkharidahalbahiyyah",
@@ -239,7 +245,6 @@ var NAV = {
 
   extras: [
     { title: "How to Study the Islamic Sciences", path: "/Extras/HowToStudy/HowToStudy.html" },
-    { title: "Cheat Sheets and Tables", path: "/Extras/CheatSheets_Tables.html" },
     { title: "Reviews", path: "/Extras/Reviews.html" },
     { title: "Khutbah a Week", path: "/Extras/Khutbah.html" },
     { title: "Essays", path: "/Extras/Essays.html" },

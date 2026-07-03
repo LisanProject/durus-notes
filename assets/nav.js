@@ -108,7 +108,7 @@ function renderHomeClassList() {
   var wrap = document.getElementById('home-class-list');
   if (!wrap) return;
 
-  NAV.courses.forEach(function (course) {
+  NAV.courses.forEach(function (course, idx) {
     var entry = navEl('div', { cls: 'class-entry' });
 
     var p = navEl('p');
@@ -130,7 +130,7 @@ function renderHomeClassList() {
       linksSpan.appendChild(document.createTextNode(']'));
     }
     p.appendChild(linksSpan);
-    p.appendChild(document.createTextNode(' - ' + (course.books.length ? 'topics included are:' : course.intro)));
+    p.appendChild(document.createTextNode(course.books.length ? ' - topics included are:' : ''));
     entry.appendChild(p);
 
     if (course.books.length) {
@@ -149,7 +149,14 @@ function renderHomeClassList() {
       entry.appendChild(ul);
     }
 
+    if (course.intro) {
+      entry.appendChild(navEl('p', { cls: 'class-desc', text: course.intro }));
+    }
+
     wrap.appendChild(entry);
+    if (idx < NAV.courses.length - 1) {
+      wrap.appendChild(navEl('div', { cls: 'class-separator' }));
+    }
   });
 }
 
@@ -182,21 +189,80 @@ function renderTopbarMenu() {
   var panel = navEl('div');
   panel.id = 'site-menu-panel';
 
-  panel.appendChild(navEl('a', { cls: 'sm-link sm-home', href: '/index.html', text: 'Home' }));
-  panel.appendChild(navEl('div', { cls: 'sm-heading', text: 'Classes' }));
-  NAV.courses.forEach(function (course) {
-    panel.appendChild(navEl('a', { cls: 'sm-link', href: course.path, text: course.shortTitle || course.title }));
-  });
-  panel.appendChild(navEl('div', { cls: 'sm-heading', text: 'Extras' }));
-  NAV.extras.forEach(function (ex) {
-    panel.appendChild(navEl('a', { cls: 'sm-link', href: ex.path, text: ex.title }));
-  });
+  function closeMenu() { overlay.classList.remove('open'); panel.classList.remove('open'); }
+  function toggleMenu() {
+    var opening = !overlay.classList.contains('open');
+    overlay.classList.toggle('open');
+    panel.classList.toggle('open');
+    if (opening) renderRootScreen();
+  }
+
+  function clearPanel() { while (panel.firstChild) panel.removeChild(panel.firstChild); }
+
+  function renderRootScreen() {
+    clearPanel();
+    panel.appendChild(navEl('a', { cls: 'sm-link sm-home', href: '/index.html', text: 'Home' }));
+
+    var classesPill = navEl('div', { cls: 'sm-pill-heading', text: 'Classes' });
+    panel.appendChild(classesPill);
+    NAV.courses.forEach(function (course) {
+      var row = navEl('div', { cls: 'sm-row', text: '' });
+      row.appendChild(navEl('span', { cls: 'sm-row-link', text: course.shortTitle || course.title }));
+      row.appendChild(navEl('span', { cls: 'sm-chevron', text: '\u203A' }));
+      row.addEventListener('click', function () { renderCourseScreen(course); });
+      panel.appendChild(row);
+    });
+
+    var extrasPill = navEl('div', { cls: 'sm-pill-heading', text: 'Extras' });
+    panel.appendChild(extrasPill);
+    NAV.extras.forEach(function (ex) {
+      var row = navEl('div', { cls: 'sm-row' });
+      row.appendChild(navEl('a', { cls: 'sm-row-link', href: ex.path, text: ex.title }));
+      panel.appendChild(row);
+    });
+  }
+
+  function renderCourseScreen(course) {
+    clearPanel();
+
+    var head = navEl('div', { cls: 'sm-drill-header' });
+    var crumb = navEl('div', { cls: 'sm-drill-crumb' });
+    var homeLink = navEl('a', { text: "Liban's Notes" });
+    homeLink.href = '#';
+    homeLink.addEventListener('click', function (e) { e.preventDefault(); renderRootScreen(); });
+    crumb.appendChild(homeLink);
+    crumb.appendChild(document.createTextNode(' / '));
+    crumb.appendChild(navEl('span', { text: course.shortTitle || course.title }));
+    head.appendChild(crumb);
+    var closeBtn = navEl('button', { cls: 'sm-close-x', text: '\u00D7' });
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    closeBtn.addEventListener('click', closeMenu);
+    head.appendChild(closeBtn);
+    panel.appendChild(head);
+
+    var viewNotesRow = navEl('div', { cls: 'sm-row' });
+    viewNotesRow.appendChild(navEl('a', { cls: 'sm-row-link sm-view-notes', href: course.path, text: 'View ' + (course.shortTitle || course.title) + ' Notes' }));
+    panel.appendChild(viewNotesRow);
+
+    if (!course.books.length) {
+      var noBooks = navEl('div', { cls: 'sm-row' });
+      noBooks.appendChild(navEl('a', { cls: 'sm-row-link', href: course.path, text: 'View class notes' }));
+      panel.appendChild(noBooks);
+      return;
+    }
+
+    course.books.forEach(function (book, i) {
+      var row = navEl('div', { cls: 'sm-drill-row' });
+      var link = navEl('a', { cls: 'sm-drill-row-link', href: book.path });
+      link.textContent = (i + 1) + '. ' + book.title;
+      row.appendChild(link);
+      row.appendChild(navEl('span', { cls: 'sm-drill-chevron', text: '\u203A' }));
+      panel.appendChild(row);
+    });
+  }
 
   document.body.appendChild(overlay);
   document.body.appendChild(panel);
-
-  function closeMenu() { overlay.classList.remove('open'); panel.classList.remove('open'); }
-  function toggleMenu() { overlay.classList.toggle('open'); panel.classList.toggle('open'); }
 
   btn.addEventListener('click', toggleMenu);
   overlay.addEventListener('click', closeMenu);

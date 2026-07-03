@@ -76,16 +76,61 @@ a:visited { color: var(--link-blue); }
 }
 #site-menu-panel.open { display: block; }
 
-.sm-heading {
-  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-  color: #777; padding: 14px 16px 4px;
-}
 #site-menu-panel a.sm-link {
   display: block; padding: 7px 16px; font-size: 14px; color: var(--link-blue);
   text-decoration: none; border-bottom: 1px solid #f0f0f0;
 }
 #site-menu-panel a.sm-link:hover { background: #faf0f0; color: var(--link-hover); }
 #site-menu-panel a.sm-home { font-weight: 700; font-size: 1rem; color: var(--maroon-dark); }
+
+/* pill-shaped category badge, overlapping the left edge like Paul's mobile menu */
+.sm-pill-heading {
+  display: inline-block;
+  background: #d98884;
+  color: #fff;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 8px 22px 8px 26px;
+  border-radius: 999px;
+  margin: 16px 0 8px -14px;
+}
+
+/* root screen: a course row with a chevron, entire row clickable to drill in */
+.sm-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 16px; font-size: 14px; color: var(--link-blue);
+  border-bottom: 1px solid #f0f0f0; cursor: pointer;
+}
+.sm-row:hover { background: #faf0f0; }
+.sm-row .sm-row-link { color: var(--link-blue); flex: 1; pointer-events: none; }
+.sm-row .sm-chevron { color: #999; font-size: 18px; pointer-events: none; }
+a.sm-row-link { text-decoration: none; pointer-events: auto; }
+.sm-view-notes { font-weight: 700; color: var(--maroon-dark) !important; }
+
+/* drilled-down course screen header: breadcrumb + close X, like the reference image */
+.sm-drill-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px 10px; border-bottom: 1px solid #eee;
+}
+.sm-drill-crumb {
+  font-weight: 700; font-size: 1.05rem; color: var(--maroon);
+  text-decoration: underline;
+}
+.sm-drill-crumb a { color: var(--maroon); text-decoration: underline; }
+.sm-drill-crumb a:hover { color: var(--link-hover); }
+.sm-close-x {
+  background: none; border: none; font-size: 22px; line-height: 1; color: #666;
+  cursor: pointer; padding: 2px 8px;
+}
+.sm-close-x:hover { color: #000; }
+
+/* book rows within the drilled-down course screen */
+.sm-drill-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid #f0f0f0;
+}
+.sm-drill-row-link { color: var(--link-blue); font-weight: 600; font-size: 14.5px; text-decoration: none; flex: 1; }
+.sm-drill-row-link:hover { color: var(--link-hover); }
+.sm-drill-chevron { color: #999; font-size: 18px; }
 
 /* ══════════ BREADCRUMB PILL ══════════ */
 .crumb-row { display: flex; justify-content: center; padding: 8px 10px 4px; }
@@ -149,6 +194,8 @@ li { margin-bottom: 0.45em; }
 .class-entry .class-topics { margin-top: 0.5em; list-style: disc outside; padding-left: 1.4em; }
 .class-entry .class-topics li { font-size: 0.97rem; display: list-item; }
 .class-entry .class-topics li strong { color: #111; }
+.class-entry .class-desc { margin-top: 0.7em; font-size: 0.92rem; color: #444; }
+.class-separator { border: none; border-top: 2px solid var(--maroon); opacity: 0.55; margin: 1.6em 0; height: 0; }
 
 /* ══════════ ARABIC / LESSON CONTENT BLOCKS ══════════ */
 .arabic {
