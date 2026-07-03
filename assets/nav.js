@@ -165,8 +165,46 @@ function renderExtrasList() {
   wrap.appendChild(ul);
 }
 
+function renderTopbarMenu() {
+  var header = document.getElementById('site-header');
+  if (!header || document.getElementById('hamburger-btn')) return;
+
+  var btn = navEl('button', { cls: '' });
+  btn.id = 'hamburger-btn';
+  btn.setAttribute('aria-label', 'Site menu');
+  btn.appendChild(navEl('span'));
+  btn.appendChild(navEl('span'));
+  btn.appendChild(navEl('span'));
+  header.insertBefore(btn, header.firstChild);
+
+  var overlay = navEl('div');
+  overlay.id = 'site-menu-overlay';
+  var panel = navEl('div');
+  panel.id = 'site-menu-panel';
+
+  panel.appendChild(navEl('a', { cls: 'sm-link sm-home', href: '/index.html', text: 'Home' }));
+  panel.appendChild(navEl('div', { cls: 'sm-heading', text: 'Classes' }));
+  NAV.courses.forEach(function (course) {
+    panel.appendChild(navEl('a', { cls: 'sm-link', href: course.path, text: course.shortTitle || course.title }));
+  });
+  panel.appendChild(navEl('div', { cls: 'sm-heading', text: 'Extras' }));
+  NAV.extras.forEach(function (ex) {
+    panel.appendChild(navEl('a', { cls: 'sm-link', href: ex.path, text: ex.title }));
+  });
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(panel);
+
+  function closeMenu() { overlay.classList.remove('open'); panel.classList.remove('open'); }
+  function toggleMenu() { overlay.classList.toggle('open'); panel.classList.toggle('open'); }
+
+  btn.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', closeMenu);
+}
+
 /* Show / hide content blocks, used on lesson pages */
 document.addEventListener('DOMContentLoaded', function () {
+  renderTopbarMenu();
   renderCrumb();
   renderTabs();
   renderBottomNav();

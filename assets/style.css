@@ -23,22 +23,69 @@ a { color: var(--link-blue); text-decoration: underline; }
 a:hover { color: var(--link-hover); }
 a:visited { color: #551A8B; }
 
-/* thin red accent bar across the very top of every page */
-.top-accent-bar { height: 6px; background: linear-gradient(to right, #b23a3a, var(--maroon)); }
+/* old thin accent bar - superseded by the solid topbar below, kept harmless if still present in a page */
+.top-accent-bar { display: none; }
 
-/* ══════════ SITE HEADER (logo / site title, top of home page and every page) ══════════ */
+/* ══════════ TOPBAR (solid maroon bar with hamburger, present on every page) ══════════ */
 #site-header {
-  padding: 14px 24px 10px;
-  max-width: var(--content-max);
-  margin: 0 auto;
+  background: var(--maroon);
+  border-bottom: 3px solid #b23a3a;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 300;
 }
+#hamburger-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 6px; display: flex; flex-direction: column; gap: 4px;
+  flex-shrink: 0;
+}
+#hamburger-btn span { display: block; width: 22px; height: 2.5px; background: #fff; border-radius: 2px; }
+#hamburger-btn:hover span { background: #ffd8d8; }
+
 #site-header a.site-title {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.6rem; font-weight: 700;
-  color: var(--maroon); text-decoration: none;
+  font-size: 1.15rem; font-weight: 700;
+  color: #fff; text-decoration: none; flex: 1;
 }
-#site-header a.site-title:hover { color: var(--maroon-dark); }
-#site-header .site-tagline { font-size: 0.85rem; color: #666; margin-top: 2px; }
+#site-header a.site-title:hover { color: #ffd8d8; }
+#site-header .site-tagline { display: none; } /* tagline now lives on the home page body, not the bar */
+
+.topbar-icon-btn {
+  background: none; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px;
+  color: #fff; cursor: pointer; padding: 5px 10px; font-size: 0.8rem;
+}
+.topbar-icon-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* ══════════ SITE MENU PANEL (opens from the hamburger) ══════════ */
+#site-menu-overlay {
+  display: none; position: fixed; inset: 48px 0 0 0;
+  background: rgba(0,0,0,0.3); z-index: 250;
+}
+#site-menu-overlay.open { display: block; }
+
+#site-menu-panel {
+  display: none; position: fixed; top: 48px; left: 0;
+  width: 300px; max-width: 88vw; height: calc(100vh - 48px);
+  background: #fff; border-right: 1px solid #ddd; overflow-y: auto;
+  z-index: 251; box-shadow: 3px 0 14px rgba(0,0,0,0.2);
+}
+#site-menu-panel.open { display: block; }
+
+.sm-heading {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #777; padding: 14px 16px 4px;
+}
+#site-menu-panel a.sm-link {
+  display: block; padding: 7px 16px; font-size: 14px; color: var(--link-blue);
+  text-decoration: none; border-bottom: 1px solid #f0f0f0;
+}
+#site-menu-panel a.sm-link:hover { background: #faf0f0; color: var(--link-hover); }
+#site-menu-panel a.sm-home { font-weight: 700; font-size: 1rem; color: var(--maroon-dark); }
 
 /* ══════════ BREADCRUMB PILL ══════════ */
 .crumb-row { display: flex; justify-content: center; padding: 8px 10px 4px; }
