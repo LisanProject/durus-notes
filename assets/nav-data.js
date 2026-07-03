@@ -53,6 +53,8 @@ var NAV = {
       title: "Fiqh",
       shortTitle: "Fiqh",
       path: "/Classes/Fiqh/Fiqh.html",
+      cheatSheet: "/Extras/CheatSheets_Tables.html#fiqh",
+      review: "/Extras/Reviews.html#fiqh",
       intro: "Shafi'i Madhhab. These texts follow the classical pedagogical ladder of the school, from introductory matn to the substantive legal manuals used in advanced study.",
       books: [
         {
@@ -80,6 +82,8 @@ var NAV = {
       title: "Usul al-Fiqh",
       shortTitle: "Usul al-Fiqh",
       path: "/Classes/UsulFiqh/UsulFiqh.html",
+      cheatSheet: "/Extras/CheatSheets_Tables.html#usul-fiqh",
+      review: "/Extras/Reviews.html#usul-fiqh",
       intro: "The science of legal theory and the sources of Islamic law and the principles by which rulings are derived from them. These texts progress from the foundational primer of Imam al-Juwayni to the encyclopedic Jam' al-Jawami'.",
       books: [
         {
@@ -113,6 +117,8 @@ var NAV = {
       title: "Ash'ari Aqidah",
       shortTitle: "Aqeedah",
       path: "/Classes/Aqidah/Aqidah.html",
+      cheatSheet: "/Extras/CheatSheets_Tables.html#aqeedah",
+      review: "/Extras/Reviews.html#aqeedah",
       intro: "The texts listed here represent the mainstream theological tradition of Sunni Islam as taught in the great institutions of learning including al-Azhar, Dar al-Hadith al-Ashrafiyyah, and the University of al-Qarawiyyin.",
       books: [
         {
@@ -146,6 +152,8 @@ var NAV = {
       title: "Hadith",
       shortTitle: "Hadith",
       path: "/Classes/Hadith/Hadith.html",
+      cheatSheet: "/Extras/CheatSheets_Tables.html#hadith",
+      review: "/Extras/Reviews.html#hadith",
       intro: "This section covers both hadith texts for memorization and the science of hadith criticism (mustalah al-hadith). Memorization targets are noted where applicable.",
       books: [
         {
@@ -203,6 +211,8 @@ var NAV = {
       title: "Ulum al-Qur'an",
       shortTitle: "Quran Sciences",
       path: "/Classes/Quran/Quran.html",
+      cheatSheet: "/Extras/CheatSheets_Tables.html#quran-sciences",
+      review: "/Extras/Reviews.html#quran-sciences",
       intro: "The sciences of Tajwid and Qira'at are foundational to everything else. These sciences cannot be learned from notes alone. A licensed teacher with an unbroken chain is a condition, not a recommendation. Notes here serve as a reference alongside instruction, not a replacement for it.",
       books: [
         {
@@ -228,6 +238,7 @@ var NAV = {
   ],
 
   extras: [
+    { title: "How to Study the Islamic Sciences", path: "/Extras/HowToStudy/HowToStudy.html" },
     { title: "Cheat Sheets and Tables", path: "/Extras/CheatSheets_Tables.html" },
     { title: "Reviews", path: "/Extras/Reviews.html" },
     { title: "Khutbah a Week", path: "/Extras/Khutbah.html" },
