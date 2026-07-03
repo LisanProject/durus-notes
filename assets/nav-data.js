@@ -24,9 +24,13 @@ var NAV = {
       books: [
         {
           id: "ajrumiyyah",
-          title: "Al-Ajurrumiyyah",
+          title: "Al-Ajrumiyyah",
           path: "/Classes/Nahw/Ajrumiyyah/Ajrumiyyah.html",
-          topics: [{ title: "Introduction & the Word (\u0627\u0644\u0643\u0644\u0645\u0629)" }, { title: "I'rab - Case Endings (\u0627\u0644\u0625\u0639\u0631\u0627\u0628)" }, { title: "The Mubtada' & Khabar (\u0627\u0644\u0645\u0628\u062a\u062f\u0623 \u0648\u0627\u0644\u062e\u0628\u0631)" }, { title: "Nawasikh - inna & kana (\u0627\u0644\u0646\u0648\u0627\u0633\u062e)" }, { title: "The Fa'il & Na'ib al-Fa'il (\u0627\u0644\u0641\u0627\u0639\u0644 \u0648\u0646\u0627\u0626\u0628\u0647)" }, { title: "Mansubat - Accusative Categories" }, { title: "Al-Majrurat - Genitive Categories" }]
+          topics: [
+            { title: "Lesson I: Introduction to Grammar", path: "/Classes/Nahw/Ajrumiyyah/Kalam.html" },
+            { title: "Lesson II: I'rab and the Word Categories", path: "/Classes/Nahw/Ajrumiyyah/IrabWordCategories.html" },
+            { title: "Lesson III: Signs of I'rab", path: "/Classes/Nahw/Ajrumiyyah/SignsOfIrab.html" }
+          ]
         },
         {
           id: "qatralnada",
