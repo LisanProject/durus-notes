@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Arial&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --maroon: #7a1a1a;
+  --maroon-dark: #5c1313;
+  --maroon-pale: #f5dcdc;
+  --link-blue: #1a1ac4;
+  --link-hover: #c00;
+  --content-max: 980px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #111;
+  background: #fff;
+}
+
+a { color: var(--link-blue); text-decoration: underline; }
+a:hover { color: var(--link-hover); }
+a:visited { color: #551A8B; }
+
+/* thin red accent bar across the very top of every page */
+.top-accent-bar { height: 6px; background: linear-gradient(to right, #b23a3a, var(--maroon)); }
+
+/* ══════════ SITE HEADER (logo / site title, top of home page and every page) ══════════ */
+#site-header {
+  padding: 14px 24px 10px;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+#site-header a.site-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--maroon); text-decoration: none;
+}
+#site-header a.site-title:hover { color: var(--maroon-dark); }
+#site-header .site-tagline { font-size: 0.85rem; color: #666; margin-top: 2px; }
+
+/* ══════════ BREADCRUMB PILL ══════════ */
+.crumb-row { display: flex; justify-content: center; padding: 8px 10px 4px; }
+.crumb-pill {
+  background: var(--maroon-dark); color: #fff;
+  border-radius: 18px; padding: 6px 22px;
+  font-size: 0.95rem; font-weight: 600;
+  display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+}
+.crumb-pill a { color: #fff; text-decoration: underline; }
+.crumb-pill a:hover { color: #ffd0d0; }
+.crumb-pill .sep { color: #ddb; opacity: 0.7; }
+.crumb-pill .current { text-decoration: none; }
+
+/* ══════════ TAB PILL ROW (Notes / Cheat Sheet / Review / Next Section) ══════════ */
+.tab-row {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 10px; padding: 10px 10px 18px;
+  border-bottom: 4px solid var(--maroon);
+  margin-bottom: 22px;
+}
+.tab-pill {
+  border: 2px solid var(--maroon); border-radius: 18px;
+  padding: 5px 18px; font-size: 0.92rem; font-weight: 600;
+  background: #fff; color: var(--link-blue);
+}
+.tab-pill:hover { background: #fbeaea; color: var(--link-hover); }
+.tab-pill.active {
+  background: var(--maroon-pale); color: var(--maroon-dark);
+  text-decoration: none; cursor: default;
+}
+.tab-pill.disabled {
+  color: #aaa; border-color: #ccc; cursor: default; text-decoration: none;
+}
+
+/* ══════════ CONTENT ══════════ */
+#content { max-width: var(--content-max); margin: 0 auto; padding: 0 24px 60px; }
+
+h1.page-title {
+  font-size: 2rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.02em; border-bottom: 3px solid #000;
+  padding-bottom: 10px; margin-bottom: 22px;
+}
+h2.section-title {
+  font-size: 1.3rem; font-weight: 800; text-decoration: underline;
+  margin: 0 0 16px;
+}
+h2 { font-size: 1.25rem; font-weight: 700; margin: 1.6em 0 0.5em; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 1.2em 0 0.4em; }
+p { margin-bottom: 1em; }
+ul, ol { padding-left: 1.7em; margin-bottom: 1em; }
+li { margin-bottom: 0.45em; }
+
+.top-accent-bar + #site-header + .crumb-row { margin-top: 0; }
+
+/* ══════════ HOMEPAGE CLASS NOTES LIST ══════════ */
+.class-entry { margin-bottom: 1.4em; }
+.class-entry .class-name { font-weight: 700; }
+.class-entry .class-links { font-weight: 700; }
+.class-entry .class-links a { margin: 0 2px; }
+.class-entry .class-topics { margin-top: 0.5em; }
+.class-entry .class-topics li { font-size: 0.97rem; }
+.class-entry .class-topics li strong { color: #111; }
+
+/* ══════════ ARABIC / LESSON CONTENT BLOCKS ══════════ */
+.arabic {
+  font-family: 'Amiri', serif; font-size: 22px;
+  direction: rtl; text-align: right; line-height: 2.2; color: #000;
+  background: #faf6f6; border: 1px solid #e2d2d2;
+  padding: 12px 16px; margin: 14px 0;
+}
+.arabic-sm { font-family: 'Amiri', serif; font-size: 1.05em; }
+
+.translation {
+  font-style: italic; color: #333; font-size: 0.95em;
+  padding: 3px 14px 10px; border-left: 3px solid var(--maroon); margin: 0 0 16px;
+}
+
+.vocab-list { list-style: none; padding: 0; margin: 0 0 16px; }
+.vocab-list li { display: flex; gap: 12px; padding: 4px 0; border-bottom: 1px dotted #ddd; font-size: 14.5px; }
+.vocab-list .vocab-ar { font-family: 'Amiri', serif; font-size: 1.15em; direction: rtl; min-width: 90px; }
+.vocab-list .vocab-en { color: #333; }
+
+/* ══════════ SHOW / HIDE ══════════ */
+.showhide-btn {
+  background: #fff; border: 2px solid var(--maroon); border-radius: 18px;
+  padding: 4px 16px; font-size: 13px; color: var(--maroon-dark);
+  cursor: pointer; font-family: inherit; font-weight: 600;
+}
+.showhide-btn:hover { background: var(--maroon-pale); }
+.showhide-content {
+  display: none; border: 1px solid #e2d2d2; border-radius: 4px;
+  padding: 14px 16px; margin-top: 8px; background: #faf6f6;
+  font-size: 14.5px; line-height: 1.75;
+}
+.showhide-content.open { display: block; }
+
+/* ══════════ NOTE / WARN BOXES ══════════ */
+.note-box {
+  border: 1px solid #b8b8e0; background: #f2f2fb;
+  border-radius: 4px; padding: 12px 16px; margin: 16px 0; font-size: 14.5px;
+}
+.note-box strong { display: block; margin-bottom: 4px; color: var(--maroon-dark); }
+.warn-box {
+  border: 1px solid #c8a000; background: #fffbe6;
+  border-radius: 4px; padding: 12px 16px; margin: 16px 0; font-size: 14.5px;
+}
+.warn-box strong { display: block; margin-bottom: 4px; color: #7a5500; }
+
+/* ══════════ TABLES ══════════ */
+table.terms { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+table.terms th { background: var(--maroon); color: #fff; padding: 7px 12px; text-align: left; }
+table.terms td { padding: 6px 12px; border-bottom: 1px solid #ddd; vertical-align: top; }
+table.terms tr:nth-child(even) td { background: #faf6f6; }
+table.terms .ar { font-family: 'Amiri', serif; font-size: 17px; direction: rtl; text-align: right; }
+
+/* ══════════ DOWNLOAD / UPLOAD LINKS ══════════ */
+.dl-links { margin: 8px 0 18px; font-size: 13px; }
+.dl-links a { margin-right: 18px; }
+.dl-links a::before { content: "\2193  "; text-decoration: none; }
+
+.upload-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; margin: 16px 0; }
+.upload-card {
+  border: 1px solid #ddd; border-radius: 4px; padding: 12px 14px;
+  background: #faf9fb; display: flex; align-items: center; gap: 10px;
+}
+.upload-card .icon { font-size: 1.4rem; }
+.upload-card a { font-weight: 600; }
+.upload-card .meta { font-size: 12px; color: #666; display: block; text-decoration: none; }
+
+/* ══════════ PREV / NEXT (bottom pill row) ══════════ */
+.bottom-nav-row {
+  display: flex; justify-content: center; gap: 16px;
+  margin-top: 3em; padding-top: 16px; border-top: 3px solid var(--maroon);
+}
+
+/* ══════════ FOOTER ══════════ */
+#site-footer {
+  border-top: 1px solid #ddd; padding: 16px; font-size: 12px;
+  color: #666; text-align: center; margin-top: 30px;
+}
+#site-footer a { color: #666; margin: 0 6px; }
+
+@media (max-width: 600px) {
+  h1.page-title { font-size: 1.5rem; }
+  #content { padding: 0 14px 40px; }
+  .crumb-pill, .tab-pill { font-size: 0.82rem; padding: 5px 12px; }
+}
