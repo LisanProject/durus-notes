@@ -300,7 +300,7 @@ var NAV = {
     { title: "Khutbah a Week", path: "/Extras/Khutbah.html" },
     { title: "Essays", path: "/Extras/Essays.html" },
     { title: "Reading Recommendations", path: "/Extras/ReadingRecs.html" },
-    { title: "Ijazat", path: "/Classes/Ijazat/Ijazat.html" },
+    { title: "Ijazat", path: "/Classes/Ijazat/Ijazat.html" }
   ]
 };
 
