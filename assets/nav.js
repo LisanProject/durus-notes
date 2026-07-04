@@ -19,6 +19,14 @@ function navEl(tag, opts) {
   return el;
 }
 
+/* Breadcrumbs and nav pills show the clean chapter name only (e.g. "Al-Kalam"),
+   never the "Chapter 1: " prefix, which is reserved for the chapter's own H2
+   heading - matches Paul's breadcrumb showing "3-Dimensional Space" not
+   "Chapter 12: 3-Dimensional Space". */
+function cleanChapterTitle(title) {
+  return title.replace(/^Chapter \d+:\s*/, '');
+}
+
 function renderCrumb() {
   var row = document.getElementById('crumb-row');
   if (!row || typeof PAGE === 'undefined') return;
@@ -51,9 +59,9 @@ function renderCrumb() {
   if (chapter) {
     pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
     if (PAGE.section !== undefined && PAGE.section !== null) {
-      pill.appendChild(navEl('a', { href: chapter.path, text: chapter.title }));
+      pill.appendChild(navEl('a', { href: chapter.path, text: cleanChapterTitle(chapter.title) }));
     } else {
-      pill.appendChild(navEl('span', { cls: 'current', text: chapter.title }));
+      pill.appendChild(navEl('span', { cls: 'current', text: cleanChapterTitle(chapter.title) }));
     }
   }
   if (chapter && PAGE.section !== undefined && PAGE.section !== null && chapter.sections[PAGE.section]) {
@@ -70,11 +78,58 @@ function renderCrumb() {
   row.appendChild(pill);
 }
 
+function getPrevNextSection() {
+  if (typeof PAGE === 'undefined' || !PAGE.course || !PAGE.book) return null;
+  var book = navGetBook(PAGE.course, PAGE.book);
+  if (!book) return null;
+
+  if (PAGE.chapter && PAGE.section !== undefined && PAGE.section !== null && book.chapters) {
+    var chapters = book.chapters;
+    var ci = -1;
+    for (var i = 0; i < chapters.length; i++) { if (chapters[i].id === PAGE.chapter) { ci = i; break; } }
+    if (ci === -1) return null;
+    var chapter = chapters[ci];
+    var sections = chapter.sections;
+    var si = PAGE.section;
+
+    var result = { prevHref: null, prevLabel: null, nextHref: null, nextLabel: null };
+    if (sections[si - 1]) {
+      result.prevHref = sections[si - 1].path; result.prevLabel = sections[si - 1].title;
+    } else {
+      result.prevHref = chapter.path; result.prevLabel = cleanChapterTitle(chapter.title);
+    }
+    if (sections[si + 1]) {
+      result.nextHref = sections[si + 1].path; result.nextLabel = sections[si + 1].title;
+    } else if (chapters[ci + 1]) {
+      result.nextHref = chapters[ci + 1].path; result.nextLabel = cleanChapterTitle(chapters[ci + 1].title);
+    }
+    return result;
+  }
+
+  if (PAGE.topic !== undefined && PAGE.topic !== null && book.topics) {
+    var result2 = { prevHref: null, prevLabel: null, nextHref: null, nextLabel: null };
+    var prev = book.topics[PAGE.topic - 1];
+    var next = book.topics[PAGE.topic + 1];
+    if (prev) { result2.prevHref = prev.path; result2.prevLabel = prev.title; }
+    else { result2.prevHref = book.path; result2.prevLabel = book.title; }
+    if (next) { result2.nextHref = next.path; result2.nextLabel = next.title; }
+    return result2;
+  }
+
+  return null;
+}
+
 function renderTabs() {
   var row = document.getElementById('tab-row');
   if (!row || typeof PAGE === 'undefined' || !PAGE.course) return;
   var course = navGetCourse(PAGE.course);
   if (!course) return;
+
+  var prevNext = getPrevNextSection();
+
+  if (prevNext && prevNext.prevHref) {
+    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevNext.prevHref, text: '\u2039 Prev. Section' }));
+  }
 
   var tabs = [
     { label: 'Notes', href: course.path, key: 'notes' },
@@ -94,55 +149,23 @@ function renderTabs() {
       : navEl('a', { cls: 'tab-pill', href: t.href, text: t.label });
     row.appendChild(el);
   });
+
+  if (prevNext && prevNext.nextHref) {
+    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevNext.nextHref, text: 'Next Section \u203a' }));
+  }
 }
 
 function renderBottomNav() {
   var row = document.getElementById('bottom-nav-row');
-  if (!row || typeof PAGE === 'undefined' || !PAGE.course || !PAGE.book) return;
-  var book = navGetBook(PAGE.course, PAGE.book);
-  if (!book) return;
+  if (!row) return;
+  var prevNext = getPrevNextSection();
+  if (!prevNext) return;
 
-  // Chapter/Section hierarchy
-  if (PAGE.chapter && PAGE.section !== undefined && PAGE.section !== null && book.chapters) {
-    var chapters = book.chapters;
-    var ci = -1;
-    for (var i = 0; i < chapters.length; i++) { if (chapters[i].id === PAGE.chapter) { ci = i; break; } }
-    if (ci === -1) return;
-    var chapter = chapters[ci];
-    var sections = chapter.sections;
-    var si = PAGE.section;
-
-    var prevHref = null, prevLabel = null, nextHref = null, nextLabel = null;
-
-    if (sections[si - 1]) {
-      prevHref = sections[si - 1].path; prevLabel = '< ' + sections[si - 1].title;
-    } else {
-      prevHref = chapter.path; prevLabel = '< Back to ' + chapter.title;
-    }
-
-    if (sections[si + 1]) {
-      nextHref = sections[si + 1].path; nextLabel = sections[si + 1].title + ' >';
-    } else if (chapters[ci + 1]) {
-      nextHref = chapters[ci + 1].path; nextLabel = chapters[ci + 1].title + ' >';
-    }
-
-    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevHref, text: prevLabel }));
-    if (nextHref) row.appendChild(navEl('a', { cls: 'tab-pill', href: nextHref, text: nextLabel }));
-    return;
+  if (prevNext.prevHref) {
+    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevNext.prevHref, text: '< ' + prevNext.prevLabel }));
   }
-
-  // Legacy flat topic list (books without chapters yet)
-  if (PAGE.topic === undefined || PAGE.topic === null || !book.topics) return;
-  var prev = book.topics[PAGE.topic - 1];
-  var next = book.topics[PAGE.topic + 1];
-
-  if (prev) {
-    row.appendChild(navEl('a', { cls: 'tab-pill', href: prev.path, text: '< ' + prev.title }));
-  } else {
-    row.appendChild(navEl('a', { cls: 'tab-pill', href: book.path, text: '< Back to ' + book.title }));
-  }
-  if (next) {
-    row.appendChild(navEl('a', { cls: 'tab-pill', href: next.path, text: next.title + ' >' }));
+  if (prevNext.nextHref) {
+    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevNext.nextHref, text: prevNext.nextLabel + ' >' }));
   }
 }
 
@@ -315,11 +338,28 @@ function renderTopbarMenu() {
   overlay.addEventListener('click', closeMenu);
 }
 
+function renderSectionNumber() {
+  if (typeof PAGE === 'undefined' || !PAGE.course || !PAGE.book || !PAGE.chapter) return;
+  if (PAGE.section === undefined || PAGE.section === null) return;
+  var book = navGetBook(PAGE.course, PAGE.book);
+  if (!book || !book.chapters) return;
+  var ci = -1;
+  for (var i = 0; i < book.chapters.length; i++) {
+    if (book.chapters[i].id === PAGE.chapter) { ci = i; break; }
+  }
+  if (ci === -1) return;
+  var h1 = document.querySelector('h1.page-title');
+  if (!h1) return;
+  var prefix = navEl('span', { text: 'Section ' + (ci + 1) + '.' + (PAGE.section + 1) + ' : ' });
+  h1.insertBefore(prefix, h1.firstChild);
+}
+
 /* Show / hide content blocks, used on lesson pages */
 document.addEventListener('DOMContentLoaded', function () {
   renderTopbarMenu();
   renderCrumb();
   renderTabs();
+  renderSectionNumber();
   renderBottomNav();
   renderHomeClassList();
   renderExtrasList();
