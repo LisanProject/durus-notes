@@ -138,7 +138,7 @@ function renderHomeClassList() {
       course.books.forEach(function (book) {
         var li = navEl('li');
         var strong = navEl('strong', { text: book.title });
-        li.appendChild(strong);
+        li.appendChild(document.createTextNode(book.title));;
         if (book.topics.length) {
           li.appendChild(document.createTextNode(' - ' + book.topics.map(function (t) { return t.title; }).join(', ') + '.'));
         } else {
