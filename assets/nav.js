@@ -242,6 +242,179 @@ function renderExtrasList() {
   wrap.appendChild(ul);
 }
 
+var ICON_SPRITE_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" style="display:none">' +
+  '<symbol id="icon-view" viewBox="0 0 24 24"><path d="M1,12 Q12,2 23,12 Q12,22 1,12 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/></symbol>' +
+  '<symbol id="icon-nav" viewBox="0 0 24 24"><polyline points="9,4 3,12 9,20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="15,4 21,12 15,20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>' +
+  '<symbol id="icon-download" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><polyline points="6,10 12,16 18,10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="4" y1="21" x2="20" y2="21" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>' +
+  '<symbol id="icon-print" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1" stroke="currentColor" stroke-width="2.5" fill="none"/><polyline points="7,9 7,3 17,3 17,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="7" y="15" width="10" height="6" rx="0.5" stroke="currentColor" stroke-width="2" fill="none"/><line x1="7" y1="13" x2="9.5" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>' +
+  '</svg>';
+
+function svgIcon(id) {
+  var span = navEl('span');
+  span.innerHTML = '<svg aria-hidden="true"><use href="#' + id + '"></use></svg>';
+  return span.firstChild;
+}
+
+function closeAllDropdowns(except) {
+  document.querySelectorAll('.jq-dropdown.open').forEach(function (d) {
+    if (d !== except) d.classList.remove('open');
+  });
+}
+
+function renderTopbarIcons() {
+  var header = document.getElementById('site-header');
+  if (!header || document.getElementById('content-top-menu')) return;
+
+  if (!document.getElementById('icon-sprite-root')) {
+    var spriteWrap = navEl('div');
+    spriteWrap.id = 'icon-sprite-root';
+    spriteWrap.innerHTML = ICON_SPRITE_SVG;
+    document.body.insertBefore(spriteWrap, document.body.firstChild);
+  }
+
+  var menu = navEl('div');
+  menu.id = 'content-top-menu';
+  header.appendChild(menu);
+
+  var course = (typeof PAGE !== 'undefined' && PAGE.course) ? navGetCourse(PAGE.course) : null;
+  var book = (course && PAGE.book) ? navGetBook(PAGE.course, PAGE.book) : null;
+  var prevNext = getPrevNextSection();
+
+  // ---- View menu (eye icon): Go To Notes/Practice/Assignment, Show/Hide all solutions ----
+  var viewBtn = navEl('button', { cls: 'top-menu-button' });
+  viewBtn.title = 'View (Notes, Practice Problems, Assignment Problems, Show/Hide Solutions) Menu';
+  viewBtn.appendChild(svgIcon('icon-view'));
+  var viewDropdown = navEl('div', { cls: 'jq-dropdown' });
+  var viewList = navEl('ul', { cls: 'jq-dropdown-menu' });
+  viewList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Go To' })));
+  if (course) {
+    var goToItems = [
+      { label: 'Notes', href: course.path, key: 'notes' },
+      { label: 'Practice Problems', href: course.practiceProblems, key: 'practice' },
+      { label: 'Assignment Problems', href: course.assignmentProblems, key: 'assignment' }
+    ];
+    goToItems.forEach(function (item) {
+      var li = navEl('li');
+      if (!item.href) return;
+      if (PAGE.activeTab === item.key) {
+        li.appendChild(navEl('span', { cls: 'current-view', text: item.label }));
+      } else {
+        li.appendChild(navEl('a', { href: item.href, text: item.label }));
+      }
+      viewList.appendChild(li);
+    });
+  }
+  viewList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Show / Hide' })));
+  var showAllLi = navEl('li');
+  var showAllBtn = navEl('a', { text: 'Show all Solutions/Steps' });
+  showAllBtn.href = 'javascript:void(0)';
+  showAllBtn.addEventListener('click', function () { toggleAllSolutions(true); });
+  showAllLi.appendChild(showAllBtn);
+  viewList.appendChild(showAllLi);
+  var hideAllLi = navEl('li');
+  var hideAllBtn = navEl('a', { text: 'Hide all Solutions/Steps' });
+  hideAllBtn.href = 'javascript:void(0)';
+  hideAllBtn.addEventListener('click', function () { toggleAllSolutions(false); });
+  hideAllLi.appendChild(hideAllBtn);
+  viewList.appendChild(hideAllLi);
+  viewDropdown.appendChild(viewList);
+
+  // ---- Quick nav menu (arrows icon): Next Section/Chapter, Classes, Extras ----
+  var navBtn = navEl('button', { cls: 'top-menu-button' });
+  navBtn.title = 'Quick Navigation (Previous/Next Sections, Classes, Extras) Menu';
+  navBtn.appendChild(svgIcon('icon-nav'));
+  var navDropdown = navEl('div', { cls: 'jq-dropdown' });
+  var navList = navEl('ul', { cls: 'jq-dropdown-menu' });
+  if (prevNext && (prevNext.prevHref || prevNext.nextHref)) {
+    navList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Sections' })));
+    if (prevNext.nextHref) navList.appendChild(wrapLi(navEl('a', { href: prevNext.nextHref, text: 'Next: ' + prevNext.nextLabel })));
+    if (prevNext.prevHref) navList.appendChild(wrapLi(navEl('a', { href: prevNext.prevHref, text: 'Prev: ' + prevNext.prevLabel })));
+  }
+  navList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Classes' })));
+  NAV.courses.forEach(function (c) {
+    navList.appendChild(wrapLi(navEl('a', { href: c.path, text: c.shortTitle || c.title })));
+  });
+  navList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Extras' })));
+  NAV.extras.forEach(function (ex) {
+    navList.appendChild(wrapLi(navEl('a', { href: ex.path, text: ex.title })));
+  });
+  navDropdown.appendChild(navList);
+
+  // ---- Download menu ----
+  var dlBtn = navEl('button', { cls: 'top-menu-button' });
+  dlBtn.title = 'Download PDF Menu';
+  dlBtn.appendChild(svgIcon('icon-download'));
+  var dlDropdown = navEl('div', { cls: 'jq-dropdown' });
+  var dlList = navEl('ul', { cls: 'jq-dropdown-menu' });
+  if (book && book.downloadPdf) {
+    dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Notes Downloads' })));
+    dlList.appendChild(wrapLi(navEl('a', { href: book.downloadPdf, text: 'Complete Book (' + book.title + ')' })));
+  } else {
+    dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-notice', text: 'A compiled PDF is not yet available for this book.' })));
+  }
+  dlDropdown.appendChild(dlList);
+
+  // ---- Print menu ----
+  var printBtn = navEl('button', { cls: 'top-menu-button' });
+  printBtn.title = 'Print Menu';
+  printBtn.appendChild(svgIcon('icon-print'));
+  var printDropdown = navEl('div', { cls: 'jq-dropdown' });
+  var printList = navEl('ul', { cls: 'jq-dropdown-menu' });
+  var printDefault = navEl('a', { text: 'Print Page in Current Form' });
+  printDefault.href = 'javascript:void(0)';
+  printDefault.addEventListener('click', function () { window.print(); });
+  printList.appendChild(wrapLi(printDefault));
+  var printShow = navEl('a', { text: 'Show all Solutions/Steps and Print' });
+  printShow.href = 'javascript:void(0)';
+  printShow.addEventListener('click', function () { toggleAllSolutions(true); setTimeout(window.print, 50); });
+  printList.appendChild(wrapLi(printShow));
+  var printHide = navEl('a', { text: 'Hide all Solutions/Steps and Print' });
+  printHide.href = 'javascript:void(0)';
+  printHide.addEventListener('click', function () { toggleAllSolutions(false); setTimeout(window.print, 50); });
+  printList.appendChild(wrapLi(printHide));
+  printDropdown.appendChild(printList);
+
+  [[viewBtn, viewDropdown], [navBtn, navDropdown], [dlBtn, dlDropdown], [printBtn, printDropdown]].forEach(function (pair) {
+    var btn = pair[0], dropdown = pair[1];
+    menu.appendChild(btn);
+    document.body.appendChild(dropdown);
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !dropdown.classList.contains('open');
+      closeAllDropdowns();
+      if (willOpen) {
+        var rect = btn.getBoundingClientRect();
+        dropdown.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+        dropdown.style.right = (window.innerWidth - rect.right) + 'px';
+        dropdown.classList.add('open');
+      }
+    });
+  });
+  document.addEventListener('click', function () { closeAllDropdowns(); });
+}
+
+function wrapLi(el) {
+  var li = navEl('li');
+  li.appendChild(el);
+  return li;
+}
+
+function toggleAllSolutions(open) {
+  document.querySelectorAll('.showhide-content, .example-solution-content').forEach(function (el) {
+    el.classList.toggle('open', open);
+  });
+  document.querySelectorAll('.showhide-btn').forEach(function (btn) {
+    var label = btn.dataset.label || 'Content';
+    btn.textContent = (open ? 'Hide ' : 'Show ') + label;
+  });
+  document.querySelectorAll('.example-solution-toggle').forEach(function (btn) {
+    btn.classList.toggle('open', open);
+    var textSpan = btn.querySelector('.toggle-text');
+    if (textSpan) textSpan.textContent = open ? 'Hide Solution' : 'Show Solution';
+  });
+}
+
 function renderTopbarMenu() {
   var header = document.getElementById('site-header');
   if (!header || document.getElementById('hamburger-btn')) return;
@@ -357,6 +530,7 @@ function renderSectionNumber() {
 /* Show / hide content blocks, used on lesson pages */
 document.addEventListener('DOMContentLoaded', function () {
   renderTopbarMenu();
+  renderTopbarIcons();
   renderCrumb();
   renderTabs();
   renderSectionNumber();

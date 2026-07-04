@@ -55,11 +55,38 @@ a:visited { color: var(--link-blue); }
 #site-header a.site-title:hover { color: #fff; }
 #site-header .site-tagline { display: none; } /* tagline now lives on the home page body, not the bar */
 
-.topbar-icon-btn {
-  background: none; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px;
-  color: #fff; cursor: pointer; padding: 5px 10px; font-size: 0.8rem;
+/* right-side icon menu: real .top-menu-button / .jq-dropdown values */
+#content-top-menu { display: flex; align-items: center; gap: 4px; margin-right: 8px; flex-shrink: 0; }
+.top-menu-button {
+  background: var(--maroon); color: #fff; border: 2px solid #fff;
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; padding: 0; box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 }
-.topbar-icon-btn:hover { background: rgba(255,255,255,0.15); }
+.top-menu-button:hover { background: #fff; color: var(--maroon); border-color: #ccc; }
+.top-menu-button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; }
+.top-menu-button:hover svg { stroke: var(--maroon); }
+
+.jq-dropdown {
+  position: absolute; display: none; z-index: 400;
+  background: #fff; border: 1px solid var(--maroon); border-radius: 4px;
+  min-width: 200px; max-width: 320px; padding: 4px 0;
+  box-shadow: 0 5px 10px rgba(0,0,0,.25);
+}
+.jq-dropdown.open { display: block; }
+.jq-dropdown-menu { list-style: none; margin: 0; padding: 0; }
+.jq-dropdown-menu li { margin: 0; }
+.jq-dropdown-nav-title {
+  background: var(--maroon); color: #fff; font-weight: bold; text-align: center;
+  border-radius: 10px; margin: 3px 8px !important; padding: 3px 0; font-size: 0.82rem;
+  text-shadow: 2px 2px 3px rgba(0,0,0,.8);
+}
+.jq-dropdown-menu li > a, .jq-dropdown-menu li > span {
+  display: block; padding: 5px 14px; font-size: 0.85rem; text-decoration: none; white-space: nowrap;
+}
+.jq-dropdown-menu li > a { color: var(--link-blue); font-weight: bold; }
+.jq-dropdown-menu li > a:hover { background: rgba(206,97,97,.25); }
+.jq-dropdown-menu li > span.current-view { background: rgba(206,97,97,.4); border-radius: 12px; margin: 0 8px; font-weight: bold; color: #000; }
+.jq-dropdown-notice { font-size: 0.78rem; color: #666; padding: 6px 14px; white-space: normal; max-width: 260px; }
 
 /* ══════════ SITE MENU PANEL (opens from the hamburger) ══════════ */
 #site-menu-overlay {

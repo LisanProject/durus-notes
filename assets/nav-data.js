@@ -26,6 +26,7 @@ var NAV = {
           id: "ajrumiyyah",
           title: "Al-Ajrumiyyah",
           path: "/Classes/Nahw/Ajrumiyyah/Ajrumiyyah.html",
+          downloadPdf: "/Downloads/Nahw/AlAjrumiyyah.pdf",
           chapters: [
             {
               id: "alkalam",
