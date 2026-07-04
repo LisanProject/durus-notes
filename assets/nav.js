@@ -28,29 +28,41 @@ function renderCrumb() {
 
   var course = PAGE.course ? navGetCourse(PAGE.course) : null;
   var book = (PAGE.course && PAGE.book) ? navGetBook(PAGE.course, PAGE.book) : null;
+  var chapter = (book && PAGE.chapter) ? navGetChapter(PAGE.course, PAGE.book, PAGE.chapter) : null;
 
   if (!course && PAGE.label) {
     pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
     pill.appendChild(navEl('span', { cls: 'current', text: PAGE.label }));
   }
 
-  if (course) {
-    pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
-    if (book || PAGE.topic !== undefined) {
-      pill.appendChild(navEl('a', { href: course.path, text: course.shortTitle || course.title }));
-    } else {
-      pill.appendChild(navEl('span', { cls: 'current', text: course.shortTitle || course.title }));
-    }
-  }
+  // breadcrumb starts at the Book level (Paul's "Class"), not the Course grouping
   if (book) {
     pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
-    if (PAGE.topic !== undefined && PAGE.topic !== null) {
+    if (chapter || PAGE.topic !== undefined) {
       pill.appendChild(navEl('a', { href: book.path, text: book.title }));
     } else {
       pill.appendChild(navEl('span', { cls: 'current', text: book.title }));
     }
+  } else if (course) {
+    pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
+    pill.appendChild(navEl('span', { cls: 'current', text: course.shortTitle || course.title }));
   }
-  if (book && PAGE.topic !== undefined && PAGE.topic !== null && book.topics[PAGE.topic]) {
+
+  if (chapter) {
+    pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
+    if (PAGE.section !== undefined && PAGE.section !== null) {
+      pill.appendChild(navEl('a', { href: chapter.path, text: chapter.title }));
+    } else {
+      pill.appendChild(navEl('span', { cls: 'current', text: chapter.title }));
+    }
+  }
+  if (chapter && PAGE.section !== undefined && PAGE.section !== null && chapter.sections[PAGE.section]) {
+    pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
+    pill.appendChild(navEl('span', { cls: 'current', text: chapter.sections[PAGE.section].title }));
+  }
+
+  // legacy flat topic (books without chapters yet)
+  if (book && !chapter && PAGE.topic !== undefined && PAGE.topic !== null && book.topics && book.topics[PAGE.topic]) {
     pill.appendChild(navEl('span', { cls: 'sep', text: ' / ' }));
     pill.appendChild(navEl('span', { cls: 'current', text: book.topics[PAGE.topic].title }));
   }
@@ -87,10 +99,40 @@ function renderTabs() {
 function renderBottomNav() {
   var row = document.getElementById('bottom-nav-row');
   if (!row || typeof PAGE === 'undefined' || !PAGE.course || !PAGE.book) return;
-  if (PAGE.topic === undefined || PAGE.topic === null) return;
   var book = navGetBook(PAGE.course, PAGE.book);
   if (!book) return;
 
+  // Chapter/Section hierarchy
+  if (PAGE.chapter && PAGE.section !== undefined && PAGE.section !== null && book.chapters) {
+    var chapters = book.chapters;
+    var ci = -1;
+    for (var i = 0; i < chapters.length; i++) { if (chapters[i].id === PAGE.chapter) { ci = i; break; } }
+    if (ci === -1) return;
+    var chapter = chapters[ci];
+    var sections = chapter.sections;
+    var si = PAGE.section;
+
+    var prevHref = null, prevLabel = null, nextHref = null, nextLabel = null;
+
+    if (sections[si - 1]) {
+      prevHref = sections[si - 1].path; prevLabel = '< ' + sections[si - 1].title;
+    } else {
+      prevHref = chapter.path; prevLabel = '< Back to ' + chapter.title;
+    }
+
+    if (sections[si + 1]) {
+      nextHref = sections[si + 1].path; nextLabel = sections[si + 1].title + ' >';
+    } else if (chapters[ci + 1]) {
+      nextHref = chapters[ci + 1].path; nextLabel = chapters[ci + 1].title + ' >';
+    }
+
+    row.appendChild(navEl('a', { cls: 'tab-pill', href: prevHref, text: prevLabel }));
+    if (nextHref) row.appendChild(navEl('a', { cls: 'tab-pill', href: nextHref, text: nextLabel }));
+    return;
+  }
+
+  // Legacy flat topic list (books without chapters yet)
+  if (PAGE.topic === undefined || PAGE.topic === null || !book.topics) return;
   var prev = book.topics[PAGE.topic - 1];
   var next = book.topics[PAGE.topic + 1];
 
@@ -138,7 +180,13 @@ function renderHomeClassList() {
       course.books.forEach(function (book) {
         var li = navEl('li');
         li.appendChild(document.createTextNode(book.title));
-        if (book.topics.length) {
+        if (book.chapters && book.chapters.length) {
+          var chapterText = book.chapters.map(function (ch) {
+            var sectionNames = ch.sections.map(function (s) { return s.title; }).join(', ');
+            return ch.title.replace(/^Chapter \d+:\s*/, '') + ' (' + sectionNames + ')';
+          }).join(', ');
+          li.appendChild(document.createTextNode(' - ' + chapterText + '.'));
+        } else if (book.topics && book.topics.length) {
           li.appendChild(document.createTextNode(' - ' + book.topics.map(function (t) { return t.title; }).join(', ') + '.'));
         } else {
           li.appendChild(document.createTextNode(' - coming soon.'));

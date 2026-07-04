@@ -26,10 +26,28 @@ var NAV = {
           id: "ajrumiyyah",
           title: "Al-Ajrumiyyah",
           path: "/Classes/Nahw/Ajrumiyyah/Ajrumiyyah.html",
-          topics: [
-            { title: "Lesson I: Introduction to Grammar", path: "/Classes/Nahw/Ajrumiyyah/Kalam.html" },
-            { title: "Lesson II: I'rab and the Word Categories", path: "/Classes/Nahw/Ajrumiyyah/IrabWordCategories.html" },
-            { title: "Lesson III: Signs of I'rab", path: "/Classes/Nahw/Ajrumiyyah/SignsOfIrab.html" }
+          chapters: [
+            {
+              id: "alkalam",
+              title: "Chapter 1: Al-Kalam",
+              path: "/Classes/Nahw/Ajrumiyyah/Chapters/AlKalamIntro.html",
+              sections: [
+                { title: "Kalam", path: "/Classes/Nahw/Ajrumiyyah/Chapters/Kalam.html" },
+                { title: "Word Types (Ism, Fi'l, Harf)", path: "/Classes/Nahw/Ajrumiyyah/Chapters/WordTypes.html" },
+                { title: "Signs of the Ism", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfIsm.html" },
+                { title: "Signs of the Fi'l", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfFil.html" }
+              ]
+            },
+            {
+              id: "alirab",
+              title: "Chapter 2: Al-I'rab",
+              path: "/Classes/Nahw/Ajrumiyyah/Chapters/AlIrabIntro.html",
+              sections: [
+                { title: "I'rab: Definition and the Word Categories", path: "/Classes/Nahw/Ajrumiyyah/Chapters/IrabWordCategories.html" },
+                { title: "Signs of Rafa", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfRafa.html" },
+                { title: "Signs of Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfNasb.html" }
+              ]
+            }
           ]
         },
         {
@@ -269,6 +287,16 @@ function navGetBook(courseId, bookId) {
   if (!course) return null;
   for (var i = 0; i < course.books.length; i++) {
     if (course.books[i].id === bookId) return course.books[i];
+  }
+  return null;
+}
+
+/* Look up a chapter object within a book by id */
+function navGetChapter(courseId, bookId, chapterId) {
+  var book = navGetBook(courseId, bookId);
+  if (!book || !book.chapters) return null;
+  for (var i = 0; i < book.chapters.length; i++) {
+    if (book.chapters[i].id === chapterId) return book.chapters[i];
   }
   return null;
 }
