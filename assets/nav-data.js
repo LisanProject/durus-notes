@@ -113,7 +113,36 @@ var NAV = {
           id: "waraqat",
           title: "Al-Waraqat",
           path: "/Classes/UsulFiqh/Waraqat/Waraqat.html",
-          topics: [{ title: "Introduction" }, { title: "The Four Sources (Usul)" }, { title: "Amm & Khass - General & Specific" }, { title: "Mujmal & Mubayyan; Zahir & Mu'awwal" }, { title: "Naskh - Abrogation" }, { title: "Ijtihad & Taqlid" }]
+          chapters: [
+            {
+              id: "almuqaddima",
+              title: "Chapter 1: Al-Muqaddima",
+              path: "/Classes/UsulFiqh/Waraqat/Chapters/AlMuqaddimaIntro.html",
+              sections: [
+                { title: "Foundational Terms", path: "/Classes/UsulFiqh/Waraqat/Chapters/FoundationalTerms.html" },
+                { title: "The Seven Ahkam", path: "/Classes/UsulFiqh/Waraqat/Chapters/TheSevenAhkam.html" },
+                { title: "Knowledge and Ignorance", path: "/Classes/UsulFiqh/Waraqat/Chapters/KnowledgeAndIgnorance.html" },
+                { title: "Usul al-Fiqh and Its Chapters", path: "/Classes/UsulFiqh/Waraqat/Chapters/UsulAlFiqhChapters.html" }
+              ]
+            },
+            {
+              id: "aqsamalkalam",
+              title: "Chapter 2: Aqsam al-Kalam",
+              path: "/Classes/UsulFiqh/Waraqat/Chapters/AqsamAlKalamIntro.html",
+              sections: [
+                { title: "The Structure of Speech", path: "/Classes/UsulFiqh/Waraqat/Chapters/StructureOfSpeech.html" },
+                { title: "Haqiqa and Majaz", path: "/Classes/UsulFiqh/Waraqat/Chapters/HaqiqaAndMajaz.html" }
+              ]
+            },
+            {
+              id: "alamrwalnahy",
+              title: "Chapter 3: Al-Amr wa'l-Nahy",
+              path: "/Classes/UsulFiqh/Waraqat/Chapters/AlAmrWalNahyIntro.html",
+              sections: [
+                { title: "Al-Amr (Command)", path: "/Classes/UsulFiqh/Waraqat/Chapters/AlAmr.html" }
+              ]
+            }
+          ]
         },
         {
           id: "qurratalaynbisharhwaraqat",
