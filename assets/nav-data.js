@@ -297,10 +297,12 @@ var NAV = {
 
   extras: [
     { title: "How to Study the Islamic Sciences", path: "/Extras/HowToStudy/HowToStudy.html" },
+    { title: "Reviews", path: "/Extras/Reviews.html" },
     { title: "Khutbah a Week", path: "/Extras/Khutbah.html" },
     { title: "Essays", path: "/Extras/Essays.html" },
     { title: "Reading Recommendations", path: "/Extras/ReadingRecs.html" },
-    { title: "Ijazat", path: "/Classes/Ijazat/Ijazat.html" }
+    { title: "Ijazat", path: "/Classes/Ijazat/Ijazat.html" },
+    { title: "Uploads and Extras", path: "/Extras/Uploads.html" }
   ]
 };
 
