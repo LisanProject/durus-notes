@@ -285,4 +285,14 @@ document.addEventListener('DOMContentLoaded', function () {
       this.textContent = (open ? 'Hide ' : 'Show ') + label;
     });
   });
+
+  document.querySelectorAll('.example-solution-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var box = document.getElementById(this.dataset.target);
+      var open = box.classList.toggle('open');
+      this.classList.toggle('open', open);
+      var textSpan = this.querySelector('.toggle-text');
+      if (textSpan) textSpan.textContent = open ? 'Hide Solution' : 'Show Solution';
+    });
+  });
 });
