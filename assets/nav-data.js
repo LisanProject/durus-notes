@@ -177,17 +177,59 @@ var NAV = {
           id: "sharhalaqbawi",
           title: "Sharh al-Aqbawi (Aqidah Tawhidiyyah)",
           path: "/Classes/Aqidah/SharhAlaqbawi/SharhAlaqbawi.html",
-          topics: [
-            { title: "The Khutbah, the Basmala, and the Mukallaf" },
-            { title: "Why Twenty Attributes?" },
-            { title: "Existence, Pre-Eternity, and Everlastingness" },
-            { title: "Unlike Creation, Dependent on Nothing" },
-            { title: "Divine Oneness in Essence, Attributes, and Acts" },
-            { title: "The Three Rational Laws and the Proof of Life" },
-            { title: "Life, Knowledge, Will, and Power" },
-            { title: "Hearing, Sight, and Speech" },
-            { title: "Certainty, the Ahad Hadith, and Common Misconceptions" },
-            { title: "The Prophets and the Unseen (Sam'iyyat)" }
+          chapters: [
+            {
+              id: "foundations",
+              title: "Chapter 1: Foundations",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/FoundationsIntro.html",
+              sections: [
+                { title: "The Khutbah, the Basmala, and the Mukallaf", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/IntroBasmalaMukallaf.html" },
+                { title: "Why Twenty Attributes?", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/TwentyAttributes.html" }
+              ]
+            },
+            {
+              id: "negatingattributes",
+              title: "Chapter 2: The Negating Attributes",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/NegatingAttributesIntro.html",
+              sections: [
+                { title: "Existence, Pre-Eternity, and Everlastingness", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/WujudQidamBaqa.html" },
+                { title: "Unlike Creation, Dependent on Nothing", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/MukhalafahQiyam.html" },
+                { title: "Divine Oneness in Essence, Attributes, and Acts", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/Wahdaniyyah.html" }
+              ]
+            },
+            {
+              id: "rationaltheology",
+              title: "Chapter 3: Rational Theology",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/RationalTheologyIntro.html",
+              sections: [
+                { title: "The Three Rational Laws and the Proof of Life", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/RationalProofs.html" }
+              ]
+            },
+            {
+              id: "attributesofmeaning",
+              title: "Chapter 4: The Attributes of Meaning",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/AttributesOfMeaningIntro.html",
+              sections: [
+                { title: "Life, Knowledge, Will, and Power", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/HayahIlmIradahQudrah.html" },
+                { title: "Hearing, Sight, and Speech", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/SamBasarKalam.html" }
+              ]
+            },
+            {
+              id: "certainty",
+              title: "Chapter 5: Certainty and Objections",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/CertaintyIntro.html",
+              sections: [
+                { title: "Certainty, the Ahad Hadith, and Common Misconceptions", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/CertaintyAndMisconceptions.html" }
+              ]
+            },
+            {
+              id: "prophets",
+              title: "Chapter 6: The Prophets and the Unseen",
+              path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/ProphetsIntro.html",
+              sections: [
+                { title: "The Prophets and the Unseen (Sam'iyyat)", path: "/Classes/Aqidah/SharhAlaqbawi/Chapters/ProphetsAndSamiyyat.html" }
+              ]
+            }
           ]
         },
         {
