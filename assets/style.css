@@ -303,6 +303,14 @@ li { margin-bottom: 0.45em; }
 }
 .lesson-subtitle .ar { font-family: 'Amiri', serif; font-weight: 400; color: #555; font-size: 0.9em; margin-left: 8px; }
 
+/* Definition highlighting for newly introduced terms, matching Paul's notes convention */
+.term-def { color: var(--link-blue); font-weight: 700; }
+
+/* Practice/Assignment Problems index page, styled after Paul's chapter/section listing */
+a.introlink, span.introlink { color: var(--link-blue); font-weight: bold; }
+.indent { margin-left: 28px; }
+.indent br { line-height: 2.4; }
+
 /* ══════════ SHOW / HIDE (Paul's real .SH-Link bracket-wrapped style) ══════════ */
 .showhide-btn {
   background: none; border: none; padding: 0;
