@@ -271,7 +271,20 @@ var NAV = {
           id: "alarbainalnawawiyyah",
           title: "Al-Arba'in al-Nawawiyyah",
           path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html",
-          topics: [{ title: "Hadith 1-5 - Intentions & Foundations" }, { title: "Hadith 6-15 - Halal, Haram & Doubt" }, { title: "Hadith 16-28 - Rights & Conduct" }, { title: "Hadith 29-42 - Faith, Zuhd & Conclusion" }]
+          chapters: [
+            {
+              id: "intentions",
+              title: "Hadith 1-5 - Intentions & Foundations",
+              path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html",
+              sections: [
+                { title: "Hadith 1: Actions Are Judged by Intentions", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html" },
+                { title: "Hadith 2: The Hadith of Jibril", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith2Jibril.html" }
+              ]
+            },
+            { id: "halalharam", title: "Hadith 6-15 - Halal, Haram & Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
+            { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
+            { id: "faithzuhd", title: "Hadith 29-42 - Faith, Zuhd & Conclusion", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] }
+          ]
         },
         {
           id: "alshamailalmuhammadiyyah",
@@ -298,10 +311,30 @@ var NAV = {
           topics: [{ title: "Lines 1-10 - Sahih, Hasan, Da'if" }, { title: "Lines 11-20 - Mawquf, Maqtu', Musnad, Muttasil" }, { title: "Lines 21-34 - Shadhdh, Munkar, Mawdu' & More" }]
         },
         {
-          id: "nukhbatalfikar",
-          title: "Nukhbat al-Fikar",
-          path: "/Classes/Hadith/NukhbatAlfikar/NukhbatAlfikar.html",
-          topics: []
+          id: "nuzhatalnazar",
+          title: "Nuzhat al-Nazar",
+          path: "/Classes/Hadith/NuzhatAlnazar/NuzhatAlnazar.html",
+          chapters: [
+            {
+              id: "foundations",
+              title: "Foundations of the Science",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HistoryOfMustalah.html",
+              sections: [
+                { title: "The Historical Development of Mustalah al-Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HistoryOfMustalah.html" },
+                { title: "Scholarly Integrity, Ijazah, and the Chain of Transmission", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IjazahAndTransmission.html" },
+                { title: "Khabar, Hadith, Athar, and Sunnah", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/KhabarHadithAtharSunnah.html" },
+                { title: "Islamic Epistemology: Naqli and Aqli Knowledge", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IslamicEpistemology.html" }
+              ]
+            },
+            {
+              id: "mutawatirahad",
+              title: "Classification by Number of Narrators",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html",
+              sections: [
+                { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" }
+              ]
+            }
+          ]
         },
         {
           id: "iktisarulumalhadith",

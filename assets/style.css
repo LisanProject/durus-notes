@@ -298,6 +298,9 @@ li { margin-bottom: 0.45em; }
 .lesson-block + .lesson-block {
   border-top: 1px solid #e8d8d8; padding-top: 6px; margin-top: 22px;
 }
+body.course-aqeedah .lesson-block + .lesson-block {
+  border-top: none;
+}
 .lesson-subtitle {
   font-size: 1.05rem; font-weight: 700; color: #111; margin: 1.6em 0 0.2em;
 }

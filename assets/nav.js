@@ -529,6 +529,9 @@ function renderSectionNumber() {
 
 /* Show / hide content blocks, used on lesson pages */
 document.addEventListener('DOMContentLoaded', function () {
+  if (typeof PAGE !== 'undefined' && PAGE.course) {
+    document.body.classList.add('course-' + PAGE.course);
+  }
   renderTopbarMenu();
   renderTopbarIcons();
   renderCrumb();
