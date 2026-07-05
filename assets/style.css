@@ -311,6 +311,16 @@ a.introlink, span.introlink { color: var(--link-blue); font-weight: bold; }
 .indent { margin-left: 28px; }
 .indent br { line-height: 2.4; }
 
+/* Section problem-list pages (numbered problems + Solution links) */
+ol.practice-problems { margin-left: 4px; }
+ol.practice-problems li { margin-bottom: 22px; }
+a.practice-soln-link { margin-left: 10px; font-weight: bold; }
+
+/* Individual solution pages */
+.align-right { text-align: right; margin-bottom: 14px; font-weight: bold; }
+.soln-nav-row { margin-top: 24px; padding-top: 12px; border-top: 1px solid #ddd; font-weight: bold; }
+.soln-nav-row a { margin-right: 20px; }
+
 /* ══════════ SHOW / HIDE (Paul's real .SH-Link bracket-wrapped style) ══════════ */
 .showhide-btn {
   background: none; border: none; padding: 0;
