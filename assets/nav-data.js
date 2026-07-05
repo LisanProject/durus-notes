@@ -177,7 +177,18 @@ var NAV = {
           id: "sharhalaqbawi",
           title: "Sharh al-Aqbawi (Aqidah Tawhidiyyah)",
           path: "/Classes/Aqidah/SharhAlaqbawi/SharhAlaqbawi.html",
-          topics: [{ title: "The Attributes of Allah - Wajib, Mustahil, Ja'iz" }, { title: "The Messengers - Their Attributes" }]
+          topics: [
+            { title: "The Khutbah, the Basmala, and the Mukallaf" },
+            { title: "Why Twenty Attributes?" },
+            { title: "Existence, Pre-Eternity, and Everlastingness" },
+            { title: "Unlike Creation, Dependent on Nothing" },
+            { title: "Divine Oneness in Essence, Attributes, and Acts" },
+            { title: "The Three Rational Laws and the Proof of Life" },
+            { title: "Life, Knowledge, Will, and Power" },
+            { title: "Hearing, Sight, and Speech" },
+            { title: "Certainty, the Ahad Hadith, and Common Misconceptions" },
+            { title: "The Prophets and the Unseen (Sam'iyyat)" }
+          ]
         },
         {
           id: "aqidaalsharnubiyyah",
