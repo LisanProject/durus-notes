@@ -350,6 +350,7 @@ var NAV = {
 
   extras: [
     { title: "How to Study the Islamic Sciences", path: "/Extras/HowToStudy/HowToStudy.html" },
+    { title: "Debunking Claims Made Against Ash'ariyyah", path: "/Extras/DebunkingAshariClaims.html" },
     { title: "Reviews", path: "/Extras/Reviews.html" },
     { title: "Khutbah a Week", path: "/Extras/Khutbah.html" },
     { title: "Essays", path: "/Extras/Essays.html" },
