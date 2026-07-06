@@ -133,7 +133,7 @@ a:visited { color: var(--link-blue); }
 .sm-row:hover { padding-left: 26px; }
 .sm-row .sm-row-link { color: var(--link-blue); flex: 1; pointer-events: none; }
 .sm-row .sm-chevron { color: #999; font-size: 18px; pointer-events: none; }
-a.sm-row-link { text-decoration: none; pointer-events: auto; }
+.sm-row a.sm-row-link { text-decoration: none; pointer-events: auto; }
 .sm-view-notes { color: var(--maroon) !important; }
 
 /* drilled-down course screen header: breadcrumb + close X, like the reference image */
