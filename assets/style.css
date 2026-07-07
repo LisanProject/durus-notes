@@ -317,8 +317,8 @@ body.course-aqeedah .lesson-block + .lesson-block {
 .fact-content p:first-child { margin-top: 0; }
 .fact-content p:last-child { margin-bottom: 0; }
 .fact-num { flex: 0 0 auto; font-weight: bold; color: #000; white-space: nowrap; }
-.fact-ref { color: var(--link-blue); font-weight: bold; }
-.term-def { color: var(--link-blue); font-weight: 700; }
+.fact-ref { color: var(--maroon); font-weight: bold; }
+.term-def { color: var(--maroon); font-weight: 700; }
 
 /* ══════════ SHOW / HIDE (Paul's real .SH-Link bracket-wrapped style) ══════════ */
 .showhide-btn {
