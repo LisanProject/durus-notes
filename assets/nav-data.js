@@ -76,92 +76,51 @@ var NAV = {
       title: "Arabic",
       shortTitle: "Arabic",
       path: "/Classes/ArabicSpeaking/ArabicSpeaking.html",
-      intro: "Communicative Arabic, picked up at the level actually being studied rather than from the beginning. The path runs 104, 105, 201, 202, 221. Each lesson holds notes, vocabulary, practice exercises, and a short writing prompt together on one page.",
+      practiceProblems: "/Classes/ArabicSpeaking/PracticeProblems.html",
+      assignmentProblems: "/Classes/ArabicSpeaking/AssignmentProblems.html",
+      intro: "Communicative Arabic, picked up at the level actually being studied rather than from the beginning. The path runs 104, 105, 201, 202, 213, 214, 221. Each book page holds vocabulary by unit; speaking and writing practice for that vocabulary lives on the Practice Problems and Assignment Problems pages.",
       books: [
         {
           id: "altakallum104",
           title: "104",
           path: "/Classes/ArabicSpeaking/AlTakallum104/AlTakallum104.html",
-          chapters: [
-            { id: "lesson1", title: "Lesson 1", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson1.html", sections: [] },
-            { id: "lesson2", title: "Lesson 2", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson2.html", sections: [] },
-            { id: "lesson3", title: "Lesson 3", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson3.html", sections: [] },
-            { id: "lesson4", title: "Lesson 4", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson4.html", sections: [] },
-            { id: "lesson5", title: "Lesson 5", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson5.html", sections: [] },
-            { id: "lesson6", title: "Lesson 6", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson6.html", sections: [] },
-            { id: "lesson7", title: "Lesson 7", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson7.html", sections: [] },
-            { id: "lesson8", title: "Lesson 8", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson8.html", sections: [] },
-            { id: "lesson9", title: "Lesson 9", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson9.html", sections: [] },
-            { id: "lesson10", title: "Lesson 10", path: "/Classes/ArabicSpeaking/AlTakallum104/Chapters/Lesson10.html", sections: [] }
-          ]
+          topics: [{ title: "Unit 5 - Times and Prices" }, { title: "Unit 6 - Vacation" }]
         },
         {
           id: "altakallum105",
           title: "105",
           path: "/Classes/ArabicSpeaking/AlTakallum105/AlTakallum105.html",
-          chapters: [
-            { id: "lesson1", title: "Lesson 1", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson1.html", sections: [] },
-            { id: "lesson2", title: "Lesson 2", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson2.html", sections: [] },
-            { id: "lesson3", title: "Lesson 3", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson3.html", sections: [] },
-            { id: "lesson4", title: "Lesson 4", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson4.html", sections: [] },
-            { id: "lesson5", title: "Lesson 5", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson5.html", sections: [] },
-            { id: "lesson6", title: "Lesson 6", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson6.html", sections: [] },
-            { id: "lesson7", title: "Lesson 7", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson7.html", sections: [] },
-            { id: "lesson8", title: "Lesson 8", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson8.html", sections: [] },
-            { id: "lesson9", title: "Lesson 9", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson9.html", sections: [] },
-            { id: "lesson10", title: "Lesson 10", path: "/Classes/ArabicSpeaking/AlTakallum105/Chapters/Lesson10.html", sections: [] }
-          ]
+          topics: [{ title: "Unit 7 - Daily Life" }, { title: "Unit 8 - Weather & Clothes" }]
         },
         {
           id: "altakallum201",
           title: "201",
           path: "/Classes/ArabicSpeaking/AlTakallum201/AlTakallum201.html",
-          chapters: [
-            { id: "lesson1", title: "Lesson 1", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson1.html", sections: [] },
-            { id: "lesson2", title: "Lesson 2", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson2.html", sections: [] },
-            { id: "lesson3", title: "Lesson 3", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson3.html", sections: [] },
-            { id: "lesson4", title: "Lesson 4", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson4.html", sections: [] },
-            { id: "lesson5", title: "Lesson 5", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson5.html", sections: [] },
-            { id: "lesson6", title: "Lesson 6", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson6.html", sections: [] },
-            { id: "lesson7", title: "Lesson 7", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson7.html", sections: [] },
-            { id: "lesson8", title: "Lesson 8", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson8.html", sections: [] },
-            { id: "lesson9", title: "Lesson 9", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson9.html", sections: [] },
-            { id: "lesson10", title: "Lesson 10", path: "/Classes/ArabicSpeaking/AlTakallum201/Chapters/Lesson10.html", sections: [] }
-          ]
+          topics: [{ title: "Unit 1 - Travel via Cairo" }, { title: "Unit 2 - Residence" }]
         },
         {
           id: "altakallum202",
           title: "202",
           path: "/Classes/ArabicSpeaking/AlTakallum202/AlTakallum202.html",
-          chapters: [
-            { id: "lesson1", title: "Lesson 1", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson1.html", sections: [] },
-            { id: "lesson2", title: "Lesson 2", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson2.html", sections: [] },
-            { id: "lesson3", title: "Lesson 3", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson3.html", sections: [] },
-            { id: "lesson4", title: "Lesson 4", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson4.html", sections: [] },
-            { id: "lesson5", title: "Lesson 5", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson5.html", sections: [] },
-            { id: "lesson6", title: "Lesson 6", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson6.html", sections: [] },
-            { id: "lesson7", title: "Lesson 7", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson7.html", sections: [] },
-            { id: "lesson8", title: "Lesson 8", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson8.html", sections: [] },
-            { id: "lesson9", title: "Lesson 9", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson9.html", sections: [] },
-            { id: "lesson10", title: "Lesson 10", path: "/Classes/ArabicSpeaking/AlTakallum202/Chapters/Lesson10.html", sections: [] }
-          ]
+          topics: [{ title: "Unit 3 - Health" }, { title: "Unit 4 - Shopping" }]
+        },
+        {
+          id: "altakallum213",
+          title: "213",
+          path: "/Classes/ArabicSpeaking/AlTakallum213/AlTakallum213.html",
+          topics: [{ title: "Unit 5 - Work" }, { title: "Unit 6 - Sightseeing" }]
+        },
+        {
+          id: "altakallum214",
+          title: "214",
+          path: "/Classes/ArabicSpeaking/AlTakallum214/AlTakallum214.html",
+          topics: [{ title: "Unit 7 - Describing People" }, { title: "Unit 8 - Religious Feasts & Occasions" }]
         },
         {
           id: "altakallum221",
           title: "221",
           path: "/Classes/ArabicSpeaking/AlTakallum221/AlTakallum221.html",
-          chapters: [
-            { id: "lesson1", title: "Lesson 1", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson1.html", sections: [] },
-            { id: "lesson2", title: "Lesson 2", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson2.html", sections: [] },
-            { id: "lesson3", title: "Lesson 3", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson3.html", sections: [] },
-            { id: "lesson4", title: "Lesson 4", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson4.html", sections: [] },
-            { id: "lesson5", title: "Lesson 5", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson5.html", sections: [] },
-            { id: "lesson6", title: "Lesson 6", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson6.html", sections: [] },
-            { id: "lesson7", title: "Lesson 7", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson7.html", sections: [] },
-            { id: "lesson8", title: "Lesson 8", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson8.html", sections: [] },
-            { id: "lesson9", title: "Lesson 9", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson9.html", sections: [] },
-            { id: "lesson10", title: "Lesson 10", path: "/Classes/ArabicSpeaking/AlTakallum221/Chapters/Lesson10.html", sections: [] }
-          ]
+          topics: [{ title: "Unit 1 - Very Funny" }, { title: "Unit 2 - Nature" }]
         }
       ]
     },
