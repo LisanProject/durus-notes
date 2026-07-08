@@ -73,8 +73,8 @@ var NAV = {
     },
     {
       id: "arabic-speaking",
-      title: "Arabic Speaking",
-      shortTitle: "Speaking",
+      title: "Arabic",
+      shortTitle: "Arabic",
       path: "/Classes/ArabicSpeaking/ArabicSpeaking.html",
       intro: "Communicative Arabic, picked up at the level actually being studied rather than from the beginning. The path runs 104, 105, 201, 202, 221. Each lesson holds notes, vocabulary, practice exercises, and a short writing prompt together on one page.",
       books: [

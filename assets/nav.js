@@ -204,11 +204,17 @@ function renderHomeClassList() {
         var li = navEl('li');
         li.appendChild(document.createTextNode(book.title));
         if (book.chapters && book.chapters.length) {
-          var chapterText = book.chapters.map(function (ch) {
-            var sectionNames = ch.sections.map(function (s) { return s.title; }).join(', ');
-            return ch.title.replace(/^Chapter \d+:\s*/, '') + ' (' + sectionNames + ')';
-          }).join(', ');
-          li.appendChild(document.createTextNode(' - ' + chapterText + '.'));
+          var anyRealContent = book.chapters.some(function (ch) { return ch.sections.length > 0; });
+          if (anyRealContent) {
+            var chapterText = book.chapters.map(function (ch) {
+              var sectionNames = ch.sections.map(function (s) { return s.title; }).join(', ');
+              var cleanTitle = ch.title.replace(/^Chapter \d+:\s*/, '');
+              return sectionNames ? cleanTitle + ' (' + sectionNames + ')' : cleanTitle;
+            }).join(', ');
+            li.appendChild(document.createTextNode(' - ' + chapterText + '.'));
+          } else {
+            li.appendChild(document.createTextNode(' - ' + book.chapters.length + ' lessons, notes added as each is completed.'));
+          }
         } else if (book.topics && book.topics.length) {
           li.appendChild(document.createTextNode(' - ' + book.topics.map(function (t) { return t.title; }).join(', ') + '.'));
         } else {
