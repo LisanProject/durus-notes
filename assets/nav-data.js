@@ -416,7 +416,27 @@ var NAV = {
           id: "tuhfatalatfal",
           title: "Tuhfat al-Atfal",
           path: "/Classes/Quran/TuhfatAlatfal/TuhfatAlatfal.html",
-          topics: [{ title: "Lines 1-10 - Introduction & Nun Sakinah" }, { title: "Lines 11-20 - Mim Sakinah & Shaddah" }, { title: "Lines 21-40 - Madd (Prolongation)" }, { title: "Lines 41-61 - Lam, Ra' & Conclusion" }]
+          chapters: [
+            {
+              id: "muqaddimah",
+              title: "Chapter 1: Introduction",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/IntroIntro.html",
+              sections: [
+                { title: "The Opening of the Poem", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Muqaddimah.html" }
+              ]
+            },
+            {
+              id: "noonsakinah",
+              title: "Chapter 2: Rules of the Noon Sakinah and Tanween",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/NoonSakinahIntro.html",
+              sections: [
+                { title: "Idhhar Halqi (Clear Pronunciation)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/IdhharHalqi.html" },
+                { title: "Idgham (Assimilation)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Idgham.html" },
+                { title: "Iqlab (Conversion)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Iqlab.html" },
+                { title: "Ikhfa' (Concealment)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Ikhfa.html" }
+              ]
+            }
+          ]
         },
         {
           id: "matnaljazariyyah",
