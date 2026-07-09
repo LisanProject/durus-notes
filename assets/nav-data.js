@@ -435,6 +435,69 @@ var NAV = {
                 { title: "Iqlab (Conversion)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Iqlab.html" },
                 { title: "Ikhfa' (Concealment)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/Ikhfa.html" }
               ]
+            },
+            {
+              id: "meemsakinah",
+              title: "Chapter 3: Rules of the Meem Sakinah",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/MeemSakinahIntro.html",
+              sections: [
+                { title: "Ikhfa' Shafawi and Idgham Shafawi", path: "/Classes/Quran/TuhfatAlatfal/Chapters/IkhfaIdghamShafawi.html" },
+                { title: "Izhar Shafawi", path: "/Classes/Quran/TuhfatAlatfal/Chapters/IzharShafawi.html" }
+              ]
+            },
+            {
+              id: "lamrules",
+              title: "Chapter 4: The Lam of Al and the Lam of the Verb",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/LamRulesIntro.html",
+              sections: [
+                { title: "Lam Qamariyyah", path: "/Classes/Quran/TuhfatAlatfal/Chapters/LamQamariyyah.html" },
+                { title: "Lam Shamsiyyah", path: "/Classes/Quran/TuhfatAlatfal/Chapters/LamShamsiyyah.html" },
+                { title: "The Lam of the Verb", path: "/Classes/Quran/TuhfatAlatfal/Chapters/LamOfTheVerb.html" }
+              ]
+            },
+            {
+              id: "letterrelationships",
+              title: "Chapter 5: Mithlayn, Mutajanisayn, and Mutaqaribayn",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/LetterRelationshipsIntro.html",
+              sections: [
+                { title: "The Three Letter Relationships", path: "/Classes/Quran/TuhfatAlatfal/Chapters/ThreeLetterRelationships.html" },
+                { title: "Saghir and Kabir", path: "/Classes/Quran/TuhfatAlatfal/Chapters/SaghirKabir.html" }
+              ]
+            },
+            {
+              id: "maddtypes",
+              title: "Chapter 6: The Types of Madd",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddTypesIntro.html",
+              sections: [
+                { title: "Madd Asli (Tabi'i)", path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddAsli.html" },
+                { title: "The Letters of Madd and Madd al-Leen", path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddAlLeen.html" }
+              ]
+            },
+            {
+              id: "maddrulings",
+              title: "Chapter 7: The Rulings of the Madd",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddRulingsIntro.html",
+              sections: [
+                { title: "Madd Wajib and Madd Jaiz", path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddWajibJaiz.html" },
+                { title: "Madd Lazim", path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddLazimRuling.html" }
+              ]
+            },
+            {
+              id: "maddlazimtypes",
+              title: "Chapter 8: The Types of Madd Lazim",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/MaddLazimTypesIntro.html",
+              sections: [
+                { title: "Kilmi and Harfi, Mukhaffaf and Muthaqqal", path: "/Classes/Quran/TuhfatAlatfal/Chapters/KilmiHarfi.html" },
+                { title: "The Huruf Muqatta'at at the Openings of Surahs", path: "/Classes/Quran/TuhfatAlatfal/Chapters/HurufMuqattaat.html" }
+              ]
+            },
+            {
+              id: "conclusion",
+              title: "Chapter 9: Conclusion of the Poem",
+              path: "/Classes/Quran/TuhfatAlatfal/Chapters/ConclusionIntro.html",
+              sections: [
+                { title: "Closing Verses and the Abjad Calculation", path: "/Classes/Quran/TuhfatAlatfal/Chapters/ClosingVerses.html" }
+              ]
             }
           ]
         },
