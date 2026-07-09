@@ -373,6 +373,17 @@ body.course-aqeedah .lesson-block + .lesson-block {
 }
 .warn-box strong { display: block; margin-bottom: 4px; color: #7a5500; }
 
+/* ══════════ TYPE BOX (cyan; for "the N types/senses of X" breakdowns) ══════════ */
+.type-box {
+  border: 1px solid #7dd3e0; background: #eafbfd;
+  border-radius: 4px; padding: 12px 16px; margin: 16px 0; font-size: 14.5px;
+}
+.type-box strong { display: block; margin-bottom: 8px; color: #007a8a; }
+.type-box ul { list-style: none; padding: 0; margin: 0; }
+.type-box li { padding: 5px 0 5px 14px; border-left: 3px solid #7dd3e0; margin-bottom: 6px; }
+.type-box li:last-child { margin-bottom: 0; }
+.type-box .type-name { font-weight: 700; color: #007a8a; }
+
 /* ══════════ TABLES ══════════ */
 table.terms { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
 table.terms th { background: var(--maroon); color: #fff; padding: 7px 12px; text-align: left; }
