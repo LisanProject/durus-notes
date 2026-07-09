@@ -55,18 +55,21 @@ var NAV = {
           id: "qatralnada",
           title: "Qatr al-Nada wa Ball al-Sada",
           path: "/Classes/Nahw/QatrAlNada/QatrAlNada.html",
+          stub: true,
           topics: [{ title: "Definitions & Divisions of the Word" }, { title: "I'rab in Detail" }, { title: "The Complete Marfu'at" }, { title: "The Complete Mansubat" }, { title: "Particles & Their Grammatical Effects" }]
         },
         {
           id: "qawaidalirab",
           title: "Qawa'id al-I'rab",
           path: "/Classes/Nahw/QawaidAlirab/QawaidAlirab.html",
+          stub: true,
           topics: [{ title: "Principles of I'rab" }, { title: "Particles & Their Parsing" }, { title: "Qur'anic I'rab Exercises" }]
         },
         {
           id: "alfiyyah",
           title: "Alfiyyat Ibn Malik",
           path: "/Classes/Nahw/Alfiyyah/Alfiyyah.html",
+          stub: true,
           topics: [{ title: "Lines 1-50 - Kalam & I'rab Foundations" }, { title: "" }]
         },
       ]
@@ -137,18 +140,21 @@ var NAV = {
           id: "mukhtasarallatif",
           title: "Mukhtasar al-Latif",
           path: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html",
+          stub: true,
           topics: [{ title: "Taharah - Purity" }, { title: "Salah - Prayer" }, { title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
         },
         {
           id: "matnabishuja",
           title: "Matn Abi Shuja' (Al-Ghayah wal-Taqrib)",
           path: "/Classes/Fiqh/MatnAbiShuja/MatnAbiShuja.html",
+          stub: true,
           topics: [{ title: "Taharah" }, { title: "Salah" }, { title: "Zakah, Fasting, Hajj" }, { title: "Transactions (Buyu')" }, { title: "Inheritance (Fara'id)" }]
         },
         {
           id: "fiqhalmanhaji",
           title: "Fiqh al-Manhaji",
           path: "/Classes/Fiqh/FiqhAlmanhaji/FiqhAlmanhaji.html",
+          stub: true,
           topics: [{ title: "Taharah" }, { title: "Salah" }, { title: "Zakah" }, { title: "Sawm, Hajj, Transactions, Family Law" }]
         },
       ]
@@ -201,18 +207,21 @@ var NAV = {
           id: "qurratalaynbisharhwaraqat",
           title: "Qurrat al-Ayn bi-Sharh Waraqat Imam al-Haramayn",
           path: "/Classes/UsulFiqh/QurratAlaynBisharhWaraqat/QurratAlaynBisharhWaraqat.html",
+          stub: true,
           topics: []
         },
         {
           id: "alluma",
           title: "Al-Luma'",
           path: "/Classes/UsulFiqh/Alluma/Alluma.html",
+          stub: true,
           topics: [{ title: "Sources of Law in Detail" }, { title: "Qiyas - Analogical Reasoning" }, { title: "Disagreement (Ikhtilaf) & Its Rules" }]
         },
         {
           id: "jamaljawami",
           title: "Jam' al-Jawami'",
           path: "/Classes/UsulFiqh/JamAljawami/JamAljawami.html",
+          stub: true,
           topics: []
         },
       ]
@@ -289,24 +298,28 @@ var NAV = {
           id: "aqidaalsharnubiyyah",
           title: "Aqida al-Sharnubiyyah",
           path: "/Classes/Aqidah/AqidaAlsharnubiyyah/AqidaAlsharnubiyyah.html",
+          stub: true,
           topics: []
         },
         {
           id: "alkharidahalbahiyyah",
           title: "Al-Kharidah al-Bahiyyah",
           path: "/Classes/Aqidah/AlkharidahAlbahiyyah/AlkharidahAlbahiyyah.html",
+          stub: true,
           topics: [{ title: "Lines 1-20 - Necessary Attributes of Allah" }, { title: "Lines 21-45 - Attributes of Meaning & Meaningful States" }, { title: "Lines 46-66 - The Prophets & Conclusion" }]
         },
         {
           id: "ummalbarahin",
           title: "Umm al-Barahin (Al-Aqidah al-Sanusiyyah)",
           path: "/Classes/Aqidah/UmmAlbarahin/UmmAlbarahin.html",
+          stub: true,
           topics: [{ title: "Introduction - Obligation of Knowledge" }, { title: "Wajib, Mustahil, Ja'iz for Allah" }, { title: "Wajib, Mustahil, Ja'iz for the Prophets" }, { title: "The Rational Proofs (Dala'il Aqliyyah)" }]
         },
         {
           id: "aljawharataltawhid",
           title: "Al-Jawharat al-Tawhid",
           path: "/Classes/Aqidah/AljawharatAltawhid/AljawharatAltawhid.html",
+          stub: true,
           topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
         },
       ]
@@ -348,30 +361,6 @@ var NAV = {
           ]
         },
         {
-          id: "alshamailalmuhammadiyyah",
-          title: "Al-Shama'il al-Muhammadiyyah",
-          path: "/Classes/Hadith/AlshamailAlmuhammadiyyah/AlshamailAlmuhammadiyyah.html",
-          topics: [{ title: "Chapter 1-5 - Physical Description (Khalq)" }, { title: "Chapter 6-15 - Food, Drink & Household" }, { title: "Chapter 16-30 - Worship & Prayer" }, { title: "Chapter 31-56 - Character & Final Illness" }]
-        },
-        {
-          id: "almuwatta",
-          title: "Al-Muwatta'",
-          path: "/Classes/Hadith/Almuwatta/Almuwatta.html",
-          topics: [{ title: "Kitab al-Taharah" }, { title: "Kitab al-Salah" }, { title: "Kitab al-Zakah & al-Sawm" }, { title: "Kitab al-Hajj" }, { title: "Kitab al-Buyu' onward" }]
-        },
-        {
-          id: "musnadabidawudaltayalisi",
-          title: "Musnad Abi Dawud al-Tayalisi",
-          path: "/Classes/Hadith/MusnadAbiDawudAltayalisi/MusnadAbiDawudAltayalisi.html",
-          topics: []
-        },
-        {
-          id: "albayquniyyah",
-          title: "Al-Bayquniyyah",
-          path: "/Classes/Hadith/Albayquniyyah/Albayquniyyah.html",
-          topics: [{ title: "Lines 1-10 - Sahih, Hasan, Da'if" }, { title: "Lines 11-20 - Mawquf, Maqtu', Musnad, Muttasil" }, { title: "Lines 21-34 - Shadhdh, Munkar, Mawdu' & More" }]
-        },
-        {
           id: "nuzhatalnazar",
           title: "Nuzhat al-Nazar",
           path: "/Classes/Hadith/NuzhatAlnazar/NuzhatAlnazar.html",
@@ -398,15 +387,45 @@ var NAV = {
           ]
         },
         {
+          id: "alshamailalmuhammadiyyah",
+          title: "Al-Shama'il al-Muhammadiyyah",
+          path: "/Classes/Hadith/AlshamailAlmuhammadiyyah/AlshamailAlmuhammadiyyah.html",
+          stub: true,
+          topics: [{ title: "Chapter 1-5 - Physical Description (Khalq)" }, { title: "Chapter 6-15 - Food, Drink & Household" }, { title: "Chapter 16-30 - Worship & Prayer" }, { title: "Chapter 31-56 - Character & Final Illness" }]
+        },
+        {
+          id: "almuwatta",
+          title: "Al-Muwatta'",
+          path: "/Classes/Hadith/Almuwatta/Almuwatta.html",
+          stub: true,
+          topics: [{ title: "Kitab al-Taharah" }, { title: "Kitab al-Salah" }, { title: "Kitab al-Zakah & al-Sawm" }, { title: "Kitab al-Hajj" }, { title: "Kitab al-Buyu' onward" }]
+        },
+        {
+          id: "albayquniyyah",
+          title: "Al-Bayquniyyah",
+          path: "/Classes/Hadith/Albayquniyyah/Albayquniyyah.html",
+          stub: true,
+          topics: [{ title: "Lines 1-10 - Sahih, Hasan, Da'if" }, { title: "Lines 11-20 - Mawquf, Maqtu', Musnad, Muttasil" }, { title: "Lines 21-34 - Shadhdh, Munkar, Mawdu' & More" }]
+        },
+        {
+          id: "musnadabidawudaltayalisi",
+          title: "Musnad Abi Dawud al-Tayalisi",
+          path: "/Classes/Hadith/MusnadAbiDawudAltayalisi/MusnadAbiDawudAltayalisi.html",
+          stub: true,
+          topics: []
+        },
+        {
           id: "iktisarulumalhadith",
           title: "Iktisar Ulum al-Hadith",
           path: "/Classes/Hadith/IktisarUlumAlhadith/IktisarUlumAlhadith.html",
+          stub: true,
           topics: []
         },
         {
           id: "altaqribwaltaysir",
           title: "Al-Taqrib wal-Taysir",
           path: "/Classes/Hadith/AltaqribWaltaysir/AltaqribWaltaysir.html",
+          stub: true,
           topics: []
         },
       ]
@@ -513,12 +532,14 @@ var NAV = {
           id: "matnaljazariyyah",
           title: "Matn al-Jazariyyah",
           path: "/Classes/Quran/MatnAljazariyyah/MatnAljazariyyah.html",
+          stub: true,
           topics: [{ title: "Lines 1-20 - Makharij al-Huruf" }, { title: "Lines 21-50 - Sifat al-Huruf" }, { title: "Lines 51-80 - Rules of Nun, Mim & Madd" }, { title: "Lines 81-107 - Waqf, Ibtida' & Conclusion" }]
         },
         {
           id: "hirzalamani",
           title: "Hirz al-Amani (Al-Shatibiyyah)",
           path: "/Classes/Quran/HirzAlamani/HirzAlamani.html",
+          stub: true,
           topics: [{ title: "Fasl al-Usul - Foundational Principles" }, { title: "The Seven Imams & Their Rawis" }, { title: "Chapters by Topic (Surah-by-Surah Variations)" }]
         },
       ]
