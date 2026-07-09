@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://libans-notes.com/sitemap.xml
