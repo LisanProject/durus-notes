@@ -326,6 +326,14 @@ var NAV = {
           path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html",
           chapters: [
             {
+              id: "introduction",
+              title: "Introduction",
+              path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/IntroductionToArbain.html",
+              sections: [
+                { title: "Introduction to Al-Arba'in al-Nawawiyyah", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/IntroductionToArbain.html" }
+              ]
+            },
+            {
               id: "intentions",
               title: "Hadith 1-5 - Intentions & Foundations",
               path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html",
