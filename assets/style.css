@@ -161,7 +161,9 @@ a:visited { color: var(--link-blue); }
 }
 .sm-drill-row-link { color: var(--link-blue); font-weight: 600; font-size: 14.5px; text-decoration: none; flex: 1; }
 .sm-drill-row-link:hover { color: var(--link-hover); }
+.sm-drill-row-link.sm-drill-row-disabled { color: #999; font-weight: 400; cursor: default; }
 .sm-drill-chevron { color: #999; font-size: 18px; }
+.sm-drill-chevron.sm-drill-chevron-disabled { font-size: 11px; font-style: italic; }
 
 /* ══════════ BREADCRUMB PILL (Paul's real .top-menu-breadcrumb) ══════════ */
 .crumb-row { display: flex; justify-content: center; padding: 8px 10px 4px; }
@@ -423,4 +425,58 @@ table.terms .ar { font-family: 'Amiri', serif; font-size: 17px; direction: rtl; 
   h1.page-title { font-size: 1.5rem; }
   #content { padding: 0 14px 40px; }
   .crumb-pill, .tab-pill { font-size: 0.82rem; padding: 5px 12px; }
+}
+
+/* ══════════ CHEAT SHEETS (dense, Paul's-Notes-style reference pages) ══════════ */
+.cheatsheet-page { font-size: 13.5px; line-height: 1.35; }
+.cheatsheet-page h1.page-title { font-size: 1.4rem; margin-bottom: 2px; }
+.cheatsheet-subtitle { color: #666; font-size: 0.85rem; margin-top: 0; margin-bottom: 14px; }
+.cheatsheet-print-note {
+  font-size: 0.78rem; color: #888; border: 1px dashed #ccc; border-radius: 4px;
+  padding: 6px 10px; margin-bottom: 16px; display: inline-block;
+}
+.cs-section-title {
+  font-size: 1rem; font-weight: 700; color: var(--maroon-dark);
+  margin: 22px 0 8px; padding-bottom: 3px; border-bottom: 2px solid var(--maroon);
+  break-after: avoid; break-inside: avoid;
+}
+.cs-grid {
+  columns: 280px 3; column-gap: 14px;
+}
+.cs-box {
+  border: 1px solid #c9c9c9; border-radius: 5px; background: #fff;
+  padding: 8px 10px; margin: 0 0 12px; break-inside: avoid; display: inline-block; width: 100%;
+  box-sizing: border-box;
+}
+.cs-box h5 {
+  margin: 0 0 4px; font-size: 12.5px; font-weight: 700; color: var(--maroon-dark);
+  display: flex; justify-content: space-between; align-items: baseline; gap: 6px;
+}
+.cs-box h5 .ar { font-family: 'Amiri', serif; font-size: 15px; color: #333; direction: rtl; }
+.cs-box p { margin: 3px 0; font-size: 12.5px; }
+.cs-box .ar { font-family: 'Amiri', serif; direction: rtl; }
+.cs-box table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 4px 0; }
+.cs-box table td, .cs-box table th { padding: 2px 4px; border-bottom: 1px solid #e5e5e5; text-align: left; }
+.cs-box table th { background: #f2f2f2; font-weight: 700; }
+.cs-box table .ar { font-family: 'Amiri', serif; font-size: 15px; direction: rtl; text-align: right; }
+.cs-box .cs-letters { font-family: 'Amiri', serif; font-size: 16px; direction: rtl; text-align: center; margin: 3px 0; }
+.cs-box .cs-rule-label {
+  display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.03em; color: #fff; background: var(--maroon); border-radius: 3px;
+  padding: 1px 6px; margin: 2px 4px 2px 0;
+}
+.cs-box .cs-duration { font-size: 11.5px; color: #666; font-style: italic; }
+.cs-legend { font-size: 11.5px; color: #666; margin: 4px 0 16px; }
+.cs-legend .cs-rule-label { margin-right: 8px; }
+
+@media print {
+  #site-header, .crumb-row, .tab-row, #site-footer, .bottom-nav-row, .cheatsheet-print-note { display: none !important; }
+  body { font-size: 11px; }
+  .cs-grid { columns: 3; }
+  .cs-box { border-color: #999; }
+  a { color: #000 !important; text-decoration: none !important; }
+}
+
+@media (max-width: 700px) {
+  .cs-grid { columns: 1; }
 }
