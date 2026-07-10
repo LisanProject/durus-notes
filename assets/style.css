@@ -210,8 +210,8 @@ a:visited { color: var(--link-blue); }
 h1, h1.page-title {
   text-transform: uppercase; font-weight: bold; font-size: 24px;
   border-bottom: 3px solid #000;
-  text-shadow: 0 0 3px rgba(188,43,43,.8);
-  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(188,43,43,.8);
+  text-shadow: 0 0 3px rgba(26,77,143,.8);
+  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(26,77,143,.8);
   margin-bottom: 8px;
 }
 h1 + p, h1.page-title + p { margin-top: 8px; }
@@ -219,8 +219,8 @@ h1 + p, h1.page-title + p { margin-top: 8px; }
 h2 {
   text-transform: capitalize; font-weight: bold; font-size: 20px;
   border-bottom: 2px solid #000;
-  text-shadow: 0 0 2px rgba(188,43,43,.8);
-  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(188,43,43,.8);
+  text-shadow: 0 0 2px rgba(26,77,143,.8);
+  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(26,77,143,.8);
   margin-bottom: 8px;
 }
 h2 + p { margin-top: 8px; }
@@ -237,7 +237,7 @@ h2.section-title, .content-subheader {
 h3 {
   text-transform: capitalize; font-weight: bold; font-size: 18px;
   border-bottom: 1px solid #000;
-  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(188,43,43,.8);
+  box-shadow: -6px 0 #fff, 0 -6px #fff, 6px 0 #fff, 1px 1px 3px rgba(26,77,143,.8);
   margin-bottom: 8px;
 }
 h3 + p { margin-top: 8px; }
@@ -335,7 +335,7 @@ body.course-aqeedah .lesson-block + .lesson-block {
 .showhide-content {
   display: none; border: 2px solid #000; border-radius: 10px;
   padding: 5px; margin-top: 8px; background: #fff;
-  box-shadow: 0 0 3px 2px rgba(188,43,43,.6);
+  box-shadow: 0 0 3px 2px rgba(26,77,143,.6);
   font-size: 0.97rem; line-height: 1.7;
 }
 .showhide-content.open { display: block; }
@@ -344,7 +344,7 @@ body.course-aqeedah .lesson-block + .lesson-block {
 .example-box {
   border: 2px solid #000; border-radius: 10px;
   padding: 5px; margin: 0 0 20px 0;
-  box-shadow: 0 0 3px 2px rgba(188,43,43,.6);
+  box-shadow: 0 0 3px 2px rgba(26,77,143,.6);
   background: #fff;
 }
 .example-box .example-label { font-weight: bold; font-style: italic; margin-right: 4px; }
