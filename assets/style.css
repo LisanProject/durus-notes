@@ -3,9 +3,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --maroon: #bc2b2b;
-  --maroon-dark: #bc2b2b;
-  --maroon-pale: rgba(206,97,97,.4);
+  --maroon: #1a4d8f;
+  --maroon-dark: #1a4d8f;
+  --maroon-pale: rgba(26,77,143,.4);
+  --header-blue: #1a4d8f;
   --link-blue: #00c;
   --link-hover: #f0f;
   --content-max: 1000px;
@@ -28,7 +29,7 @@ a:visited { color: var(--link-blue); }
 
 /* ══════════ TOPBAR (Paul's real .header/.header-side-menu-icon/.header-title) ══════════ */
 #site-header {
-  background: var(--maroon);
+  background: var(--header-blue);
   padding: 0;
   display: flex;
   align-items: center;
@@ -84,8 +85,8 @@ a:visited { color: var(--link-blue); }
   display: block; padding: 5px 14px; font-size: 0.85rem; text-decoration: none; white-space: nowrap;
 }
 .jq-dropdown-menu li > a { color: var(--link-blue); font-weight: bold; }
-.jq-dropdown-menu li > a:hover { background: rgba(206,97,97,.25); }
-.jq-dropdown-menu li > span.current-view { background: rgba(206,97,97,.4); border-radius: 12px; margin: 0 8px; font-weight: bold; color: #000; }
+.jq-dropdown-menu li > a:hover { background: rgba(26,77,143,.25); }
+.jq-dropdown-menu li > span.current-view { background: rgba(26,77,143,.4); border-radius: 12px; margin: 0 8px; font-weight: bold; color: #000; }
 .jq-dropdown-notice { font-size: 0.78rem; color: #666; padding: 6px 14px; white-space: normal; max-width: 260px; }
 
 /* ══════════ SITE MENU PANEL (opens from the hamburger) ══════════ */
