@@ -28,10 +28,20 @@
     reflection, meant as a two minute reset before the rest of the day's study.
   </p>
 
+  <div style="margin: 18px 0;">
+    <label for="entry-picker" style="font-size: 0.85rem; color: #666; display: block; margin-bottom: 4px;">
+      Browse entries
+    </label>
+    <select id="entry-picker" style="width: 100%; max-width: 420px; padding: 8px 10px; font-size: 0.95rem; border: 1px solid #ccc; border-radius: 4px; background: #fff;">
+    </select>
+  </div>
+
   <div class="lesson-block" id="entry-template" style="display:none;">
     <!--
       Template for a new daily entry. Duplicate this whole lesson-block for each new day,
-      give it a unique id (e.g. entry-2026-07-10), and remove the display:none / this comment.
+      give it a unique id (e.g. entry-2026-07-13), add a matching data-label, and remove the
+      display:none / this comment. The picker script below finds entries automatically by
+      scanning for [id^="entry-"] elements, so no other file needs editing.
     -->
     <h4>Day Month Year</h4>
     <div class="arabic">
@@ -46,7 +56,7 @@
     </p>
   </div>
 
-  <div class="lesson-block" id="entry-2026-07-09">
+  <div class="lesson-block" id="entry-2026-07-09" data-label="Jul 9 - Never Slept in the Same Room as It">
     <h4>Never Slept in the Same Room as It</h4>
     <div class="arabic">
       وحكى المالكي أن الإمام أبا بكر بن فورك ما نام في بيت فيه مصحف قط، وإذا أراد النوم انتقل عن
@@ -64,7 +74,7 @@
     </p>
   </div>
 
-  <div class="lesson-block" id="entry-2026-07-10">
+  <div class="lesson-block" id="entry-2026-07-10" data-label="Jul 10 - Malik ibn Dinar's Tears">
     <h4>Malik ibn Dinar's Tears</h4>
     <div class="arabic">
       قال رسول الله صلى الله عليه وسلم: "ما من عبد يخطب خطبة إلا الله سائله عنها يوم القيامة ما أراد
@@ -88,6 +98,71 @@
     </p>
   </div>
 
+  <div class="lesson-block" id="entry-2026-07-11" data-label="Jul 11 - A Hundred Times Every Night">
+    <h4>A Hundred Times Every Night</h4>
+    <div class="arabic">
+      وحكي أن رجلاً حج وكان يكثر الصلاة على النبي في مواقف الحج وأعماله، فقيل له: لِمَ لم تشتغل بالدعاء المأثور؟ فاعتذر
+      بأنه خرج للحج هو ووالده، فمات والده بالبصرة، فكشف عن وجهه، فإذا هو صورة حمار فحزن حزناً شديداً، ثم أخذته سنة فرآه،
+      وتعلق به وأقسم ليخبرنه بقصة والده. فقال: إنه كان يأكل الربا وآكله يقع له ذلك دنيا وأخرى، ولـكنه كان يصلي عليّ كل
+      ليلة عند نومه مائة مرة، فلما عرض له ذلك أخبرني به الملك الذي يعرض عليّ أعمال أمتي، فسألت الله فشفعني فيه فاستيقظ
+      فرأى وجه والده كالبدر، ثم لما دفنه سمع هاتفاً يقول له: سبب العناية التي حفت والدك الصلاة والسلام على رسول الله
+      فآليت أن لا أتركها على أي حال كنت وفي أي مكان كنت.
+    </div>
+    <div class="translation">
+      A man performed Hajj and would frequently send blessings on the Prophet during its stations
+      and rites. He was asked why he did not occupy himself with the transmitted supplications
+      instead. He explained that he had gone out for Hajj with his father, and his father died in
+      Basra. When he uncovered his father's face at burial, he found it had taken the form of a
+      donkey, and he grieved intensely. A year later he saw him in a dream, held onto him, and made
+      him swear to explain what had happened. He said, "I used to consume riba, and that is what
+      befalls the one who consumes it, in this world and the next. But I would send blessings on
+      him a hundred times every night before sleep. When this punishment was about to come upon
+      me, the angel who presents the deeds of his nation to him informed him of it, so he asked
+      Allah, and Allah let him intercede for me." The son woke and saw his father's face like the
+      full moon. Later, as he buried him, he heard a caller say, "The reason your father was
+      surrounded by that mercy was sending blessings and peace on the Messenger of Allah, so I
+      have vowed never to abandon it, whatever state I am in, wherever I am."
+    </div>
+    <p style="color:#666; font-size:0.85rem;">Irshad al-'Ibad, Bab Fadl al-Salat 'ala al-Nabi.</p>
+    <p>
+      The habit that saved him wasn't dramatic. A hundred times a night, before sleep, kept up
+      regardless of what kind of day it had been. That's the part worth copying, not the vision.
+    </p>
+  </div>
+
+  <div class="lesson-block" id="entry-2026-07-12" data-label="Jul 12 - The One Who Wasn't Gathering">
+    <h4>The One Who Wasn't Gathering</h4>
+    <div class="arabic">
+      وحكى بعض أهل العلم أن رجلاً رأى في النوم أهل القبور في بعض المقابر قد خرجوا من قبورهم إلى ظاهر المقبرة، وإذا بهم
+      يلتقطون شيئاً ما يدري ما هو، قال: فتعجب من ذلك، ورأيت رجلاً منهم جالساً لا يلتقط معهم شيئاً فدنوت وسألت: ما الذي
+      يلتقط هؤلاء؟ فقال: يلتقطون ما يهدي إليهم المسلمون من قراءة القرآن والصدقة والدعاء، فقلت له: فلم لا تلتقط أنت
+      معهم؟ فقال: أنا غنيّ عن ذلك، فقلت: بأي شيء أنت غنيّ؟ قال: بختمة يقرؤها ويهديها إليّ كل يوم ولدي يبيع الزلابية في
+      السوق الفلاني، فلما استيقظت ذهبت إلى السوق حيث ذكر، فإذا شاب يبيع الزلابية ويحرك شفتيه، فقلت: بأي شيء تحرك
+      شفتيك؟ قال: أقرأ القرآن وأهديه إلى والدي في قبره، قال: فلبثت مدة من الزمان ثم رأيت الموتى قد خرجوا من القبور كما
+      تقدم، وإذا بالرجل الذي كان لا يلتقط صار يلتقط، فاستيقظت وتعجبت من ذلك، ثم ذهبت إلى السوق لأتعرف خبر ولده، فوجدته
+      قد مات.
+    </div>
+    <div class="translation">
+      A man of knowledge narrated that a man saw in a dream the people of a graveyard coming out of
+      their graves to its edge, gathering something he could not make out. He noticed one man
+      among them sitting apart, gathering nothing, and approached to ask what the others were
+      gathering. He was told, "What the Muslims gift them, of Qur'an recitation, charity, and
+      supplication." He asked the seated man why he did not gather with them. He said, "I have no
+      need of it." "Through what?" He said, "Through a full recitation of the Qur'an my son
+      recites and gifts to me every day, he sells zalabiya in such-and-such market." On waking, the
+      dreamer went to that market and found a young man selling zalabiya, his lips moving. Asked
+      what he was reciting, the young man said, "I recite the Qur'an and gift it to my father in
+      his grave." Some time later the dreamer saw the same scene again, the dead coming out of
+      their graves, and this time the man who had gathered nothing was gathering along with the
+      rest. He woke, went back to the market to ask after the son, and found that he had died.
+    </div>
+    <p style="color:#666; font-size:0.85rem;">Irshad al-'Ibad, Bab al-Niyahah wa Tawabi'iha.</p>
+    <p>
+      The father's exemption wasn't permanent, it lasted exactly as long as his son kept up the
+      habit. Once the son died, the father needed the same general charity everyone else relies on.
+    </p>
+  </div>
+
   <div class="bottom-nav-row" id="bottom-nav-row"></div>
 
 </main>
@@ -101,5 +176,37 @@
   var PAGE = { course: "extras", activeTab: "notes" };
 </script>
 <script src="/assets/nav.js?v=20260704l"></script>
+<script>
+  (function () {
+    var entries = Array.prototype.filter.call(
+      document.querySelectorAll('#content > .lesson-block'),
+      function (el) { return el.id && el.id.indexOf('entry-') === 0 && el.id !== 'entry-template'; }
+    );
+    if (!entries.length) return;
+
+    entries.sort(function (a, b) { return b.id.localeCompare(a.id); });
+
+    var picker = document.getElementById('entry-picker');
+    entries.forEach(function (el) {
+      var opt = document.createElement('option');
+      opt.value = el.id;
+      opt.textContent = el.getAttribute('data-label') || el.querySelector('h4').textContent;
+      picker.appendChild(opt);
+    });
+
+    function showEntry(id) {
+      entries.forEach(function (el) {
+        el.style.display = (el.id === id) ? '' : 'none';
+      });
+    }
+
+    picker.addEventListener('change', function () {
+      showEntry(this.value);
+    });
+
+    picker.value = entries[0].id;
+    showEntry(entries[0].id);
+  })();
+</script>
 </body>
 </html>
