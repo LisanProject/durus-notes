@@ -46,7 +46,9 @@ var NAV = {
               sections: [
                 { title: "I'rab: Definition and the Word Categories", path: "/Classes/Nahw/Ajrumiyyah/Chapters/IrabWordCategories.html" },
                 { title: "Signs of Rafa", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfRafa.html" },
-                { title: "Signs of Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfNasb.html" }
+                { title: "Signs of Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfNasb.html" },
+                { title: "Signs of Khafd", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfKhafd.html" },
+                { title: "Signs of Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfJazm.html" }
               ]
             }
           ]
@@ -140,8 +142,17 @@ var NAV = {
           id: "mukhtasarallatif",
           title: "Mukhtasar al-Latif",
           path: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html",
-          stub: true,
-          topics: [{ title: "Taharah - Purity" }, { title: "Salah - Prayer" }, { title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
+          chapters: [
+            {
+              id: "taharah",
+              title: "Chapter 1: Taharah",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahIntro.html",
+              sections: [
+                { title: "Taharah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahIntro.html" }
+              ]
+            }
+          ],
+          topics: [{ title: "Salah - Prayer" }, { title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
         },
         {
           id: "matnabishuja",
@@ -322,6 +333,13 @@ var NAV = {
           stub: true,
           topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
         },
+        {
+          id: "muqaddimah",
+          title: "Al-Muqaddimah (Imam al-Sanusi)",
+          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
+          stub: true,
+          topics: [{ title: "Introduction" }]
+        },
       ]
     },
     {
@@ -352,7 +370,9 @@ var NAV = {
               path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html",
               sections: [
                 { title: "Hadith 1: Actions Are Judged by Intentions", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html" },
-                { title: "Hadith 2: The Hadith of Jibril", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith2Jibril.html" }
+                { title: "Hadith 2: The Hadith of Jibril", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith2Jibril.html" },
+                { title: "Hadith 3: Islam Is Built on Five", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith3IslamFive.html" },
+                { title: "Hadith 4: The Stages of Creation", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith4Creation.html" }
               ]
             },
             { id: "halalharam", title: "Hadith 6-15 - Halal, Haram & Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
@@ -377,11 +397,29 @@ var NAV = {
               ]
             },
             {
+              id: "categoriesofknowledge",
+              title: "Categories of Knowledge",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/CategoriesOfKnowledge.html",
+              sections: [
+                { title: "Categories of Knowledge and Mutawatir", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/CategoriesOfKnowledge.html" }
+              ]
+            },
+            {
               id: "mutawatirahad",
               title: "Classification by Number of Narrators",
               path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html",
               sections: [
-                { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" }
+                { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" },
+                { title: "Real Examples of Mutawatir, and Its Two Forms", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirExamplesAndTypes.html" },
+                { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" }
+              ]
+            },
+            {
+              id: "acceptability",
+              title: "Classification by Acceptability",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihHasanDaif.html",
+              sections: [
+                { title: "Sahih, Hasan, and Da'if", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihHasanDaif.html" }
               ]
             }
           ]
