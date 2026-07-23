@@ -48,7 +48,8 @@ var NAV = {
                 { title: "Signs of Rafa", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfRafa.html" },
                 { title: "Signs of Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfNasb.html" },
                 { title: "Signs of Khafd", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfKhafd.html" },
-                { title: "Signs of Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfJazm.html" }
+                { title: "Signs of Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfJazm.html" },
+                { title: "Al-Mu'rabat: Declined by Vowels or by Letters", path: "/Classes/Nahw/Ajrumiyyah/Chapters/MurabatVowelsLetters.html" }
               ]
             }
           ]
@@ -218,7 +219,8 @@ var NAV = {
               title: "Chapter 3: Al-Amr wa'l-Nahy",
               path: "/Classes/UsulFiqh/Waraqat/Chapters/AlAmrWalNahyIntro.html",
               sections: [
-                { title: "Al-Amr (Command)", path: "/Classes/UsulFiqh/Waraqat/Chapters/AlAmr.html" }
+                { title: "Al-Amr (Command)", path: "/Classes/UsulFiqh/Waraqat/Chapters/AlAmr.html" },
+                { title: "Who Is Addressed by Command, and Al-Nahy", path: "/Classes/UsulFiqh/Waraqat/Chapters/AhlAltaklifAndNahy.html" }
               ]
             }
           ]
@@ -345,30 +347,30 @@ var NAV = {
         {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/MuqaddimahSanusi/Muqaddimah.html",
+          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
           chapters: [
             {
               id: "impedimentandrulings",
               title: "Wajib, Mustahil, and Jaiz Explained",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html",
               sections: [
-                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html" }
+                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html" }
               ]
             },
             {
               id: "madhahibafalibad",
               title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html",
               sections: [
-                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html" }
+                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html" }
               ]
             },
             {
               id: "anwaalshirk",
               title: "The Six Types of Shirk Explained",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html",
               sections: [
-                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html" }
+                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html" }
               ]
             }
           ]
