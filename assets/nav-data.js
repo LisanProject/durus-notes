@@ -150,9 +150,18 @@ var NAV = {
               sections: [
                 { title: "Taharah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahIntro.html" }
               ]
+            },
+            {
+              id: "salah",
+              title: "Chapter 2: Salah",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html",
+              sections: [
+                { title: "Prohibited Times for Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" },
+                { title: "Who Prayer Is Obligatory Upon", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SalahPrayerRequiredIndividuals.html" }
+              ]
             }
           ],
-          topics: [{ title: "Salah - Prayer" }, { title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
+          topics: [{ title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
         },
         {
           id: "matnabishuja",
@@ -336,9 +345,33 @@ var NAV = {
         {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
-          stub: true,
-          topics: [{ title: "Introduction" }]
+          path: "/Classes/Aqidah/MuqaddimahSanusi/Muqaddimah.html",
+          chapters: [
+            {
+              id: "impedimentandrulings",
+              title: "Wajib, Mustahil, and Jaiz Explained",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html",
+              sections: [
+                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html" }
+              ]
+            },
+            {
+              id: "madhahibafalibad",
+              title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html",
+              sections: [
+                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html" }
+              ]
+            },
+            {
+              id: "anwaalshirk",
+              title: "The Six Types of Shirk Explained",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html",
+              sections: [
+                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html" }
+              ]
+            }
+          ]
         },
       ]
     },
