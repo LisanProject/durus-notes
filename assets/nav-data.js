@@ -319,30 +319,30 @@ var NAV = {
          {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/Muqaddimah/MuqaddimahSanusi.html",
+          path: "/Classes/Aqidah/MuqaddimahSanusi/Muqaddimah.html",
           chapters: [
             {
               id: "impedimentandrulings",
               title: "Wajib, Mustahil, and Jaiz Explained",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html",
               sections: [
-                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html" }
+                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html" }
               ]
             },
             {
               id: "madhahibafalibad",
               title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html",
               sections: [
-                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html" }
+                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html" }
               ]
             },
             {
               id: "anwaalshirk",
               title: "The Six Types of Shirk Explained",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html",
+              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html",
               sections: [
-                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html" }
+                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html" }
               ]
             }
           ]
