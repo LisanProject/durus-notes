@@ -1,10 +1,5 @@
 /* ============================================================
    NAV-DATA.JS
-   The one file you edit to add a course, a book, or a lesson.
-   Restored from the original site content (macrons stripped to
-   match house style), organized into Course -> Book -> Topic.
-   Books without a written lesson yet still show their topic list
-   with descriptions - the book page IS the "coming soon" page.
    ============================================================ */
 
 var NAV = {
@@ -316,37 +311,6 @@ var NAV = {
             }
           ]
         },
-         {
-          id: "muqaddimah",
-          title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/MuqaddimahSanusi/Muqaddimah.html",
-          chapters: [
-            {
-              id: "impedimentandrulings",
-              title: "Wajib, Mustahil, and Jaiz Explained",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html",
-              sections: [
-                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/ImpedimentAndRulings.html" }
-              ]
-            },
-            {
-              id: "madhahibafalibad",
-              title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html",
-              sections: [
-                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/HumanActionFreeWillDoctrines.html" }
-              ]
-            },
-            {
-              id: "anwaalshirk",
-              title: "The Six Types of Shirk Explained",
-              path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html",
-              sections: [
-                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/MuqaddimahSanusi/Chapters/SixTypesOfShirkExplained.html" }
-              ]
-            }
-          ]
-        },
         {
           id: "aqidaalsharnubiyyah",
           title: "Aqida al-Sharnubiyyah",
@@ -374,6 +338,37 @@ var NAV = {
           path: "/Classes/Aqidah/AljawharatAltawhid/AljawharatAltawhid.html",
           stub: true,
           topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
+        },
+        {
+          id: "muqaddimah",
+          title: "Al-Muqaddimah (Imam al-Sanusi)",
+          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
+          chapters: [
+            {
+              id: "impedimentandrulings",
+              title: "Wajib, Mustahil, and Jaiz Explained",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html",
+              sections: [
+                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html" }
+              ]
+            },
+            {
+              id: "madhahibafalibad",
+              title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html",
+              sections: [
+                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html" }
+              ]
+            },
+            {
+              id: "anwaalshirk",
+              title: "The Six Types of Shirk Explained",
+              path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html",
+              sections: [
+                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html" }
+              ]
+            }
+          ]
         },
       ]
     },
@@ -447,14 +442,6 @@ var NAV = {
                 { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" },
                 { title: "Real Examples of Mutawatir, and Its Two Forms", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirExamplesAndTypes.html" },
                 { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" }
-              ]
-            },
-            {
-              id: "acceptability",
-              title: "Classification by Acceptability",
-              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihHasanDaif.html",
-              sections: [
-                { title: "Sahih, Hasan, and Da'if", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihHasanDaif.html" }
               ]
             }
           ]
