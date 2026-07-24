@@ -316,35 +316,7 @@ var NAV = {
             }
           ]
         },
-        {
-          id: "aqidaalsharnubiyyah",
-          title: "Aqida al-Sharnubiyyah",
-          path: "/Classes/Aqidah/AqidaAlsharnubiyyah/AqidaAlsharnubiyyah.html",
-          stub: true,
-          topics: []
-        },
-        {
-          id: "alkharidahalbahiyyah",
-          title: "Al-Kharidah al-Bahiyyah",
-          path: "/Classes/Aqidah/AlkharidahAlbahiyyah/AlkharidahAlbahiyyah.html",
-          stub: true,
-          topics: [{ title: "Lines 1-20 - Necessary Attributes of Allah" }, { title: "Lines 21-45 - Attributes of Meaning & Meaningful States" }, { title: "Lines 46-66 - The Prophets & Conclusion" }]
-        },
-        {
-          id: "ummalbarahin",
-          title: "Umm al-Barahin (Al-Aqidah al-Sanusiyyah)",
-          path: "/Classes/Aqidah/UmmAlbarahin/UmmAlbarahin.html",
-          stub: true,
-          topics: [{ title: "Introduction - Obligation of Knowledge" }, { title: "Wajib, Mustahil, Ja'iz for Allah" }, { title: "Wajib, Mustahil, Ja'iz for the Prophets" }, { title: "The Rational Proofs (Dala'il Aqliyyah)" }]
-        },
-        {
-          id: "aljawharataltawhid",
-          title: "Al-Jawharat al-Tawhid",
-          path: "/Classes/Aqidah/AljawharatAltawhid/AljawharatAltawhid.html",
-          stub: true,
-          topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
-        },
-        {
+         {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
           path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
@@ -374,6 +346,34 @@ var NAV = {
               ]
             }
           ]
+        },
+        {
+          id: "aqidaalsharnubiyyah",
+          title: "Aqida al-Sharnubiyyah",
+          path: "/Classes/Aqidah/AqidaAlsharnubiyyah/AqidaAlsharnubiyyah.html",
+          stub: true,
+          topics: []
+        },
+        {
+          id: "alkharidahalbahiyyah",
+          title: "Al-Kharidah al-Bahiyyah",
+          path: "/Classes/Aqidah/AlkharidahAlbahiyyah/AlkharidahAlbahiyyah.html",
+          stub: true,
+          topics: [{ title: "Lines 1-20 - Necessary Attributes of Allah" }, { title: "Lines 21-45 - Attributes of Meaning & Meaningful States" }, { title: "Lines 46-66 - The Prophets & Conclusion" }]
+        },
+        {
+          id: "ummalbarahin",
+          title: "Umm al-Barahin (Al-Aqidah al-Sanusiyyah)",
+          path: "/Classes/Aqidah/UmmAlbarahin/UmmAlbarahin.html",
+          stub: true,
+          topics: [{ title: "Introduction - Obligation of Knowledge" }, { title: "Wajib, Mustahil, Ja'iz for Allah" }, { title: "Wajib, Mustahil, Ja'iz for the Prophets" }, { title: "The Rational Proofs (Dala'il Aqliyyah)" }]
+        },
+        {
+          id: "aljawharataltawhid",
+          title: "Al-Jawharat al-Tawhid",
+          path: "/Classes/Aqidah/AljawharatAltawhid/AljawharatAltawhid.html",
+          stub: true,
+          topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
         },
       ]
     },
