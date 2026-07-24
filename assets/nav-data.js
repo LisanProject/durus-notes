@@ -319,7 +319,7 @@ var NAV = {
          {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
+          path: "/Classes/Aqidah/Muqaddimah/MuqaddimahSanusi.html",
           chapters: [
             {
               id: "impedimentandrulings",
