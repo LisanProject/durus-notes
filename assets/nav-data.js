@@ -645,3 +645,10 @@ function navGetChapter(courseId, bookId, chapterId) {
   }
   return null;
 }
+(function () {
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = '//gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://libans-notes.goatcounter.com/count');
+  document.head.appendChild(s);
+})();
