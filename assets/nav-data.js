@@ -407,7 +407,9 @@ var NAV = {
                 { title: "Hadith 1: Actions Are Judged by Intentions", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith1Intentions.html" },
                 { title: "Hadith 2: The Hadith of Jibril", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith2Jibril.html" },
                 { title: "Hadith 3: Islam Is Built on Five", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith3IslamFive.html" },
-                { title: "Hadith 4: The Stages of Creation", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith4Creation.html" }
+                { title: "Hadith 4: The Stages of Creation", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith4Creation.html" },
+                { title: "Hadith 5: Innovations in the Religion", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith5Bidah.html" },
+                 
               ]
             },
             { id: "halalharam", title: "Hadith 6-15 - Halal, Haram & Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
