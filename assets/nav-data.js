@@ -448,7 +448,9 @@ var NAV = {
               sections: [
                 { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" },
                 { title: "Real Examples of Mutawatir, and Its Two Forms", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirExamplesAndTypes.html" },
-                { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" }
+                { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" },
+                { title: "Ghareeb Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GhareebHadith.html" },
+                { title: "Ahad and the Question of Certainty", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AhadCertainty.html" }
               ]
             }
           ]
