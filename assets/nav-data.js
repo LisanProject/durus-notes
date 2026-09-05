@@ -412,7 +412,14 @@ var NAV = {
                  
               ]
             },
-            { id: "halalharam", title: "Hadith 6-15 - Halal, Haram & Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
+            {
+              id: "halalharam",
+              title: "Hadith 6-15 - Halal, Haram & Doubt",
+              path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html",
+              sections: [
+                { title: "Hadith 6: The Halal Is Clear and the Haram Is Clear", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html" }
+              ]
+            },
             { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
             { id: "faithzuhd", title: "Hadith 29-42 - Faith, Zuhd & Conclusion", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] }
           ]
@@ -451,6 +458,17 @@ var NAV = {
                 { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" },
                 { title: "Ghareeb Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GhareebHadith.html" },
                 { title: "Ahad and the Question of Certainty", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AhadCertainty.html" }
+              ]
+            },
+            {
+              id: "qualityclassification",
+              title: "Classification by Quality: Sahih, Hasan, and Da'if",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html",
+              sections: [
+                { title: "Gharaba: Fard Mutlaq and Fard Nisbi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
+                { title: "The Difference Between Gharib and Fard", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharibFardDifference.html" },
+                { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
+                { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" }
               ]
             }
           ]
