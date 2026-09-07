@@ -417,13 +417,11 @@ var NAV = {
               title: "Hadith 6-15 - Halal, Haram & Doubt",
               path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html",
               sections: [
-                { title: "Hadith 6: The Halal Is Clear and the Haram Is Clear", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html" }
+                { title: "Hadith 6: The Halal Is Clear and the Haram Is Clear", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html" },
+                { title: "Hadith 7: The Religion Is Sincere Counsel", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith7Nasiha.html" },
+                { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" }
               ]
             },
-            { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
-            { id: "faithzuhd", title: "Hadith 29-42 - Faith, Zuhd & Conclusion", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] }
-          ]
-        },
         {
           id: "nuzhatalnazar",
           title: "Nuzhat al-Nazar",
