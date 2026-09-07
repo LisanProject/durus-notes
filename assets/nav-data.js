@@ -422,6 +422,10 @@ var NAV = {
                 { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" }
               ]
             },
+            { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
+            { id: "faithzuhd", title: "Hadith 29-42 - Faith, Zuhd & Conclusion", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] }
+          ]
+        },
         {
           id: "nuzhatalnazar",
           title: "Nuzhat al-Nazar",
@@ -463,21 +467,11 @@ var NAV = {
               title: "Classification by Quality: Sahih, Hasan, and Da'if",
               path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html",
               sections: [
-                { title: "Gharaba: Fard Mutlaq and Fard Nisbi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
+                { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
-                 {
-  id: "qualityclassification",
-  title: "Classification by Quality: Sahih, Hasan, and Da'if",
-  path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html",
-  sections: [
-    { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
-    { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
-    { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
-    { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Seven Ranks", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
-    { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahhAlAsanid.html" }
-  ]
-}
+                { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
+                { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahhAlAsanid.html" }
               ]
             }
           ]
