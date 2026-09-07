@@ -54,6 +54,16 @@ var NAV = {
             }
           ]
         },
+         {
+        id: "babalafal",
+        title: "Chapter 3: Bab al-Af'al (Verbs)",
+        path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbsIntro.html",
+        sections: [
+          { title: "The Three Verb Types and Their Base Rulings", path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbTypesAndRulings.html" },
+          { title: "The Ten Particles That Cause Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/NawasibOfMudari.html" },
+          { title: "The Eighteen Particles That Cause Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/JawazimOfMudari.html" }
+        ]
+      }, 
         {
           id: "qatralnada",
           title: "Qatr al-Nada wa Ball al-Sada",
