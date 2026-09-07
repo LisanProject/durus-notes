@@ -355,36 +355,60 @@ var NAV = {
           topics: [{ title: "Necessary Attributes - Extended Treatment" }, { title: "Prophethood (Nubuwwat)" }, { title: "Eschatology (Sam'iyyat)" }]
         },
         {
-          id: "muqaddimah",
-          title: "Al-Muqaddimah (Imam al-Sanusi)",
-          path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
-          chapters: [
-            {
-              id: "impedimentandrulings",
-              title: "Wajib, Mustahil, and Jaiz Explained",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html",
-              sections: [
-                { title: "Wajib, Mustahil, and Jaiz Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/ImpedimentAndRulings.html" }
-              ]
-            },
-            {
-              id: "madhahibafalibad",
-              title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html",
-              sections: [
-                { title: "Jabariyyah, Qadariyyah, and Ahl al-Sunnah on Kasb", path: "/Classes/Aqidah/Muqaddimah/Chapters/HumanActionFreeWillDoctrines.html" }
-              ]
-            },
-            {
-              id: "anwaalshirk",
-              title: "The Six Types of Shirk Explained",
-              path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html",
-              sections: [
-                { title: "The Six Types of Shirk Explained", path: "/Classes/Aqidah/Muqaddimah/Chapters/SixTypesOfShirkExplained.html" }
-              ]
-            }
-          ]
-        },
+  id: "muqaddimah",
+  title: "Al-Muqaddimah (Imam al-Sanusi)",
+  path: "/Classes/Aqidah/Muqaddimah/Muqaddimah.html",
+  chapters: [
+    {
+      id: "muqaddimah3",
+      title: "Al-Muqaddimah al-Thalithah (Third)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah3.html",
+      sections: [
+        { title: "Mukhayyar, Musayyar, the Six Types of Shirk, and Related Discussions", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah3.html" }
+      ]
+    },
+    {
+      id: "muqaddimah4",
+      title: "Al-Muqaddimah al-Rabi'ah (Fourth)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah4.html",
+      sections: [
+        { title: "Usul al-Kufr wa'l-Bida': The Seven Roots", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah4.html" }
+      ]
+    },
+    {
+      id: "muqaddimah5",
+      title: "Al-Muqaddimah al-Khamisah (Fifth)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah5.html",
+      sections: [
+        { title: "Categories of Existence, and the Debate on the Divine Attributes", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah5.html" }
+      ]
+    },
+    {
+      id: "muqaddimah6",
+      title: "Al-Muqaddimah al-Sadisah (Sixth)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah6.html",
+      sections: [
+        { title: "Al-Mumkinat wal-Mutaqabilat, and the Nature of the Soul", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah6.html" }
+      ]
+    },
+    {
+      id: "muqaddimah7",
+      title: "Al-Muqaddimah al-Sabi'ah (Seventh)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah7.html",
+      sections: [
+        { title: "Sifat al-Ma'ani: The Seven Eternal Attributes of Meaning", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah7.html" }
+      ]
+    },
+    {
+      id: "muqaddimah8",
+      title: "Al-Muqaddimah al-Thaminah (Eighth)",
+      path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah8.html",
+      sections: [
+        { title: "Khabar, Insha, Sidq, Amanah, and the Foundations of Accepting Reports", path: "/Classes/Aqidah/Muqaddimah/Chapters/Muqaddimah8.html" }
+      ]
+    }
+  ]
+},
       ]
     },
     {
