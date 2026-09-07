@@ -466,7 +466,6 @@ var NAV = {
               path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html",
               sections: [
                 { title: "Gharaba: Fard Mutlaq and Fard Nisbi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
-                { title: "The Difference Between Gharib and Fard", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharibFardDifference.html" },
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" }
               ]
