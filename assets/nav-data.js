@@ -51,19 +51,19 @@ var NAV = {
                 { title: "Signs of Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/SignsOfJazm.html" },
                 { title: "Al-Mu'rabat: Declined by Vowels or by Letters", path: "/Classes/Nahw/Ajrumiyyah/Chapters/MurabatVowelsLetters.html" }
               ]
+            },
+            {
+              id: "babalafal",
+              title: "Chapter 3: Bab al-Af'al (Verbs)",
+              path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbsIntro.html",
+              sections: [
+                { title: "The Three Verb Types and Their Base Rulings", path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbTypesAndRulings.html" },
+                { title: "The Ten Particles That Cause Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/NawasibOfMudari.html" },
+                { title: "The Eighteen Particles That Cause Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/JawazimOfMudari.html" }
+              ]
             }
           ]
         },
-         {
-        id: "babalafal",
-        title: "Chapter 3: Bab al-Af'al (Verbs)",
-        path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbsIntro.html",
-        sections: [
-          { title: "The Three Verb Types and Their Base Rulings", path: "/Classes/Nahw/Ajrumiyyah/Chapters/VerbTypesAndRulings.html" },
-          { title: "The Ten Particles That Cause Nasb", path: "/Classes/Nahw/Ajrumiyyah/Chapters/NawasibOfMudari.html" },
-          { title: "The Eighteen Particles That Cause Jazm", path: "/Classes/Nahw/Ajrumiyyah/Chapters/JawazimOfMudari.html" }
-        ]
-      }, 
         {
           id: "qatralnada",
           title: "Qatr al-Nada wa Ball al-Sada",
@@ -481,7 +481,7 @@ var NAV = {
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
                 { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
-                { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahAlAsanid.html" }
+                { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahhAlAsanid.html" }
               ]
             }
           ]
