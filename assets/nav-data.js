@@ -505,7 +505,7 @@ var NAV = {
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
                 { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
-                { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahhAlAsanid.html" }
+                { title: "Asah al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahAlAsanid.html" }
               ]
             }
           ]
