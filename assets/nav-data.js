@@ -482,7 +482,8 @@ var NAV = {
               sections: [
                 { title: "Hadith 6: The Halal Is Clear and the Haram Is Clear", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith6HalalHaram.html" },
                 { title: "Hadith 7: The Religion Is Sincere Counsel", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith7Nasiha.html" },
-                { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" }
+                { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" },
+                { title: "Hadith 9: Avoid What I Forbid, Do What You Can", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith9AvoidProhibitions.html" }
               ]
             },
             { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
@@ -527,7 +528,9 @@ var NAV = {
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
                 { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahAlAsanid.html" },
-                { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" }
+                { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
+                { title: "The Four Grades Revisited: Intrinsic and External Strength", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/FourGradesRevisited.html" },
+                { title: "When the Outranked Outranks: Relative Strength and Hadith in Fiqh", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/RelativeStrengthAndFiqh.html" }
               ]
             }
           ],
