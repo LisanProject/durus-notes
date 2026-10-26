@@ -496,8 +496,8 @@ var NAV = {
           chapters: [
             {
               id: "foundations",
-              title: "Foundations of the Science",
-              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HistoryOfMustalah.html",
+              title: "Chapter 1: Foundations of the Science",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/FoundationsIntro.html",
               sections: [
                 { title: "The Historical Development of Mustalah al-Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HistoryOfMustalah.html" },
                 { title: "Scholarly Integrity, Ijazah, and the Chain of Transmission", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IjazahAndTransmission.html" },
@@ -506,38 +506,32 @@ var NAV = {
               ]
             },
             {
-              id: "categoriesofknowledge",
-              title: "Categories of Knowledge",
-              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/CategoriesOfKnowledge.html",
-              sections: [
-                { title: "Categories of Knowledge and Mutawatir", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/CategoriesOfKnowledge.html" }
-              ]
-            },
-            {
               id: "mutawatirahad",
-              title: "Classification by Number of Narrators",
-              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html",
+              title: "Chapter 2: The Khabar by Number of Routes",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/KhabarRoutesIntro.html",
               sections: [
+                { title: "Categories of Knowledge and Mutawatir", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/CategoriesOfKnowledge.html" },
                 { title: "Mutawatir, Mashhur, Aziz, and Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirAndAhad.html" },
                 { title: "Real Examples of Mutawatir, and Its Two Forms", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MutawatirExamplesAndTypes.html" },
                 { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" },
                 { title: "Ghareeb Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GhareebHadith.html" },
-                { title: "Ahad and the Question of Certainty", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AhadCertainty.html" }
+                { title: "Ahad and the Question of Certainty", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AhadCertainty.html" },
+                { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" }
               ]
             },
             {
               id: "qualityclassification",
-              title: "Classification by Quality: Sahih, Hasan, and Da'if",
-              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html",
+              title: "Chapter 3: The Accepted Hadith (al-Maqbul)",
+              path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MaqbulIntro.html",
               sections: [
-                { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
                 { title: "Sahih li-Dhatihi and the Divisions of Accepted Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihDefinition.html" },
                 { title: "The Conditions of Sahih li-Dhatihi Explained", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ConditionsOfSahih.html" },
-                { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
-                { title: "Asah al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahAlAsanid.html" }
+                { title: "Asahh al-Asanid: The Golden Chains and the Ranks of Sahih li-Dhatihi", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AsahAlAsanid.html" },
+                { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" }
               ]
             }
-          ]
+          ],
+          topics: [{ title: "Chapter 4: Acting on the Maqbul" }, { title: "Chapter 5: The Mardud by Omission in the Chain" }, { title: "Chapter 6: The Mardud by Criticism of the Narrator" }, { title: "Chapter 7: The Isnad and Its Ascription" }, { title: "Chapter 8: Knowing the Narrators" }]
         },
         {
           id: "alshamailalmuhammadiyyah",
