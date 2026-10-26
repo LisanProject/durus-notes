@@ -485,7 +485,8 @@ var NAV = {
                 { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" },
                 { title: "Hadith 9: Avoid What I Forbid, Do What You Can", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith9AvoidProhibitions.html" },
                 { title: "Hadith 10: Allah Is Tayyib", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith10Tayyib.html" },
-                { title: "Hadith 11: Leave What Causes You Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith11LeaveDoubt.html" }
+                { title: "Hadith 11: Leave What Causes You Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith11LeaveDoubt.html" },
+                { title: "Hadith 12: Leaving What Does Not Concern You", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith12WhatConcernsYou.html" }
               ]
             },
             { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
@@ -505,7 +506,8 @@ var NAV = {
                 { title: "The Historical Development of Mustalah al-Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HistoryOfMustalah.html" },
                 { title: "Scholarly Integrity, Ijazah, and the Chain of Transmission", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IjazahAndTransmission.html" },
                 { title: "Khabar, Hadith, Athar, and Sunnah", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/KhabarHadithAtharSunnah.html" },
-                { title: "Islamic Epistemology: Naqli and Aqli Knowledge", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IslamicEpistemology.html" }
+                { title: "Islamic Epistemology: Naqli and Aqli Knowledge", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/IslamicEpistemology.html" },
+                { title: "Review of Chapter 1", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/FoundationsReview.html" }
               ]
             },
             {
@@ -519,7 +521,8 @@ var NAV = {
                 { title: "Mashhur, Mustafid, and Aziz in Practice", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MashhurMustafidAziz.html" },
                 { title: "Ghareeb Hadith", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GhareebHadith.html" },
                 { title: "Ahad and the Question of Certainty", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/AhadCertainty.html" },
-                { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" }
+                { title: "Gharaba, Fard, and the Difference from Gharib", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/GharabaTypes.html" },
+                { title: "Review of Chapter 2", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/RoutesReview.html" }
               ]
             },
             {
@@ -536,7 +539,8 @@ var NAV = {
                 { title: "Hasan li-Dhatihi, and Sahih li-Ghayrihi Through Many Routes", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HasanLiDhatihi.html" },
                 { title: "Hasan Sahih and al-Tirmidhi's Definition of Hasan", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HasanSahih.html" },
                 { title: "Ziyadat al-Thiqah: Additions by a Reliable Narrator", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ZiyadatAlThiqah.html" },
-                { title: "Mahfuz and Shadh, Ma'ruf and Munkar", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MahfuzShadh.html" }
+                { title: "Mahfuz and Shadh, Ma'ruf and Munkar", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MahfuzShadh.html" },
+                { title: "Review of Chapter 3", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MaqbulReview.html" }
               ]
             }
           ],
