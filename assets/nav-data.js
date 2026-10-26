@@ -185,7 +185,8 @@ var NAV = {
                 { title: "Tayammum and When It Is Allowed", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/Tayammum.html" },
                 { title: "The Obligations of Tayammum", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfTayammum.html" },
                 { title: "The Conditions of Tayammum", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfTayammum.html" },
-                { title: "Menstruation and Postnatal Bleeding", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MenstruationAndNifas.html" }
+                { title: "Menstruation and Postnatal Bleeding", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MenstruationAndNifas.html" },
+                { title: "Review of Bab al-Taharah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahReview.html" }
               ]
             },
             {
