@@ -155,20 +155,48 @@ var NAV = {
           path: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html",
           chapters: [
             {
+              id: "muqaddimah",
+              title: "Chapter 1: The Introduction",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MuqaddimahIntro.html",
+              sections: [
+                { title: "The Book, the Author, and the Science of Fiqh", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/BookAndAuthor.html" },
+                { title: "The Author's Opening", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/AuthorsOpening.html" },
+                { title: "Knowledge Every Muslim Must Have", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligatoryKnowledge.html" }
+              ]
+            },
+            {
               id: "taharah",
-              title: "Chapter 1: Taharah",
+              title: "Chapter 2: Taharah",
               path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahIntro.html",
               sections: [
-                { title: "Taharah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TaharahIntro.html" }
+                { title: "The Definition of Taharah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/DefinitionOfTaharah.html" },
+                { title: "The Obligations of Wudu", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfWudu.html" },
+                { title: "The Sunnahs of Wudu", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SunnahsOfWudu.html" },
+                { title: "The Nullifiers of Wudu", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/NullifiersOfWudu.html" },
+                { title: "What Is Prohibited Without Wudu", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedWithoutWudu.html" },
+                { title: "The Etiquette of Relieving Oneself", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/EtiquetteOfRelievingOneself.html" },
+                { title: "What Makes Ghusl Obligatory", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/CausesOfGhusl.html" },
+                { title: "The Obligations and Sunnahs of Ghusl", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfGhusl.html" },
+                { title: "The Conditions of Purification", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfPurification.html" },
+                { title: "Changed Water and Used Water", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ChangedAndUsedWater.html" },
+                { title: "When Water Becomes Impure", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhenWaterBecomesImpure.html" },
+                { title: "The Impurities", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TheImpurities.html" },
+                { title: "What Can Be Purified and What Cannot", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/PurifyingImpurities.html" },
+                { title: "Tayammum and When It Is Allowed", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/Tayammum.html" },
+                { title: "The Obligations of Tayammum", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfTayammum.html" },
+                { title: "The Conditions of Tayammum", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfTayammum.html" },
+                { title: "Menstruation and Postnatal Bleeding", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MenstruationAndNifas.html" }
               ]
             },
             {
               id: "salah",
-              title: "Chapter 2: Salah",
-              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html",
+              title: "Chapter 3: Salah",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SalahIntro.html",
               sections: [
-                { title: "Prohibited Times for Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" },
-                { title: "Who Prayer Is Obligatory Upon", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SalahPrayerRequiredIndividuals.html" }
+                { title: "The Five Prescribed Prayers", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/FivePrayers.html" },
+                { title: "The Prayer Times", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/PrayerTimes.html" },
+                { title: "Delaying, Determining the Time, and Making Up Prayers", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/DelayingAndMakingUp.html" },
+                { title: "The Times When Prayer Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" }
               ]
             }
           ],
