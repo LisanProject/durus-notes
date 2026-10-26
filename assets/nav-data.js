@@ -484,7 +484,8 @@ var NAV = {
                 { title: "Hadith 7: The Religion Is Sincere Counsel", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith7Nasiha.html" },
                 { title: "Hadith 8: Commanded to Fight Until They Testify", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith8FightThePeople.html" },
                 { title: "Hadith 9: Avoid What I Forbid, Do What You Can", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith9AvoidProhibitions.html" },
-                { title: "Hadith 10: Allah Is Tayyib", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith10Tayyib.html" }
+                { title: "Hadith 10: Allah Is Tayyib", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith10Tayyib.html" },
+                { title: "Hadith 11: Leave What Causes You Doubt", path: "/Classes/Hadith/AlarbainAlnawawiyyah/Chapters/Hadith11LeaveDoubt.html" }
               ]
             },
             { id: "rightsconduct", title: "Hadith 16-28 - Rights & Conduct", path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html", sections: [] },
@@ -532,7 +533,10 @@ var NAV = {
                 { title: "Sahih al-Bukhari and Sahih Muslim: Comparison and the Ranks of Sahih", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/SahihaynComparison.html" },
                 { title: "The Four Grades Revisited: Intrinsic and External Strength", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/FourGradesRevisited.html" },
                 { title: "When the Outranked Outranks: Relative Strength and Hadith in Fiqh", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/RelativeStrengthAndFiqh.html" },
-                { title: "Hasan li-Dhatihi, and Sahih li-Ghayrihi Through Many Routes", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HasanLiDhatihi.html" }
+                { title: "Hasan li-Dhatihi, and Sahih li-Ghayrihi Through Many Routes", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HasanLiDhatihi.html" },
+                { title: "Hasan Sahih and al-Tirmidhi's Definition of Hasan", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/HasanSahih.html" },
+                { title: "Ziyadat al-Thiqah: Additions by a Reliable Narrator", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/ZiyadatAlThiqah.html" },
+                { title: "Mahfuz and Shadh, Ma'ruf and Munkar", path: "/Classes/Hadith/NuzhatAlnazar/Chapters/MahfuzShadh.html" }
               ]
             }
           ],
