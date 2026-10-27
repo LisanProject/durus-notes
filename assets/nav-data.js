@@ -197,7 +197,9 @@ var NAV = {
                 { title: "The Five Prescribed Prayers", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/FivePrayers.html" },
                 { title: "The Prayer Times", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/PrayerTimes.html" },
                 { title: "Delaying, Determining the Time, and Making Up Prayers", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/DelayingAndMakingUp.html" },
-                { title: "The Times When Prayer Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" }
+                { title: "The Times When Prayer Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" },
+                { title: "Upon Whom Prayer Is Obligatory", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhoMustPray.html" },
+                { title: "Teaching Children What They Will Need", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TeachingChildren.html" }
               ]
             }
           ],
