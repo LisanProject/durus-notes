@@ -199,7 +199,9 @@ var NAV = {
                 { title: "Delaying, Determining the Time, and Making Up Prayers", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/DelayingAndMakingUp.html" },
                 { title: "The Times When Prayer Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ProhibitedPrayerTimes.html" },
                 { title: "Upon Whom Prayer Is Obligatory", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhoMustPray.html" },
-                { title: "Teaching Children What They Will Need", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TeachingChildren.html" }
+                { title: "Teaching Children What They Will Need", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TeachingChildren.html" },
+                { title: "The Conditions of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfPrayer.html" },
+                { title: "The Obligations of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfPrayer.html" }
               ]
             }
           ],
