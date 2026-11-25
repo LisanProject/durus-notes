@@ -26,7 +26,7 @@ var NAV = {
           id: "ajrumiyyah",
           title: "Al-Ajrumiyyah",
           path: "/Classes/Nahw/Ajrumiyyah/Ajrumiyyah.html",
-          downloadPdf: "/Downloads/Nahw/AlAjrumiyyah.pdf",
+          downloadPdf: "/Downloads/Nahw/Ajrumiyyah.pdf",
           chapters: [
             {
               id: "alkalam",
@@ -153,6 +153,7 @@ var NAV = {
           id: "mukhtasarallatif",
           title: "Mukhtasar al-Latif",
           path: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html",
+          downloadPdf: "/Downloads/Fiqh/MukhtasarAllatif.pdf",
           chapters: [
             {
               id: "muqaddimah",
@@ -201,11 +202,36 @@ var NAV = {
                 { title: "Upon Whom Prayer Is Obligatory", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhoMustPray.html" },
                 { title: "Teaching Children What They Will Need", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/TeachingChildren.html" },
                 { title: "The Conditions of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfPrayer.html" },
-                { title: "The Obligations of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfPrayer.html" }
+                { title: "The Obligations of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfPrayer.html" },
+                { title: "The Sunnahs of Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SunnahsOfPrayer.html" },
+                { title: "What Invalidates the Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/InvalidatorsOfPrayer.html" },
+                { title: "The Prostration of Forgetfulness", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SujudAlSahw.html" },
+                { title: "The Prostration of Recitation", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SujudAlTilawah.html" },
+                { title: "Whom One May Not Follow", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhomNotToFollow.html" },
+                { title: "The Conditions of Following an Imam", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfCongregation.html" },
+                { title: "Shortening the Prayer While Traveling", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ShorteningPrayer.html" },
+                { title: "Combining Prayers While Traveling", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/CombiningPrayers.html" },
+                { title: "Upon Whom Jumu'ah Is Obligatory, and the Excuses", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/WhoMustAttendJumuah.html" },
+                { title: "The Conditions of Jumu'ah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfJumuah.html" },
+                { title: "The Two Sermons", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ConditionsOfKhutbahs.html" },
+                { title: "Preparing the Deceased", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/PreparingTheDeceased.html" },
+                { title: "The Funeral Prayer", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/FuneralPrayer.html" },
+                { title: "Burial and Mourning", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/BurialAndMourning.html" }
+              ]
+            },
+            {
+              id: "zakah",
+              title: "Chapter 4: Zakah",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahIntro.html",
+              sections: [
+                { title: "The Obligation of Zakah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationOfZakah.html" },
+                { title: "Zakah on Livestock", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnLivestock.html" },
+                { title: "Zakah on Crops and Fruits", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnCrops.html" },
+                { title: "Zakah on Gold and Silver", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnGoldAndSilver.html" }
               ]
             }
           ],
-          topics: [{ title: "Zakah" }, { title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }]
+          topics: [{ title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }, { title: "Buyu' - Sales" }]
         },
         {
           id: "matnabishuja",
@@ -236,6 +262,7 @@ var NAV = {
           id: "waraqat",
           title: "Al-Waraqat",
           path: "/Classes/UsulFiqh/Waraqat/Waraqat.html",
+          downloadPdf: "/Downloads/UsulFiqh/Waraqat.pdf",
           chapters: [
             {
               id: "almuqaddima",
@@ -304,6 +331,7 @@ var NAV = {
           id: "sharhalaqbawi",
           title: "Sharh al-Aqbawi (Aqidah Tawhidiyyah)",
           path: "/Classes/Aqidah/SharhAlaqbawi/SharhAlaqbawi.html",
+          downloadPdf: "/Downloads/Aqidah/SharhAlaqbawi.pdf",
           chapters: [
             {
               id: "foundations",
@@ -363,6 +391,7 @@ var NAV = {
           id: "muqaddimah",
           title: "Al-Muqaddimah (Imam al-Sanusi)",
           path: "/Classes/Aqidah/MuqaddimahSanusi/Muqaddimah.html",
+          downloadPdf: "/Downloads/Aqidah/MuqaddimahSanusi.pdf",
           chapters: [
             {
               id: "muqaddimah3",
@@ -457,6 +486,7 @@ var NAV = {
           id: "alarbainalnawawiyyah",
           title: "Al-Arba'in al-Nawawiyyah",
           path: "/Classes/Hadith/AlarbainAlnawawiyyah/AlarbainAlnawawiyyah.html",
+          downloadPdf: "/Downloads/Hadith/AlarbainAlnawawiyyah.pdf",
           chapters: [
             {
               id: "introduction",
@@ -501,6 +531,7 @@ var NAV = {
           id: "nuzhatalnazar",
           title: "Nuzhat al-Nazar",
           path: "/Classes/Hadith/NuzhatAlnazar/NuzhatAlnazar.html",
+          downloadPdf: "/Downloads/Hadith/NuzhatAlnazar.pdf",
           chapters: [
             {
               id: "foundations",
@@ -607,6 +638,7 @@ var NAV = {
           id: "tuhfatalatfal",
           title: "Tuhfat al-Atfal",
           path: "/Classes/Quran/TuhfatAlatfal/TuhfatAlatfal.html",
+          downloadPdf: "/Downloads/Quran/TuhfatAlatfal.pdf",
           chapters: [
             {
               id: "muqaddimah",

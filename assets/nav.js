@@ -270,7 +270,7 @@ function closeAllDropdowns(except) {
 
 function renderTopbarIcons() {
   var header = document.getElementById('site-header');
-  if (!header || document.getElementById('content-top-menu')) return;
+  if (!header || document.getElementById('nh-view-btn')) return;
 
   if (!document.getElementById('icon-sprite-root')) {
     var spriteWrap = navEl('div');
@@ -279,9 +279,10 @@ function renderTopbarIcons() {
     document.body.insertBefore(spriteWrap, document.body.firstChild);
   }
 
-  var menu = navEl('div');
-  menu.id = 'content-top-menu';
-  header.appendChild(menu);
+  var menu = document.getElementById('nh-icons');
+  if (!menu) { menu = navEl('div'); header.appendChild(menu); }
+  menu.id = 'nh-icons';
+  var menuAnchor = menu.firstChild;
 
   var course = (typeof PAGE !== 'undefined' && PAGE.course) ? navGetCourse(PAGE.course) : null;
   var book = (course && PAGE.book) ? navGetBook(PAGE.course, PAGE.book) : null;
@@ -289,6 +290,7 @@ function renderTopbarIcons() {
 
   // ---- View menu (eye icon): Go To Notes/Practice/Assignment, Show/Hide all solutions ----
   var viewBtn = navEl('button', { cls: 'top-menu-button' });
+  viewBtn.id = 'nh-view-btn';
   viewBtn.title = 'View (Notes, Practice Problems, Assignment Problems, Show/Hide Solutions) Menu';
   viewBtn.appendChild(svgIcon('icon-view'));
   var viewDropdown = navEl('div', { cls: 'jq-dropdown' });
@@ -356,6 +358,17 @@ function renderTopbarIcons() {
   if (book && book.downloadPdf) {
     dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Notes Downloads' })));
     dlList.appendChild(wrapLi(navEl('a', { href: book.downloadPdf, text: 'Complete Book (' + book.title + ')' })));
+    var dlChapter = PAGE.chapter ? navGetChapter(PAGE.course, PAGE.book, PAGE.chapter) : null;
+    if (dlChapter && dlChapter.sections && dlChapter.sections.length) {
+      var chPdf = book.downloadPdf.replace(/\.pdf$/, '/' + dlChapter.id + '.pdf');
+      dlList.appendChild(wrapLi(navEl('a', { href: chPdf, text: 'Current Chapter (' + dlChapter.title + ')' })));
+    }
+    if (typeof PAGE.section === 'number') {
+      var dlSection = navEl('a', { text: 'Current Section (print or save as PDF)' });
+      dlSection.href = 'javascript:void(0)';
+      dlSection.addEventListener('click', function () { toggleAllSolutions(true); setTimeout(window.print, 50); });
+      dlList.appendChild(wrapLi(dlSection));
+    }
   } else {
     dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-notice', text: 'A compiled PDF is not yet available for this book.' })));
   }
@@ -381,9 +394,10 @@ function renderTopbarIcons() {
   printList.appendChild(wrapLi(printHide));
   printDropdown.appendChild(printList);
 
-  [[viewBtn, viewDropdown], [navBtn, navDropdown], [dlBtn, dlDropdown], [printBtn, printDropdown]].forEach(function (pair) {
+  [[viewBtn, viewDropdown], [dlBtn, dlDropdown], [printBtn, printDropdown]].forEach(function (pair) {
     var btn = pair[0], dropdown = pair[1];
-    menu.appendChild(btn);
+    btn.className = 'nh-icon-btn';
+    menu.insertBefore(btn, menuAnchor);
     document.body.appendChild(dropdown);
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -398,6 +412,21 @@ function renderTopbarIcons() {
     });
   });
   document.addEventListener('click', function () { closeAllDropdowns(); });
+}
+
+/* On a book's landing page, point readers to the compiled PDF of the notes */
+function renderBookDownloadNote() {
+  if (typeof PAGE === 'undefined' || !PAGE.book || PAGE.chapter) return;
+  var book = navGetBook(PAGE.course, PAGE.book);
+  if (!book || !book.downloadPdf) return;
+  var main = document.getElementById('content');
+  var firstH2 = main && main.querySelector('h2');
+  if (!firstH2) return;
+  var note = navEl('p', { cls: 'download-note' });
+  note.appendChild(document.createTextNode('The complete notes for this book are available as a single PDF: '));
+  note.appendChild(navEl('a', { href: book.downloadPdf, text: 'Download ' + book.title + ' (PDF)' }));
+  note.appendChild(document.createTextNode('. Each chapter can also be downloaded on its own from the download menu at the top of any section.'));
+  main.insertBefore(note, firstH2);
 }
 
 function wrapLi(el) {
@@ -425,13 +454,12 @@ function renderTopbarMenu() {
   var header = document.getElementById('site-header');
   if (!header || document.getElementById('hamburger-btn')) return;
 
-  var btn = navEl('button', { cls: '' });
+  var btn = navEl('button', { cls: 'nh-icon-btn nh-mobile-only' });
   btn.id = 'hamburger-btn';
   btn.setAttribute('aria-label', 'Site menu');
-  btn.appendChild(navEl('span'));
-  btn.appendChild(navEl('span'));
-  btn.appendChild(navEl('span'));
-  header.insertBefore(btn, header.firstChild);
+  btn.appendChild(nhIcon('icon-menu'));
+  var iconArea = document.getElementById('nh-icons');
+  if (iconArea) iconArea.appendChild(btn); else header.insertBefore(btn, header.firstChild);
 
   var overlay = navEl('div');
   overlay.id = 'site-menu-overlay';
@@ -538,14 +566,18 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typeof PAGE !== 'undefined' && PAGE.course) {
     document.body.classList.add('course-' + PAGE.course);
   }
+  renderNewHeader();
   renderTopbarMenu();
   renderTopbarIcons();
-  renderCrumb();
-  renderTabs();
+  renderNewCrumb();
+  renderNewTabs();
   renderSectionNumber();
   renderBottomNav();
-  renderHomeClassList();
-  renderExtrasList();
+  renderNewHomeClassList();
+  renderNewExtrasList();
+  renderBookDownloadNote();
+  renderNewFooter();
+  renderPageTools();
 
   document.querySelectorAll('.showhide-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -566,3 +598,484 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+/* ============================================================
+   NEW SITE CHROME (2026 redesign, modeled on Paul's new layout)
+   Header bar with mega menus, breadcrumb bar, content nav with
+   arrow-shaped Prev/Next, card-style class list, footer, and
+   floating page tools.
+   ============================================================ */
+
+var NAV_MENU_GROUPS_DEFAULT = [
+  { id: 'arabic', label: 'Arabic', courses: ['nahw-sarf', 'arabic-speaking'] },
+  { id: 'fiqh', label: 'Fiqh', courses: ['fiqh', 'usul-fiqh'] },
+  { id: 'aqidah', label: 'Aqidah', courses: ['aqidah'] },
+  { id: 'hadith', label: 'Hadith', courses: ['hadith'] },
+  { id: 'quran', label: "Qur'an", courses: ['quran-sciences'] },
+  { id: 'extras', label: 'Extras', extras: true }
+];
+
+function navMenuGroups() {
+  var groups = (typeof NAV !== 'undefined' && NAV.menuGroups) ? NAV.menuGroups : NAV_MENU_GROUPS_DEFAULT;
+  return groups.map(function (g) {
+    var out = { id: g.id, label: g.label, extras: !!g.extras, courses: [] };
+    (g.courses || []).forEach(function (cid) { var c = navGetCourse(cid); if (c) out.courses.push(c); });
+    return out;
+  });
+}
+
+var NEW_ICON_SPRITE =
+  '<svg xmlns="http://www.w3.org/2000/svg" style="display:none">' +
+  '<symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></symbol>' +
+  '<symbol id="icon-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>' +
+  '<symbol id="icon-menu" viewBox="0 0 24 24"><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="3" y1="19" x2="21" y2="19" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>' +
+  '<symbol id="icon-chevron-down" viewBox="0 0 24 24"><polyline points="4,9 12,17 20,9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>' +
+  '<symbol id="icon-list" viewBox="0 0 24 24"><circle cx="4" cy="6" r="1.6" fill="currentColor"/><circle cx="4" cy="12" r="1.6" fill="currentColor"/><circle cx="4" cy="18" r="1.6" fill="currentColor"/><line x1="9" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="9" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="9" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>' +
+  '</svg>';
+
+function nhIcon(id, cls) {
+  var span = document.createElement('span');
+  span.innerHTML = '<svg class="icon ' + (cls || '') + '" aria-hidden="true"><use href="#' + id + '"></use></svg>';
+  return span.firstChild;
+}
+
+function bookHasNotes(book) {
+  return (book.chapters || []).some(function (ch) { return ch.sections && ch.sections.length; });
+}
+
+/* ---------- Header + mega menus ---------- */
+function renderNewHeader() {
+  var header = document.getElementById('site-header');
+  if (!header || header.classList.contains('nh')) return;
+  header.classList.add('nh');
+  while (header.firstChild) header.removeChild(header.firstChild);
+
+  var sprite = navEl('div'); sprite.innerHTML = NEW_ICON_SPRITE;
+  document.body.insertBefore(sprite, document.body.firstChild);
+
+  var inner = navEl('div', { cls: 'nh-inner' });
+  var home = navEl('a', { cls: 'nh-home', href: '/index.html' });
+  home.appendChild(nhIcon('icon-home', 'nh-home-icon'));
+  home.appendChild(navEl('span', { cls: 'nh-home-text', text: "Liban's Notes" }));
+  inner.appendChild(home);
+
+  var items = navEl('ul', { cls: 'nh-topitems' });
+  inner.appendChild(items);
+  var icons = navEl('div', { cls: 'nh-icons' });
+  icons.id = 'nh-icons';
+  inner.appendChild(icons);
+  header.appendChild(inner);
+
+  var openMega = null, closeTimer = null;
+  function closeMega() {
+    if (!openMega) return;
+    openMega.panel.classList.remove('open');
+    openMega.trigger.setAttribute('aria-expanded', 'false');
+    openMega.trigger.classList.remove('open');
+    openMega = null;
+  }
+  function showMega(entry) {
+    clearTimeout(closeTimer);
+    if (openMega === entry) return;
+    closeMega(); closeAllDropdowns();
+    entry.panel.classList.add('open');
+    entry.trigger.setAttribute('aria-expanded', 'true');
+    entry.trigger.classList.add('open');
+    openMega = entry;
+  }
+  function scheduleClose() { clearTimeout(closeTimer); closeTimer = setTimeout(closeMega, 220); }
+
+  navMenuGroups().forEach(function (g) {
+    var li = navEl('li');
+    var firstPath = g.extras ? (NAV.extras[0] && NAV.extras[0].path) : (g.courses[0] && g.courses[0].path);
+    var trigger = navEl('a', { cls: 'nh-topitem', href: firstPath || '/index.html' });
+    trigger.appendChild(document.createTextNode(g.label + ' '));
+    trigger.appendChild(navEl('span', { cls: 'nh-chevron', text: '▸' }));
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+    li.appendChild(trigger);
+    items.appendChild(li);
+
+    var panel = g.extras ? buildExtrasMega() : buildGroupMega(g);
+    header.appendChild(panel);
+    var entry = { trigger: trigger, panel: panel };
+
+    trigger.addEventListener('mouseenter', function () { if (window.innerWidth > 900) showMega(entry); });
+    trigger.addEventListener('mouseleave', scheduleClose);
+    panel.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+    panel.addEventListener('mouseleave', scheduleClose);
+    trigger.addEventListener('click', function (e) {
+      if (window.innerWidth <= 900) return;
+      e.preventDefault();
+      if (openMega === entry) closeMega(); else showMega(entry);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMega(); });
+  document.addEventListener('click', function (e) {
+    if (openMega && !openMega.panel.contains(e.target) && !openMega.trigger.contains(e.target)) closeMega();
+  });
+
+  // contact icon
+  var contact = navEl('a', { cls: 'nh-icon-btn', href: '/Extras/Contact.html' });
+  contact.setAttribute('aria-label', 'Contact');
+  contact.title = 'Contact';
+  contact.appendChild(nhIcon('icon-envelope'));
+  icons.appendChild(contact);
+}
+
+function buildGroupMega(g) {
+  var panel = navEl('div', { cls: 'nh-mega' });
+  var body = navEl('div', { cls: 'nh-mega-body' });
+  var left = navEl('ul', { cls: 'nh-mega-left' });
+  var right = navEl('div', { cls: 'nh-mega-right' });
+  var def = navEl('div', { cls: 'nh-mega-default' });
+  def.appendChild(navEl('p', { cls: 'nh-mega-default-title', text: g.label }));
+  def.appendChild(navEl('p', { text: 'Hover over or select a book on the left to see its chapters and sections.' }));
+  right.appendChild(def);
+
+  var panels = [];
+  function activate(i) {
+    panels.forEach(function (p, j) {
+      p.panel.classList.toggle('active', i === j);
+      p.btn.classList.toggle('active', i === j);
+    });
+    def.style.display = i === null ? '' : 'none';
+  }
+
+  g.courses.forEach(function (course) {
+    if (g.courses.length > 1) {
+      var head = navEl('li', { cls: 'nh-mega-left-head' });
+      head.appendChild(navEl('a', { href: course.path, text: course.title }));
+      left.appendChild(head);
+    }
+    course.books.forEach(function (book) {
+      var li = navEl('li');
+      var btn = navEl('button', { cls: 'nh-mega-left-item' });
+      btn.type = 'button';
+      btn.appendChild(navEl('span', { text: book.title }));
+      btn.appendChild(navEl('span', { cls: 'nh-chevron', text: '▸' }));
+      if (!bookHasNotes(book)) btn.classList.add('soon');
+      li.appendChild(btn);
+      left.appendChild(li);
+      var bp = buildBookPanel(course, book);
+      right.appendChild(bp);
+      var idx = panels.length;
+      panels.push({ btn: btn, panel: bp });
+      btn.addEventListener('mouseenter', function () { activate(idx); });
+      btn.addEventListener('focus', function () { activate(idx); });
+      btn.addEventListener('click', function () { activate(idx); });
+    });
+  });
+
+  // open on the current book if we are inside this group
+  if (typeof PAGE !== 'undefined' && PAGE.book) {
+    var flat = [];
+    g.courses.forEach(function (c) { c.books.forEach(function (b) { flat.push(c.id + '/' + b.id); }); });
+    var here = flat.indexOf(PAGE.course + '/' + PAGE.book);
+    if (here !== -1) activate(here);
+  }
+
+  body.appendChild(left);
+  body.appendChild(right);
+  panel.appendChild(body);
+  return panel;
+}
+
+function buildBookPanel(course, book) {
+  var p = navEl('div', { cls: 'nh-mega-book' });
+  var head = navEl('div', { cls: 'nh-mega-book-head' });
+  head.appendChild(navEl('a', { cls: 'nh-mega-book-title', href: book.path, text: book.title }));
+  var links = navEl('div', { cls: 'nh-mega-book-links' });
+  links.appendChild(navEl('a', { href: book.path, text: 'Notes' }));
+  if (course.practiceProblems) links.appendChild(navEl('a', { href: course.practiceProblems, text: 'Practice Problems' }));
+  if (course.assignmentProblems) links.appendChild(navEl('a', { href: course.assignmentProblems, text: 'Assignment Problems' }));
+  if (book.downloadPdf) links.appendChild(navEl('a', { href: book.downloadPdf, text: 'Download PDF' }));
+  head.appendChild(links);
+  p.appendChild(head);
+
+  var chapters = book.chapters || [];
+  if (!chapters.length) {
+    var topics = book.topics || [];
+    if (topics.length) {
+      var ul = navEl('ul', { cls: 'nh-mega-sections nh-mega-flat' });
+      topics.forEach(function (t) {
+        var li = navEl('li');
+        li.appendChild(t.path ? navEl('a', { href: t.path, text: t.title }) : navEl('span', { text: t.title }));
+        ul.appendChild(li);
+      });
+      p.appendChild(ul);
+    } else {
+      p.appendChild(navEl('p', { cls: 'nh-mega-soon', text: 'Notes for this book will be added as lessons are completed.' }));
+    }
+    return p;
+  }
+
+  chapters.forEach(function (ch, ci) {
+    var acc = navEl('div', { cls: 'nh-acc' });
+    var trig = navEl('button', { cls: 'nh-acc-trigger' });
+    trig.type = 'button';
+    trig.appendChild(navEl('span', { text: ch.title }));
+    var count = (ch.sections || []).length;
+    trig.appendChild(navEl('span', { cls: 'nh-acc-count', text: count ? count + (count === 1 ? ' section' : ' sections') : 'coming soon' }));
+    trig.appendChild(nhIcon('icon-chevron-down', 'nh-acc-chev'));
+    acc.appendChild(trig);
+    var list = navEl('ul', { cls: 'nh-mega-sections' });
+    if (ch.path) {
+      var introLi = navEl('li', { cls: 'nh-sec-intro' });
+      introLi.appendChild(navEl('a', { href: ch.path, text: 'Chapter overview' }));
+      list.appendChild(introLi);
+    }
+    (ch.sections || []).forEach(function (s, si) {
+      var li = navEl('li');
+      var a = navEl('a', { href: s.path });
+      a.appendChild(navEl('span', { cls: 'nh-sec-num', text: (ci + 1) + '.' + (si + 1) }));
+      a.appendChild(document.createTextNode(s.title));
+      if (typeof PAGE !== 'undefined' && PAGE.book === book.id && PAGE.chapter === ch.id && PAGE.section === si) a.classList.add('current');
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    acc.appendChild(list);
+    var isHere = typeof PAGE !== 'undefined' && PAGE.book === book.id && PAGE.chapter === ch.id;
+    if (isHere) acc.classList.add('open');
+    trig.addEventListener('click', function () { acc.classList.toggle('open'); });
+    p.appendChild(acc);
+  });
+  return p;
+}
+
+function buildExtrasMega() {
+  var panel = navEl('div', { cls: 'nh-mega nh-mega-small' });
+  var ul = navEl('ul', { cls: 'nh-mega-misc' });
+  NAV.extras.forEach(function (ex) {
+    var li = navEl('li');
+    li.appendChild(navEl('a', { href: ex.path, text: ex.title }));
+    ul.appendChild(li);
+  });
+  [['About This Site', '/Extras/About.html'], ['Contact', '/Extras/Contact.html']].forEach(function (x) {
+    var li = navEl('li', { cls: 'nh-misc-sep' });
+    li.appendChild(navEl('a', { href: x[1], text: x[0] }));
+    ul.appendChild(li);
+  });
+  panel.appendChild(ul);
+  return panel;
+}
+
+/* ---------- Breadcrumb bar ---------- */
+function renderNewCrumb() {
+  var row = document.getElementById('crumb-row');
+  if (!row || typeof PAGE === 'undefined') return;
+  row.className = 'nb-crumb';
+  while (row.firstChild) row.removeChild(row.firstChild);
+  var ol = navEl('ol');
+  function add(text, href) {
+    var li = navEl('li');
+    if (href) li.appendChild(navEl('a', { href: href, text: text }));
+    else { var s = navEl('span', { text: text }); li.setAttribute('aria-current', 'page'); li.appendChild(s); }
+    ol.appendChild(li);
+  }
+  var course = PAGE.course ? navGetCourse(PAGE.course) : null;
+  var book = (course && PAGE.book) ? navGetBook(PAGE.course, PAGE.book) : null;
+  var chapter = (book && PAGE.chapter) ? navGetChapter(PAGE.course, PAGE.book, PAGE.chapter) : null;
+  var hasSection = chapter && PAGE.section !== undefined && PAGE.section !== null && chapter.sections[PAGE.section];
+
+  if (!course) {
+    if (PAGE.label) { add('Home', '/index.html'); add(PAGE.label); }
+  } else {
+    add(course.shortTitle || course.title, book ? course.path : null);
+    if (book) add(book.title, (chapter || PAGE.topic !== undefined) ? book.path : null);
+    if (chapter) add(cleanChapterTitle(chapter.title), hasSection ? chapter.path : null);
+    if (hasSection) add(chapter.sections[PAGE.section].title);
+    if (book && !chapter && PAGE.topic !== undefined && book.topics && book.topics[PAGE.topic]) add(book.topics[PAGE.topic].title);
+  }
+  if (!ol.children.length) { row.style.display = 'none'; return; }
+  row.setAttribute('aria-label', 'Breadcrumb');
+  row.appendChild(ol);
+}
+
+/* ---------- Content nav: arrow Prev / pills / arrow Next ---------- */
+function renderNewTabs() {
+  var row = document.getElementById('tab-row');
+  if (!row || typeof PAGE === 'undefined' || !PAGE.course) return;
+  var course = navGetCourse(PAGE.course);
+  if (!course) return;
+  row.className = 'nc-nav';
+  while (row.firstChild) row.removeChild(row.firstChild);
+  var inner = navEl('div', { cls: 'nc-row' });
+  var pn = getPrevNextSection();
+
+  if (pn && pn.prevHref) {
+    var prev = navEl('a', { cls: 'nc-prev', href: pn.prevHref });
+    prev.title = 'Previous: ' + pn.prevLabel;
+    prev.innerHTML = '<span>Prev.<span class="nc-wide"> Section</span></span>';
+    inner.appendChild(prev);
+  } else inner.appendChild(navEl('span', { cls: 'nc-spacer' }));
+
+  var pills = navEl('div', { cls: 'nc-pills' });
+  [
+    { label: 'Notes', short: 'Notes', href: course.path, key: 'notes' },
+    { label: 'Practice Problems', short: 'Prac.', href: course.practiceProblems, key: 'practice' },
+    { label: 'Assignment Problems', short: 'Asgn.', href: course.assignmentProblems, key: 'assignment' }
+  ].forEach(function (t) {
+    var el;
+    if (PAGE.activeTab === t.key) { el = navEl('span', { cls: 'nc-pill current' }); el.setAttribute('aria-current', 'page'); }
+    else if (!t.href) { el = navEl('span', { cls: 'nc-pill disabled' }); }
+    else el = navEl('a', { cls: 'nc-pill', href: t.href });
+    el.innerHTML = '<span class="nc-wide">' + t.label + '</span><span class="nc-narrow">' + t.short + '</span>';
+    pills.appendChild(el);
+  });
+  inner.appendChild(pills);
+
+  if (pn && pn.nextHref) {
+    var next = navEl('a', { cls: 'nc-next', href: pn.nextHref });
+    next.title = 'Next: ' + pn.nextLabel;
+    next.innerHTML = '<span>Next<span class="nc-wide"> Section</span></span>';
+    inner.appendChild(next);
+  } else inner.appendChild(navEl('span', { cls: 'nc-spacer' }));
+
+  row.appendChild(inner);
+}
+
+/* ---------- Home page: class cards with Show Topics ---------- */
+function renderNewHomeClassList() {
+  var wrap = document.getElementById('home-class-list');
+  if (!wrap) return;
+  while (wrap.firstChild) wrap.removeChild(wrap.firstChild);
+  NAV.courses.forEach(function (course) {
+    course.books.forEach(function (book) {
+      var card = navEl('div', { cls: 'nh-card' });
+      var h = navEl('h3');
+      h.appendChild(document.createTextNode(book.title));
+      h.appendChild(navEl('span', { cls: 'nh-card-course', text: course.shortTitle || course.title }));
+      card.appendChild(h);
+      var links = navEl('div', { cls: 'nh-card-links' });
+      function bracket(text, href) {
+        links.appendChild(document.createTextNode('['));
+        links.appendChild(navEl('a', { href: href, text: text }));
+        links.appendChild(document.createTextNode('] '));
+      }
+      bracket('Notes', book.path);
+      if (course.practiceProblems) bracket('Practice Problems', course.practiceProblems);
+      if (course.assignmentProblems) bracket('Assignment Problems', course.assignmentProblems);
+      if (book.downloadPdf) bracket('Download PDF', book.downloadPdf);
+      card.appendChild(links);
+      if (book.description) card.appendChild(navEl('p', { text: book.description }));
+
+      var chapters = book.chapters || [];
+      var items = [];
+      if (chapters.length) {
+        chapters.forEach(function (ch) {
+          var secs = (ch.sections || []).map(function (s) { return s.title; });
+          items.push(cleanChapterTitle(ch.title) + (secs.length ? ' - ' + secs.join(', ') + '.' : ' - coming soon.'));
+        });
+      } else if (book.topics && book.topics.length) {
+        items.push(book.topics.map(function (t) { return t.title; }).join(', ') + '.');
+      }
+      if (!bookHasNotes(book)) card.classList.add('nh-card-soon');
+      if (items.length) {
+        var btn = navEl('button', { cls: 'nh-expand' });
+        btn.type = 'button';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = '<span class="nh-expand-label">Show Topics</span><svg class="nh-expand-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        var ul = navEl('ul', { cls: 'nh-card-topics' });
+        ul.hidden = true;
+        items.forEach(function (t) { ul.appendChild(navEl('li', { text: t })); });
+        btn.addEventListener('click', function () {
+          var open = ul.hidden;
+          ul.hidden = !open;
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.querySelector('.nh-expand-label').textContent = open ? 'Hide Topics' : 'Show Topics';
+        });
+        card.appendChild(btn);
+        card.appendChild(ul);
+      }
+      wrap.appendChild(card);
+    });
+  });
+}
+
+function renderNewExtrasList() {
+  var wrap = document.getElementById('home-extras-list');
+  if (!wrap) return;
+  while (wrap.firstChild) wrap.removeChild(wrap.firstChild);
+  NAV.extras.forEach(function (ex) {
+    var card = navEl('div', { cls: 'nh-card' });
+    var h = navEl('h3');
+    h.appendChild(navEl('a', { href: ex.path, text: ex.title }));
+    card.appendChild(h);
+    if (ex.description) card.appendChild(navEl('p', { text: ex.description }));
+    wrap.appendChild(card);
+  });
+}
+
+/* ---------- Footer ---------- */
+function renderNewFooter() {
+  var f = document.getElementById('site-footer');
+  if (!f) return;
+  f.className = 'nf';
+  f.innerHTML = '';
+  var links = navEl('div', { cls: 'nf-links' });
+  [['Home', '/index.html'], ['About This Site', '/Extras/About.html'], ['Contact Me', '/Extras/Contact.html']].forEach(function (x) {
+    links.appendChild(document.createTextNode('['));
+    links.appendChild(navEl('a', { href: x[1], text: x[0] }));
+    links.appendChild(document.createTextNode('] '));
+  });
+  f.appendChild(links);
+  var dates = navEl('div', { cls: 'nf-dates' });
+  dates.appendChild(navEl('div', { text: '© ' + new Date().getFullYear() + " Liban's Online Notes" }));
+  var lm = new Date(document.lastModified);
+  if (!isNaN(lm)) {
+    dates.appendChild(navEl('div', { text: 'Page Last Modified : ' + lm.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }));
+  }
+  f.appendChild(dates);
+}
+
+/* ---------- Floating page tools: back to top + jump to ---------- */
+function renderPageTools() {
+  var main = document.getElementById('content');
+  if (!main || document.getElementById('page-tools')) return;
+  var tools = navEl('div', { cls: 'page-tools' });
+  tools.id = 'page-tools';
+
+  var heads = [].slice.call(main.querySelectorAll('.lesson-block > h4, h2, .example-box .example-label')).filter(function (h) { return h.textContent.trim(); });
+  if (heads.length >= 3) {
+    var jumpWrap = navEl('div', { cls: 'page-jump' });
+    var panel = navEl('nav', { cls: 'page-jump-panel' });
+    panel.hidden = true;
+    panel.appendChild(navEl('p', { cls: 'page-jump-heading', text: 'Jump to' }));
+    var ul = navEl('ul');
+    heads.forEach(function (h, i) {
+      var target = h.closest('.example-box') || h;
+      if (!target.id) target.id = 'jump-' + i;
+      var label = h.classList.contains('example-label') ? (h.textContent + ': ' + ((h.nextElementSibling && h.nextElementSibling.textContent) || '')).slice(0, 70) : h.textContent;
+      var li = navEl('li');
+      var a = navEl('a', { href: '#' + target.id, text: label });
+      a.addEventListener('click', function () { panel.hidden = true; });
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    panel.appendChild(ul);
+    var jbtn = navEl('button', { cls: 'page-tool-btn' });
+    jbtn.type = 'button';
+    jbtn.setAttribute('aria-label', 'Jump to a heading on this page');
+    jbtn.title = 'Jump to';
+    jbtn.appendChild(nhIcon('icon-list'));
+    jbtn.addEventListener('click', function (e) { e.stopPropagation(); panel.hidden = !panel.hidden; });
+    document.addEventListener('click', function (e) { if (!panel.contains(e.target)) panel.hidden = true; });
+    jumpWrap.appendChild(panel);
+    jumpWrap.appendChild(jbtn);
+    tools.appendChild(jumpWrap);
+  }
+
+  var top = navEl('button', { cls: 'page-tool-btn page-tool-top' });
+  top.type = 'button';
+  top.setAttribute('aria-label', 'Back to top');
+  top.title = 'Back to top';
+  top.appendChild(nhIcon('icon-chevron-down'));
+  top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  tools.appendChild(top);
+  document.body.appendChild(tools);
+  function onScroll() { tools.classList.toggle('visible', window.scrollY > 400); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
