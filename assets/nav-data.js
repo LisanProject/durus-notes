@@ -154,6 +154,7 @@ var NAV = {
           title: "Mukhtasar al-Latif",
           path: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html",
           downloadPdf: "/Downloads/Fiqh/MukhtasarAllatif.pdf",
+          courseDocs: "/Classes/Fiqh/MukhtasarAllatif/MukhtasarAllatif.html#course-docs",
           chapters: [
             {
               id: "muqaddimah",

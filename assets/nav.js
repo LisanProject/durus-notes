@@ -356,6 +356,15 @@ function renderTopbarIcons() {
   if (book && book.downloadPdf) {
     dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Notes Downloads' })));
     dlList.appendChild(wrapLi(navEl('a', { href: book.downloadPdf, text: 'Complete Book (' + book.title + ')' })));
+    var dlChapter = PAGE.chapter ? navGetChapter(PAGE.course, PAGE.book, PAGE.chapter) : null;
+    if (dlChapter && dlChapter.sections && dlChapter.sections.length) {
+      var chPdf = book.downloadPdf.replace(/\.pdf$/, '/' + dlChapter.id + '.pdf');
+      dlList.appendChild(wrapLi(navEl('a', { href: chPdf, text: 'Current Chapter (' + dlChapter.title + ')' })));
+    }
+    if (book.courseDocs) {
+      dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-nav-title', text: 'Course Documents' })));
+      dlList.appendChild(wrapLi(navEl('a', { href: book.courseDocs, text: 'Problem Sets, Solutions, and Reviews' })));
+    }
   } else {
     dlList.appendChild(wrapLi(navEl('div', { cls: 'jq-dropdown-notice', text: 'A compiled PDF is not yet available for this book.' })));
   }
