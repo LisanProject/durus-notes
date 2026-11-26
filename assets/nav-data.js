@@ -231,7 +231,8 @@ var NAV = {
                 { title: "Zakah on Gold and Silver", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnGoldAndSilver.html" },
                 { title: "Zakah on Mined Gold and Silver, and Buried Treasure", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnMineralsAndRikaz.html" },
                 { title: "Zakah on Trade Goods", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnTrade.html" },
-                { title: "Zakat al-Fitr", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakatAlFitr.html" }
+                { title: "Zakat al-Fitr", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakatAlFitr.html" },
+                { title: "Review of Bab al-Zakah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahReview.html" }
               ]
             },
             {
@@ -245,7 +246,8 @@ var NAV = {
                 { title: "Further Conditions, and Days Fasting Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ValidityAndProhibitedDays.html" },
                 { title: "Who Must Fast, and Who May Break the Fast", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationAndConcessions.html" },
                 { title: "Making Up Fasts, and the Fidya", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MakeUpAndFidya.html" },
-                { title: "I'tikaf", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/Itikaf.html" }
+                { title: "I'tikaf", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/Itikaf.html" },
+                { title: "Review of Bab al-Siyam", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SawmReview.html" }
               ]
             },
             {
