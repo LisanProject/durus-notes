@@ -228,11 +228,38 @@ var NAV = {
                 { title: "The Obligation of Zakah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationOfZakah.html" },
                 { title: "Zakah on Livestock", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnLivestock.html" },
                 { title: "Zakah on Crops and Fruits", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnCrops.html" },
-                { title: "Zakah on Gold and Silver", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnGoldAndSilver.html" }
+                { title: "Zakah on Gold and Silver", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnGoldAndSilver.html" },
+                { title: "Zakah on Mined Gold and Silver, and Buried Treasure", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnMineralsAndRikaz.html" },
+                { title: "Zakah on Trade Goods", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakahOnTrade.html" },
+                { title: "Zakat al-Fitr", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ZakatAlFitr.html" }
+              ]
+            },
+            {
+              id: "sawm",
+              title: "Chapter 5: Sawm",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/SawmIntro.html",
+              sections: [
+                { title: "Establishing the Start of Ramadan", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/EstablishingRamadan.html" },
+                { title: "The Intention of Fasting", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/IntentionInFasting.html" },
+                { title: "What Breaks the Fast", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/InvalidatorsOfFasting.html" },
+                { title: "Further Conditions, and Days Fasting Is Prohibited", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ValidityAndProhibitedDays.html" },
+                { title: "Who Must Fast, and Who May Break the Fast", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationAndConcessions.html" },
+                { title: "Making Up Fasts, and the Fidya", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/MakeUpAndFidya.html" },
+                { title: "I'tikaf", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/Itikaf.html" }
+              ]
+            },
+            {
+              id: "hajj",
+              title: "Chapter 6: Hajj",
+              path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/HajjIntro.html",
+              sections: [
+                { title: "The Obligation of Hajj and Umrah", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationOfHajj.html" },
+                { title: "The Integrals of Hajj", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/IntegralsOfHajj.html" },
+                { title: "The Obligations of Hajj", path: "/Classes/Fiqh/MukhtasarAllatif/Chapters/ObligationsOfHajj.html" }
               ]
             }
           ],
-          topics: [{ title: "Sawm - Fasting" }, { title: "Hajj & Umrah" }, { title: "Buyu' - Sales" }]
+          topics: [{ title: "Buyu' - Sales" }]
         },
         {
           id: "matnabishuja",
